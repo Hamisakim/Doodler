@@ -8,6 +8,14 @@ function App() {
   const [color, setColor] = useState('#000') //* setting initial color for the brush 
   // eslint-disable-next-line no-unused-vars
   const [artwork, setArtwork] = useState('') //* setting state for artwork which we get from the built in  CanvasDraw package 
+
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    doodleData: {}
+  })
+
+  
   let doodleRef = useRef(null) //? top canvas = doodleRef DON'T MESS WITH IT 
   let doodleShow = useRef(null)//? show canvas = doodleShow DON'T MESS WITH IT 
 
@@ -15,36 +23,29 @@ function App() {
     setColor(color)
   }, [])
 
-
   const handleSave = () => {
-    localStorage.setItem(
-      'savedDrawing',
-      doodleRef.getSaveData(),
-      console.log('save data', doodleRef.getSaveData())
-    )
-    // const artwork = localStorage.getItem('savedDrawing')
-    const artwork =  doodleRef.getSaveData()
-    console.log('🤖 ~ file: App.js ~ line 26 ~ artwork', artwork)
-    
-    const sendArtwork = async(artwork) => {
-      const response = await axios.post('api/artwork', artwork)
-      console.log('🤖 ~ file: App.js ~ line 30 ~ response', response)
+    const artworkToSend =  doodleRef.getSaveData()
+    const newFormData = { ...formData, doodleData: artworkToSend }
+    setFormData(newFormData)
 
+    const sendArtwork = async() => {
+      await axios.post('api/artwork', formData)
     }
     sendArtwork()
   }
 
 
 
+
+  console.log('🤖 ~ file: App.js ~ line 26 ~ artwork', artwork)
+
+  
   return (
     <>
       <div>
         <button onClick={() => {
           handleSave()
         }}
-
-
-
           // onClick={() => {
           //   localStorage.setItem(
           //     'savedDrawing',
