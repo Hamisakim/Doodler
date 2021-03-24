@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const artworkSchema = new mongoose.Schema({
   title: { type: String, required: true, maxlength: 60 },
-  doodleData: { type: String, required: true },
+  doodleData: { type: Object, required: true },
   description: { type: String, required: false, maxlength: 500 }
 })
 
