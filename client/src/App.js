@@ -28,7 +28,7 @@ function App() {
     setFormData(newFormData)
 
     const sendArtwork = async() => {
-      await axios.post('api/artwork', formData)
+      await axios.post('/api/artwork', formData)
     }
     sendArtwork()
   }
