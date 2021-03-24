@@ -15,7 +15,6 @@ function App() {
     doodleData: {}
   })
 
-  
   let doodleRef = useRef(null) //? top canvas = doodleRef DON'T MESS WITH IT 
   let doodleShow = useRef(null)//? show canvas = doodleShow DON'T MESS WITH IT 
 
