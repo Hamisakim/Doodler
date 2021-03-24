@@ -1,5 +1,6 @@
 # doodle
 doodle sei project 3 
 My group project
-Eric
+Eric  --- Hello eric 
 sami
+
