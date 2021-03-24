@@ -4,3 +4,7 @@ My group project
 Eric
 sami
 Ayo
+aida
+Eric  --- Hello eric 
+sami
+
