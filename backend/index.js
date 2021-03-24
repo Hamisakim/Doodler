@@ -16,15 +16,13 @@ const startServer = async() => {
     app.use(express.json())
 
     // * Logger middleware
-    // app.use((req, _res, next) => {
-    //   console.log(`🚨 Incoming request: ${req.method} - ${req.url}`)
-    //   next()
-    // })
+    app.use((req, _res, next) => {
+      console.log(`🚨 Incoming request: ${req.method} - ${req.url}`)
+      next()
+    })
 
     // * Run the router
-    //app.use('/api', router)
-    app.use(router)
-
+    app.use('/api', router)
 
     // * Server
     app.listen(port, () => console.log(`🚀 Express is up and running on port ${port}`))
