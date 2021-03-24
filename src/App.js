@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import CanvasDraw from './drawing/index'
 // import { GithubPicker, TwitterPicker, CompactPicker, SliderPicker, SketchPicker } from 'react-color'
-// eslint-disable-next-line no-unused-vars
-import { CompactPicker, MaterialPicker, ChromePicker } from 'react-color'
+import { CompactPicker } from 'react-color'
 
 
 function App() {
@@ -46,19 +45,12 @@ function App() {
       </div>
       {/* <GithubPicker />
       <TwitterPicker /> */}
-      {/* <CompactPicker 
-        color={color}
-        onChangeComplete={color => {
-          setColor(color.hex)
-        }}
-      /> */}
-      <ChromePicker
+      <CompactPicker 
         color={color}
         onChangeComplete={color => {
           setColor(color.hex)
         }}
       />
-
       {/* <SliderPicker /> */}
       {/* <SketchPicker /> */}
       <CanvasDraw
