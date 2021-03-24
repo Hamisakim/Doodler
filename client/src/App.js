@@ -26,7 +26,7 @@ function App() {
     const artworkToSend =  doodleRef.getSaveData()
     const newFormData = { ...formData, doodleData: artworkToSend }
     setFormData(newFormData)
-
+    console.log('hewllo')
     const sendArtwork = async() => {
       await axios.post('api/artwork', formData)
     }
@@ -36,7 +36,6 @@ function App() {
 
 
 
-  console.log('🤖 ~ file: App.js ~ line 26 ~ artwork', artwork)
 
   
   return (
@@ -53,10 +52,7 @@ function App() {
           //   )
           // }}
         > Save </button>
-       
-       
-       
-       
+
         <button
           onClick={() => {
             doodleRef.clear()
