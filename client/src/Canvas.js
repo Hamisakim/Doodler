@@ -124,18 +124,6 @@ class Canvas extends Component {
           The following is a disabled canvas with a hidden grid that we use to
           load & show your saved drawing.
         </p>
-        <button
-          onClick={() => {
-            this.loadableCanvas.loadSaveData(
-              // ! GET REQUEST PAYLOAD HERE
-              //JSON.stringify(this.state.allArtwork[0])
-            )
-          }}
-        >
-          Load what you saved previously into the following canvas. Either by
-          calling `loadSaveData()` on the components reference or passing it
-          the `saveData` prop:
-        </button>
         <CanvasDraw
           disabled
           hideGrid
