@@ -28,6 +28,15 @@ const Doodle = () => {
     setLazyRadius(lazyRadius)
   }, [])
 
+  // useEffect(() => {
+  //   setFormData(formData)
+  // }, [formData])
+
+  const handleChange = (event) => {
+    const newFormData = { ...formData, [event.target.name]: event.target.value }
+    setFormData(newFormData)
+  }
+
   const handleSave = () => {
     const artworkToSend =  doodle.getSaveData()
     const newFormData = { ...formData, doodleData: artworkToSend }
@@ -43,12 +52,21 @@ const Doodle = () => {
   return (
     <>
       <div>
-        <button onClick={() => handleSave()}> Save </button>
-        <button onClick={() => doodle.clear()}> Clear </button>
-        <button onClick={() => doodle.undo()}> Undo </button>
-      </div>
-      <div>
         <div>
+          <div>
+            <input
+              placeholder="Title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+            />
+            <textarea
+              placeholder="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
           <label>Width:</label>
           <input
             type="number"
@@ -89,18 +107,28 @@ const Doodle = () => {
           />
         </div>
       </div>
-      <CompactPicker 
-        color={brushColor}
-        onChangeComplete={brushColor => {
-          setBrushColor(brushColor.hex)
-        }}
-      />
-      <CompactPicker 
-        color={backgroundColor}
-        onChangeComplete={backgroundColor => {
-          setBackgroundColor(backgroundColor.hex)
-        }}
-      />
+      <div>
+        <label>BrushColor:</label>
+        <div>
+          <CompactPicker 
+            color={brushColor}
+            onChangeComplete={brushColor => {
+              setBrushColor(brushColor.hex)
+            }}
+          />
+        </div>
+      </div>
+      <div>
+        <label>BackgroundColor:</label>
+        <div>
+          <CompactPicker 
+            color={backgroundColor}
+            onChangeComplete={backgroundColor => {
+              setBackgroundColor(backgroundColor.hex)
+            }}
+          />
+        </div>
+      </div>
       <CanvasDraw
         ref={canvasDraw => (doodle = canvasDraw)}
         brushColor={brushColor}
@@ -110,6 +138,11 @@ const Doodle = () => {
         canvasWidth={width}
         canvasHeight={height}
       />
+      <div>
+        <button onClick={() => handleSave()}> Save </button>
+        <button onClick={() => doodle.clear()}> Clear </button>
+        <button onClick={() => doodle.undo()}> Undo </button>
+      </div>
     </>
   )
 }
