@@ -1,0 +1,31 @@
+.card-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .canvas-container{
+    margin:0;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.card{ 
+  min-height:420px ;
+}
+
+.card-footer{
+  margin-bottom: 0px;
+  align-self: baseline;
+}
+
+.card-header-title {
+  align-items: center;
+  color: #363636;
+  display: flex;
+
+  font-weight: 700;
+  padding: 0px;
+}
+

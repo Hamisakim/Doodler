@@ -1,5 +1,12 @@
 @import "~bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
+body{
+  // font-family: 'Architects Daughter', cursive;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
 
 img{
   height: 50
@@ -13,15 +20,4 @@ img{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
-
-
-.card{ 
-  min-height:420px ;
-}
-// .card-container{
-// display: flex;
-// flex-flow: row;
-
-// }
 

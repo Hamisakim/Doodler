@@ -1,6 +1,6 @@
+import '../styles/componentStyles/gallery.scss'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
 import ArtCard from './ArtCard'
 
 const Gallery = () => {
@@ -13,15 +13,15 @@ const Gallery = () => {
     }
     getData()
   }, [])
-
+    
 
   if (!doodles) return null
   return (
-    <div className='columns is-multiline'>
+    <div className='gallery columns is-multiline'>
       {doodles.map((artwork)=>{
 
         return (
-          <div key={artwork._id} className='column  is-one-third art-card-container  has-text-centered '>
+          <div key={artwork._id} className='column  is-one-third art-card-container'>
             <ArtCard {...artwork} />
           </div>
         )
