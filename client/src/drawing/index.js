@@ -188,7 +188,8 @@ export default class extends PureComponent {
     return JSON.stringify({
       lines: this.lines,
       width: this.props.canvasWidth,
-      height: this.props.canvasHeight
+      height: this.props.canvasHeight,
+      backgroundColor: this.props.backgroundColor
     })
   };
 
@@ -314,7 +315,6 @@ export default class extends PureComponent {
     this.saveLine()
   };
 
-  //handleCanvasResize = (entries, observer) => {
   handleCanvasResize = (entries) => {
     const saveData = this.getSaveData()
     for (const entry of entries) {
