@@ -143,7 +143,7 @@ const Doodle = () => {
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
 
-  let doodle = useRef()
+  let doodle = useRef(null)
 
   const [formData, setFormData] = useState({
     title: '',
