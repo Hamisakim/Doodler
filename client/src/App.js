@@ -1,11 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Canvas from './Canvas'
 import Gallery from './components/Gallery'
 import Doodle from './components/Doodle'
 import Navbar from './components/Nav_and_Footer/NavBar'
 import Footer from './components/Nav_and_Footer/Footer'
 import Home from './components/Home'
+import Profile from './components/Profile'
+
 
 const App = () => {
   return (
@@ -24,6 +25,9 @@ const App = () => {
 
           <Route path='/doodle'>
             <Doodle />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
           </Route>
           
         </Switch>
