@@ -143,13 +143,23 @@ class Canvas extends Component {
           saveData={localStorage.getItem('savedDrawing')}
         />
         {this.state.allArtwork.map(artwork => {
-          return <CanvasDraw
-            key={artwork._id}
-            disabled
-            hideGrid
-            ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
-            saveData={JSON.stringify(artwork.doodleData)}
-          />
+          return  <div div key={artwork._id}>
+            <button
+              onClick={() => {
+                this.loadableCanvas[artwork._id].loadSaveData(
+                  JSON.stringify(artwork.doodleData)
+                )
+              }}
+            >Load data</button>
+            <p>{artwork.title}</p>
+            <CanvasDraw
+              
+              disabled
+              hideGrid
+              ref={canvasDraw => (this.loadableCanvas[artwork._id] = canvasDraw)}
+              saveData={JSON.stringify(artwork.doodleData)}
+            />
+          </div>
         })}
       </div>
     )
