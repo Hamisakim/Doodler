@@ -6,4 +6,4 @@ const artworkSchema = new mongoose.Schema({
   doodleData: { type: Object, required: true }
 })
 
-export default mongoose.model('Artwork', artworkSchema)
+export default mongoose.model('Artwork', artworkSchema) 
