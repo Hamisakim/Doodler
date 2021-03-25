@@ -7,6 +7,7 @@ export const getAllArtwork = async(req, res) => {
 
 export const addArtwork = async(req, res) => {
   try {
+    console.log('⭐️  Adding artwork')
     const newArtwork = { ...req.body }
     const artworkToAdd = await Artwork.create(newArtwork)
     return res.status(201).json(artworkToAdd)
