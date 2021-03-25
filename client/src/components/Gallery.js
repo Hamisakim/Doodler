@@ -35,13 +35,6 @@ class Gallery extends Component {
           {this.state.allArtwork.map(artwork => {
             //if (artwork === undefined) return null
             return  <div div key={artwork._id}>
-              <button
-                onClick={() => {
-                  this.loadableCanvas[artwork._id].loadSaveData(
-                    JSON.stringify(artwork.doodleData)
-                  )
-                }}
-              >Load data</button>
               <p>{artwork.title}</p>
               <CanvasDraw       
                 disabled
