@@ -19,7 +19,9 @@ const Home = () => {
       </section>
       <section className="section">
         <div className="section-header">
-          <h2 className="section-title">Title</h2>
+          <h2 className="section-title">
+            <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo" className="second-logo"></img>
+          </h2>
         </div>
         <ul className="grid">
           <li className="grid-item">
