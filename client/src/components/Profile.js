@@ -4,7 +4,6 @@ import ArtCard from './ArtCard'
 
 const Profile = () => {
 
-  const CheeseIndex = () => {
   const [artwork, setArtwork] = useState(null)
 
   useEffect(() => {
@@ -29,5 +28,6 @@ const Profile = () => {
     </div>
   )
 }
+
 
 export default Profile
