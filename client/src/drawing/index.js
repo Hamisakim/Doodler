@@ -172,7 +172,7 @@ export default class extends PureComponent {
 
     // Draw the image once loaded
     this.image.onload = () =>
-      drawImage({ ctx: this.ctx.grid, img: this.image })
+      drawImage({ ctx: this.ctx.grid, img: this.image  })
     this.image.src = this.props.imgSrc
   };
 
@@ -198,7 +198,13 @@ export default class extends PureComponent {
       throw new Error('saveData needs to be of type string!')
     }
 
-    const { lines, width, height } = JSON.parse(saveData)
+    const { lines, width, height, backgroundColor } = JSON.parse(saveData)
+
+
+    
+    if (backgroundColor === this.props.backgroundColor) {
+      this.setCanvasBg(backgroundColor)
+    }
 
     if (!lines || typeof lines.push !== 'function') {
       throw new Error('saveData.lines needs to be an array!')
@@ -233,6 +239,11 @@ export default class extends PureComponent {
       })
     }
   };
+
+  setCanvasBg = ({ backgroundColor }) => {
+    console.log('backgroundColor', backgroundColor)
+  }
+
 
   simulateDrawingLines = ({ lines, immediate }) => {
     // Simulate live-drawing of the loaded lines
