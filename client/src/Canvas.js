@@ -8,7 +8,6 @@ function Canvas() {
   const [color, setColor] = useState('#000') //* setting initial color for the brush 
   // eslint-disable-next-line no-unused-vars
   const [artwork, setArtwork] = useState('') //* setting state for artwork which we get from the built in  CanvasDraw package 
-
   const [formData, setFormData] = useState({
     title: '',
     description: '',
