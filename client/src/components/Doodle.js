@@ -13,7 +13,7 @@ const Doodle = () => {
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
 
-  let doodle = useRef(null)
+  let doodle = useRef()
 
   const [formData, setFormData] = useState({
     title: '',
@@ -45,18 +45,9 @@ const Doodle = () => {
   return (
     <>
       <div>
-        <button onClick={() => {
-
-          handleSave()
-        }}> Save </button>
-        <button onClick={() => {
-
-          doodle.clear()
-        }}> Clear </button>
-        <button onClick={() => {
-
-          doodle.undo()
-        }}> Undo </button>
+        <button onClick={() => handleSave()}> Save </button>
+        <button onClick={() => doodle.clear()}> Clear </button>
+        <button onClick={() => doodle.undo()}> Undo </button>
       </div>
       <div>
         <div>
@@ -114,7 +105,7 @@ const Doodle = () => {
       />
       <CanvasDraw
         ref={canvasDraw => (doodle = canvasDraw)}
-        //ref={doodle.current}
+        //ref={doodle}
         brushColor={brushColor}
         backgroundColor={backgroundColor}
         brushRadius={brushRadius}
