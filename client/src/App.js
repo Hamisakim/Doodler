@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Canvas from './Canvas'
 import Gallery from './components/Gallery'
+import Doodle from './components/Doodle'
 
 const App = () => {
   return (
@@ -9,13 +10,13 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route path='/gallery'>
-            <Gallery/>
-      
+            <Gallery />
           </Route>
-
           <Route path='/canvas'>
-            <Canvas/>
-      
+            <Canvas />
+          </Route>
+          <Route path='/doodle'>
+            <Doodle />
           </Route>
         </Switch>
       </BrowserRouter>

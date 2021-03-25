@@ -3,9 +3,6 @@ import React, { Component } from 'react'
 
 
 import CanvasDraw from '../drawing/index'
-//import ArtCard from 'react-card-flip'
-// ? how to handle 2 bits of state in a class based component? 1) doodleProps 2) formData
-// need to map through each object and render a canvas with the save data(doodleData) from that db objec id
 class Gallery extends Component {
   state = {
     allArtwork: [],
@@ -46,12 +43,9 @@ class Gallery extends Component {
                 }}
               >Load data</button>
               <p>{artwork.title}</p>
-              <CanvasDraw
-              
+              <CanvasDraw       
                 disabled
                 hideGrid
-                //ref={canvasDraw => (this.loadableCanvas[artwork._id] = canvasDraw)}
-                //ref={canvasDraw => (this.loadableCanvas[artwork._id] = canvasDraw)}
                 saveData={JSON.stringify(artwork.doodleData)}
               />
             </div>
