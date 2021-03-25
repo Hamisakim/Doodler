@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from './drawing/index'
 // ? how to handle 2 bits of state in a class based component? 1) doodleProps 2) formData
-// need to map through each object and render a canvas with the save data(doodleData) from that db objec id
+// need to map through each object and render a canvas with the save data(doodleData) from that db object id
 class Canvas extends Component {
   state = {
     drawData: {

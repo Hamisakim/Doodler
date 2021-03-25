@@ -13,7 +13,7 @@ const App = () => {
       
           </Route>
 
-          <Route path='/canvas'>
+          <Route path='/doodle'>
             <Canvas/>
       
           </Route>
