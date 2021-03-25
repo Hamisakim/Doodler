@@ -6,7 +6,76 @@ img{
 }
 
 #hero-body {
-  background-color: #87CEEB;
+  background-image:
+		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		url('https://i.imgur.com/Of47BNO.jpg');
+}
+
+.section {
+	padding:50px 0;
+}
+.section-header,
+.section-footer {
+	text-align: center;
+}
+
+.grid {
+	display: flex;
+	justify-content: space-between;
+	text-align:center;
+	list-style: none;
+}
+.grid-item {
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	margin:50px;
+}
+
+/* Location */
+
+.location {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: stretch;
+
+	height:380px;
+	padding:20px;
+
+	color:#fff;
+	background-size:cover;
+}
+.page-doodle {
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		// url('../images/fitzroy.jpg');
+}
+.page-gallery {
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		// url('../images/st-kilda.jpg');
+}
+
+
+.location-title {
+	margin:0 0 10px;
+	font-size: 50px;
+	line-height: 1.1;
+}
+
+.location-tagline {
+	margin:0;
+}
+.location-footer {
+	flex:auto;
+	padding:20px;
+
+	text-align:left;
+	background:#efefef;
+}
+.location-footer p {
+	font-size:16px;
 }
 
 #footer {

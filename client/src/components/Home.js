@@ -4,22 +4,39 @@ const Home = () => {
 
 
   return (
-    <section className="hero is-medium is-link">
-      <div className="hero-body" id="hero-body">
-        {/* <a href="https://i.imgur.com/Of47BNO.jpg"></a> */}
-        <p className="title">
-          Medium hero
-        </p>
-        <p className="subtitle">
-          Medium subtitle
-        </p>
-      </div>
-      <div className="columns">
-        <div className="column is-one-third">Doodle</div>
-        <div className="column is-one-third">Gallery</div>
+    <>
+      <section className="hero is-medium is-link">
+        <div className="hero-body" id="hero-body">
+          {/* <a href="https://i.imgur.com/Of47BNO.jpg"></a> */}
+          <p className="title">
+            Medium hero
+          </p>
+          <p className="subtitle">
+            Medium subtitle
+          </p>
+        </div>
 
-      </div>
-    </section>
+      </section>
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Title</h2>
+        </div>
+        <ul className="grid">
+          <li className="grid-item">
+            <div className="location page-doodle">
+              <h3 className="location-title shadow">Doodle</h3>
+            </div>
+          </li>
+          <li className="grid-item">
+            <div className="location page-gallery">
+              <h3 className="location-title shadow">Gallery</h3>
+            </div>
+          </li>
+
+        </ul>
+
+      </section>
+    </>
   )
 }
 

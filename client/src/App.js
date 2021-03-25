@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Canvas from './Canvas'
 import Gallery from './components/Gallery'
 import Doodle from './components/Doodle'
 import Navbar from './components/Nav_and_Footer/NavBar'
@@ -13,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          
+
           <Route exact path="/">
             <Home />
           </Route>
@@ -25,7 +24,7 @@ const App = () => {
           <Route path='/doodle'>
             <Doodle />
           </Route>
-          
+
         </Switch>
         <Footer />
       </BrowserRouter>
