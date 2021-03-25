@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 //import { render } from 'react-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
-import axios from 'axios'
+//import axios from 'axios'
 
 const Doodle = () => {
   const [backgroundColor, setBackgroundColor] = useState('#cecece')
@@ -13,11 +13,11 @@ const Doodle = () => {
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
 
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    doodleData: {}
-  })
+  // const [formData, setFormData] = useState({
+  //   title: '',
+  //   description: '',
+  //   doodleData: {}
+  // })
 
   useEffect(() => {
     setBackgroundColor(backgroundColor)
@@ -28,26 +28,26 @@ const Doodle = () => {
     setLazyRadius(lazyRadius)
   }, [])
 
-  const doodleRef = useRef({})
+  const doodle = useRef()
 
-  const handleSave = () => {
-    const artworkToSend =  doodleRef.getSaveData()
-    const newFormData = { ...formData, doodleData: artworkToSend }
-    setFormData(newFormData)
+  // const handleSave = () => {
+  //   const artworkToSend =  doodle.getSaveData()
+  //   const newFormData = { ...formData, doodleData: artworkToSend }
+  //   setFormData(newFormData)
 
-    const sendArtwork = async() => {
-      await axios.post('/api/artwork', formData)
-    }
-    sendArtwork()
-  }
+  //   const sendArtwork = async() => {
+  //     await axios.post('/api/artwork', formData)
+  //   }
+  //   sendArtwork()
+  // }
 
 
   return (
     <>
       <div>
-        <button onClick={handleSave()}> Save </button>
-        <button onClick={() => doodleRef.clear()}> Clear </button>
-        <button onClick={() => doodleRef.undo()}> Undo </button>
+        {/* <button onClick={handleSave()}> Save </button>
+        <button onClick={() => doodle.clear()}> Clear </button>
+        <button onClick={() => doodle.undo()}> Undo </button> */}
       </div>
       <div>
         <div>
@@ -64,7 +64,7 @@ const Doodle = () => {
           <label>Height:</label>
           <input
             type="number"
-            value={this.state.drawData.height}
+            value={height}
             onChange={e =>
               setHeight(parseInt(e.target.value, 10))
             }
@@ -74,7 +74,7 @@ const Doodle = () => {
           <label>Brush-Radius:</label>
           <input
             type="number"
-            value={this.state.drawData.brushRadius}
+            value={brushRadius}
             onChange={e =>
               setBrushRadius(parseInt(e.target.value, 10))
             }
@@ -84,7 +84,7 @@ const Doodle = () => {
           <label>Lazy-Radius:</label>
           <input
             type="number"
-            value={this.state.drawData.lazyRadius}
+            value={lazyRadius}
             onChange={e =>
               setLazyRadius(parseInt(e.target.value, 10))
             }
@@ -105,7 +105,7 @@ const Doodle = () => {
       />
       <CanvasDraw
         //ref={canvasDraw => (doodleRef = canvasDraw)}
-        ref={doodleRef.current}
+        ref={doodle}
         brushColor={brushColor}
         backgroundColor={backgroundColor}
         brushRadius={brushRadius}
