@@ -1,86 +1,158 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { Component } from 'react'
+//import { render } from 'react-dom'
+import { CompactPicker } from 'react-color'
 import CanvasDraw from './drawing/index'
-// import { GithubPicker, TwitterPicker, CompactPicker, SliderPicker, SketchPicker } from 'react-color'
-import { ChromePicker } from 'react-color'
-import axios from 'axios'
-
-function Canvas() {
-  const [color, setColor] = useState('#000') //* setting initial color for the brush 
-  // eslint-disable-next-line no-unused-vars
-  const [artwork, setArtwork] = useState('') //* setting state for artwork which we get from the built in  CanvasDraw package 
-
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    doodleData: {}
-  })
-
-  let doodleRef = useRef(null) //? top canvas = doodleRef DON'T MESS WITH IT 
-  let doodleShow = useRef(null)//? show canvas = doodleShow DON'T MESS WITH IT 
-
-  useEffect(() => {
-    setColor(color)
-  }, [])
-
-  const handleSave = () => {
-    const artworkToSend =  doodleRef.getSaveData()
-    const newFormData = { ...formData, doodleData: artworkToSend }
-    setFormData(newFormData)
-    console.log('hello')
-    const sendArtwork = async() => {
-      await axios.post('api/artwork', formData)
+// ? how to handle 2 bits of state in a class based component? 1) doodleProps 2) formData
+// need to map through each object and render a canvas with the save data(doodleData) from that db objec id
+class Canvas extends Component {
+  state = {
+    drawData: {
+      color: '#ffc600',
+      width: 400,
+      height: 400,
+      brushRadius: 10,
+      lazyRadius: 12
+    },
+    allArtwork: [],
+    formData: {
+      title: '',
+      description: '',
+      doodleData: ''
     }
-    sendArtwork()
   }
-
-  return (
-    <>
+  componentDidMount() {
+    const getDoodles = async () => {
+      try {
+        const res = await fetch('api/artwork')
+        const data = await res.json()
+        this.setState({ allArtwork: data })
+        //console.log(data)
+        //console.log(data[4].doodleData)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getDoodles()
+  }
+  render() {
+    console.log('this.state.allArtwork ->', this.state.allArtwork)
+    return (
       <div>
-        <button onClick={() => {
-          handleSave()
-        }}
-        > Save </button>
+        <div>
+          <button
+            onClick={() => {
+              // ? GET REQUEST PAYLOAD HERE ?
+              localStorage.setItem(
+                'savedDrawing',
+                this.saveableCanvas.getSaveData(),
+                console.log('save data', this.saveableCanvas.getSaveData())
+              )
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.clear()
+            }}
+          >
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.undo()
+            }}
+          >
+            Undo
+          </button>
+          <div>
+            <label>Width:</label>
+            <input
+              type="number"
+              value={this.state.drawData.width}
+              onChange={e =>
+                this.setState({ drawData: { width: parseInt(e.target.value, 10) } })
+              }
+            />
+          </div>
+          <div>
+            <label>Height:</label>
+            <input
+              type="number"
+              value={this.state.drawData.height}
+              onChange={e =>
+                this.setState({ drawData: { height: parseInt(e.target.value, 10) } })
+              }
+            />
+          </div>
+          <div>
+            <label>Brush-Radius:</label>
+            <input
+              type="number"
+              value={this.state.drawData.brushRadius}
+              onChange={e =>
+                this.setState({ drawData: { brushRadius: parseInt(e.target.value, 10) } })
+              }
+            />
+          </div>
+          <div>
+            <label>Lazy-Radius:</label>
+            <input
+              type="number"
+              value={this.state.drawData.lazyRadius}
+              onChange={e =>
+                this.setState({ drawData: { lazyRadius: parseInt(e.target.value, 10) } })
+              }
+            />
+          </div>
+        </div>
+        <CompactPicker 
+          color={this.state.drawData.color}
+          onChangeComplete={color => {
+            this.setState({ drawData: { color: color.hex } })
+          }}
+        />
+        <CanvasDraw
+          ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
+          brushColor={this.state.drawData.color}
+          brushRadius={this.state.drawData.brushRadius}
+          lazyRadius={this.state.drawData.lazyRadius}
+          canvasWidth={this.state.drawData.width}
+          canvasHeight={this.state.drawData.height}
+        />
+        <p>
+          The following is a disabled canvas with a hidden grid that we use to
+          load & show your saved drawing.
+        </p>
         <button
           onClick={() => {
-            doodleRef.clear()
+            this.loadableCanvas.loadSaveData(
+              // ! GET REQUEST PAYLOAD HERE
+              //JSON.stringify(this.state.allArtwork[0])
+            )
           }}
-        > Clear </button>
-        <button
-          onClick={() => {
-            doodleRef.undo()
-          }}
-        > Undo </button>
+        >
+          Load what you saved previously into the following canvas. Either by
+          calling `loadSaveData()` on the components reference or passing it
+          the `saveData` prop:
+        </button>
+        <CanvasDraw
+          disabled
+          hideGrid
+          ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
+          saveData={localStorage.getItem('savedDrawing')}
+        />
+        {this.state.allArtwork.map(artwork => {
+          return <CanvasDraw
+            key={artwork._id}
+            disabled
+            hideGrid
+            ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
+            saveData={JSON.stringify(artwork.doodleData)}
+          />
+        })}
       </div>
-      {/* <GithubPicker />
-      <TwitterPicker /> */}
-      <ChromePicker 
-        color={color}
-        onChangeComplete={color => {
-          setColor(color.hex)
-        }}
-      />
-      {/* <SliderPicker /> */}
-      {/* <SketchPicker /> */}
-      <CanvasDraw
-        ref={canvasDraw => (doodleRef = canvasDraw)}
-        brushColor={color}
-      />
-      <button
-        onClick={() => {
-          doodleShow.loadSaveData(
-            localStorage.getItem('savedDrawing')
-          )
-        }}
-      > Display saved doodle </button>
-      <CanvasDraw
-        ref={canvasDraw => (doodleShow = canvasDraw)}
-        disabled
-        hideGrid 
-        saveData={localStorage.getItem('savedDrawing')}
-      />
-      
-    </>
-  )
+    )
+  }
 }
-
 export default Canvas
