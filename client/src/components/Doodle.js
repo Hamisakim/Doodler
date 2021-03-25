@@ -18,7 +18,7 @@ const Doodle = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    doodleData: {}
+    doodleData: ''
   })
 
   useEffect(() => {

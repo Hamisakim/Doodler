@@ -39,7 +39,7 @@ class Gallery extends Component {
               <CanvasDraw       
                 disabled
                 hideGrid
-                saveData={JSON.stringify(artwork.doodleData)}
+                saveData={artwork.doodleData}
                 //saveData={artwork.doodleData}
               />
             </div>
