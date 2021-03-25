@@ -16,19 +16,22 @@ const Gallery = () => {
 
 
   return (
-    <div className='columns'>
-      <div className='column'>
+    <div className='container'>
+      <div className='columns is-multiline'>
         {doodles.map(artwork => {
-          return  <div div key={artwork._id}>
-            <p>{artwork.title}</p>
-            <CanvasDraw       
+          return  <div className="gallery-canvas" key={artwork._id}>
+            <CanvasDraw
               disabled
               hideGrid
               saveData={artwork.doodleData}
               //saveData={artwork.doodleData}
             />
+            <hr />
+            <p>{artwork.title}</p>
           </div>
+          
         })}
+
       </div>
     </div>
   )
