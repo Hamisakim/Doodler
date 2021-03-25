@@ -2,22 +2,30 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Canvas from './Canvas'
 import Gallery from './components/Gallery'
+import Navbar from './components/Nav_and_Footer/NavBar'
+import Footer from './components/Nav_and_Footer/Footer'
+import Home from './components/Home'
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Switch>
+          <Route path="/">
+            <Home />
+          </Route>
           <Route path='/gallery'>
-            <Gallery/>
-      
+            <Gallery />
+
           </Route>
 
           <Route path='/canvas'>
-            <Canvas/>
-      
+            <Canvas />
+
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
 
     </>
