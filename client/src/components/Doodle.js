@@ -3,21 +3,23 @@ import React, { useState, useEffect, useRef } from 'react'
 //import { render } from 'react-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
-//import axios from 'axios'
+import axios from 'axios'
 
 const Doodle = () => {
-  const [backgroundColor, setBackgroundColor] = useState('#cecece')
+  const [backgroundColor, setBackgroundColor] = useState('#fafafa')
   const [brushColor, setBrushColor] = useState('#ffc600')
   const [width, setWidth] = useState(400)
   const [height, setHeight] = useState(400)
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
 
-  // const [formData, setFormData] = useState({
-  //   title: '',
-  //   description: '',
-  //   doodleData: {}
-  // })
+  let doodle = useRef(null)
+
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    doodleData: {}
+  })
 
   useEffect(() => {
     setBackgroundColor(backgroundColor)
@@ -28,26 +30,33 @@ const Doodle = () => {
     setLazyRadius(lazyRadius)
   }, [])
 
-  const doodle = useRef()
+  const handleSave = () => {
+    const artworkToSend =  doodle.getSaveData()
+    const newFormData = { ...formData, doodleData: artworkToSend }
+    setFormData(newFormData)
 
-  // const handleSave = () => {
-  //   const artworkToSend =  doodle.getSaveData()
-  //   const newFormData = { ...formData, doodleData: artworkToSend }
-  //   setFormData(newFormData)
-
-  //   const sendArtwork = async() => {
-  //     await axios.post('/api/artwork', formData)
-  //   }
-  //   sendArtwork()
-  // }
+    const sendArtwork = async() => {
+      await axios.post('/api/artwork', formData)
+    }
+    sendArtwork()
+  }
 
 
   return (
     <>
       <div>
-        {/* <button onClick={handleSave()}> Save </button>
-        <button onClick={() => doodle.clear()}> Clear </button>
-        <button onClick={() => doodle.undo()}> Undo </button> */}
+        <button onClick={() => {
+
+          handleSave()
+        }}> Save </button>
+        <button onClick={() => {
+
+          doodle.clear()
+        }}> Clear </button>
+        <button onClick={() => {
+
+          doodle.undo()
+        }}> Undo </button>
       </div>
       <div>
         <div>
@@ -104,8 +113,8 @@ const Doodle = () => {
         }}
       />
       <CanvasDraw
-        //ref={canvasDraw => (doodleRef = canvasDraw)}
-        ref={doodle}
+        ref={canvasDraw => (doodle = canvasDraw)}
+        //ref={doodle.current}
         brushColor={brushColor}
         backgroundColor={backgroundColor}
         brushRadius={brushRadius}

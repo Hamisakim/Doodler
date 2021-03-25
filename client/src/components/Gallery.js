@@ -40,6 +40,7 @@ class Gallery extends Component {
                 disabled
                 hideGrid
                 saveData={JSON.stringify(artwork.doodleData)}
+                //saveData={artwork.doodleData}
               />
             </div>
           })}
