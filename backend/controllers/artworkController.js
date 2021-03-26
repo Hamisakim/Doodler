@@ -1,7 +1,7 @@
 import Artwork from '../models/artworkModel.js'
 //? get all artworks 
 export const getAllArtwork = async(req, res) => {
-  const artwork = await Artwork.find()
+  const artwork = await Artwork.find().populate('owner')
   return res.status(200).json(artwork)
 }
 
