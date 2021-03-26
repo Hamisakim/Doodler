@@ -7,12 +7,12 @@ const Home = () => {
     <>
       <section className="hero is-medium is-link">
         <div className="hero-body" id="hero-body">
-          <p className="title">
+          {/* <p className="title">
             Medium hero
-          </p>
-          <p className="subtitle">
+          </p> */}
+          {/* <p className="subtitle">
             Medium subtitle
-          </p>
+          </p> */}
         </div>
 
       </section>
