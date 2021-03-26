@@ -73,8 +73,8 @@ export default class extends PureComponent {
     gridColor: 'rgba(150,150,150,0.17)',
     backgroundColor: '#FFF',
     hideGrid: false,
-    canvasWidth: 400,
-    canvasHeight: 400,
+    canvasWidth: 348,
+    canvasHeight: 348,
     disabled: false,
     imgSrc: '',
     saveData: '',
@@ -172,7 +172,7 @@ export default class extends PureComponent {
 
     // Draw the image once loaded
     this.image.onload = () =>
-      drawImage({ ctx: this.ctx.grid, img: this.image })
+      drawImage({ ctx: this.ctx.grid, img: this.image  })
     this.image.src = this.props.imgSrc
   };
 
@@ -188,7 +188,8 @@ export default class extends PureComponent {
     return JSON.stringify({
       lines: this.lines,
       width: this.props.canvasWidth,
-      height: this.props.canvasHeight
+      height: this.props.canvasHeight,
+      backgroundColor: this.props.backgroundColor
     })
   };
 
@@ -198,6 +199,7 @@ export default class extends PureComponent {
     }
 
     const { lines, width, height } = JSON.parse(saveData)
+
 
     if (!lines || typeof lines.push !== 'function') {
       throw new Error('saveData.lines needs to be an array!')
@@ -314,7 +316,6 @@ export default class extends PureComponent {
     this.saveLine()
   };
 
-  //handleCanvasResize = (entries, observer) => {
   handleCanvasResize = (entries) => {
     const saveData = this.getSaveData()
     for (const entry of entries) {
