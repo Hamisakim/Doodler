@@ -107,6 +107,7 @@ const Doodle = () => {
       </div>
       <div className="doodle-details-wrapper">
         <div>
+          <hr/>
           <div>
             <input
               className="input"
@@ -116,6 +117,7 @@ const Doodle = () => {
               onChange={handleChange}
             />
           </div>
+          <hr/>
           <div>
             <textarea
               className="textarea"
@@ -126,6 +128,7 @@ const Doodle = () => {
             />
           </div>
         </div>
+        <hr/>
         <div>
           <button className="button is-primary" onClick={() => handleSave()}> Save </button>
           <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
