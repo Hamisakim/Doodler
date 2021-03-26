@@ -33,8 +33,8 @@ const ArtCard = ( { title, _id, doodleData }) => {
                   disabled
                   hideGrid
                   saveData={doodleData}
-                  canvasWidth={350}
-                  canvasHeight={350}   
+                  // canvasWidth={350}
+                  // canvasHeight={350}   
                   backgroundColor={JSON.parse(doodleData).backgroundColor}               
                 //saveData={artwork.doodleData}
                 />

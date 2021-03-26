@@ -1,3 +1,4 @@
+import '../styles/componentStyles/doodle.scss'
 import React, { useState, useEffect, useRef } from 'react'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'

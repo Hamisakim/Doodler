@@ -1,8 +1,6 @@
-.gallery {
-background-color: rgba(72, 255, 0, 0.15);
-padding: 1em
-}
+
 @import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// $buttonColor: red;
 
 .loader-container{
   text-align: center;
@@ -12,3 +10,7 @@ padding: 1em
 
 
 
+  .gallery {
+    background-color: rgba(72, 255, 0, 0.15);
+    padding: 1em;
+    }
