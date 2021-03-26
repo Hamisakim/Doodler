@@ -1,5 +1,20 @@
 @import "~bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
+<<<<<<< HEAD
+=======
+body{
+  // font-family: 'Architects Daughter', cursive;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
+
+img{
+  height: 50
+}
+
+>>>>>>> development
 #hero-body {
   background-color: #87CEEB;
 }
@@ -9,6 +24,7 @@
   padding-bottom: 10px;
 }
 
+<<<<<<< HEAD
 .doodle-canvas {
   // border: 1px #000 solid;
   border-radius: 2px;
@@ -120,3 +136,5 @@ input[type="range"]::-moz-range-thumb:hover {
   }
   
 }
+=======
+>>>>>>> development

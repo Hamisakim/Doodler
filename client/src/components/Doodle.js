@@ -140,8 +140,59 @@ const Doodle = () => {
           {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
           <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
         </div>
+<<<<<<< HEAD
       </div>  
     </div>
+=======
+        <div>
+          <label>Lazy-Radius:</label>
+          <input
+            type="number"
+            value={lazyRadius}
+            onChange={e =>
+              setLazyRadius(parseInt(e.target.value, 10))
+            }
+          />
+        </div>
+      </div>
+      <div>
+        <label>BrushColor:</label>
+        <div>
+          <CompactPicker 
+            color={brushColor}
+            onChangeComplete={brushColor => {
+              setBrushColor(brushColor.hex)
+            }}
+          />
+        </div>
+      </div>
+      <div>
+        <label>BackgroundColor:</label>
+        <div>
+          <CompactPicker 
+            color={backgroundColor}
+            onChangeComplete={backgroundColor => {
+              setBackgroundColor(backgroundColor.hex)
+            }}
+          />
+        </div>
+      </div>
+      <CanvasDraw
+        ref={canvasDraw => (doodle = canvasDraw)}
+        brushColor={brushColor}
+        backgroundColor={backgroundColor}
+        brushRadius={brushRadius}
+        lazyRadius={lazyRadius}
+        canvasWidth={width}
+        canvasHeight={height}
+      />
+      <div>
+        <button className='button' onClick={() => handleSave()}> Save </button>
+        <button className='button is-danger' onClick={() => doodle.clear()}> Clear </button>
+        <button className='button is-warning' onClick={() => doodle.undo()}> Undo </button>
+      </div>
+    </>
+>>>>>>> development
   )
 }
 
