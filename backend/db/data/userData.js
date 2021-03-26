@@ -1,8 +1,8 @@
 export default [
   {
-    username: 'sami',
-    email: 'sami@email',
+    username: 'admin',
+    email: 'admin@email',
     password: 'pass',
-    passwordConfirmation: 'pass' 
+    passwordConfirmation: 'pass'
   }
 ]
