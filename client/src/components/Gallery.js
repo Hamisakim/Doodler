@@ -24,6 +24,8 @@ const Gallery = () => {
             <CanvasDraw
               disabled
               hideGrid
+              canvasHeight={348}
+              canvasWidth={348}
               backgroundColor={JSON.parse(artwork.doodleData).backgroundColor}
               saveData={artwork.doodleData}
             />

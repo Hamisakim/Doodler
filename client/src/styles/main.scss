@@ -1,10 +1,5 @@
 @import "~bulma/bulma.sass";
 
-
-img{
-  height: 50
-}
-
 #hero-body {
   background-color: #87CEEB;
 }
@@ -106,6 +101,23 @@ input[type="range"]::-moz-range-thumb:hover {
 
 .doodle-details-wrapper {
   padding-top: 50px;
-  width: 700px;
+  width: 640px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 375px) {
+  .split-col-wraper {
+    flex-direction: column-reverse;
+  }
+
+  .doodle-details-wrapper {
+    padding-top: 50px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .col {
+    margin: 0 0px;
+  }
+  
 }
