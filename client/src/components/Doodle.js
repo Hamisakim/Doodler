@@ -8,7 +8,9 @@ const Doodle = () => {
   const [brushColor, setBrushColor] = useState('#B3B3B3')
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
+
   let doodle = useRef(null)
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -21,9 +23,11 @@ const Doodle = () => {
     setBrushRadius(brushRadius)
     setLazyRadius(lazyRadius)
   }, [])
+
   // useEffect(() => {
   //   setFormData(formData)
   // }, [formData])
+  
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)

@@ -20,7 +20,7 @@ const Gallery = () => {
   }, [])
 
 
-  if (doodles) return ( //!  loader from package if no pull from api
+  if (!doodles) return ( //!  loader from package if no pull from api
     <div className='container'>
       <Loader className='loader-container' type="CIRCLES" color="#00BFFF" height={'20vh'} width={'20vh'} />
     </div>
