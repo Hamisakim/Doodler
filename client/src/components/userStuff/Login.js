@@ -12,14 +12,14 @@ const Login = () => {
   })
   console.log('🐝 ~ file: Login.js ~ line 11 ~ formData', formData)
   const handleChange = (event) => {
-    //get the value of what's being typed in the form and updating state
+    //?get the value of what's being typed in the form and updating state
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     console.log('🐝 ~ file: Login.js ~ line 14 ~ event', event)
     setFormData(newFormData)
   }
   const handleSubmit = async (event) => {
     console.log('🐝 ~ file: Login.js ~ line 21 ~ handleSubmit', )
-    //sending to our api
+    //?sending to our api
     event.preventDefault()
     try {
       const response = await axios.post('api/login', formData)
@@ -29,7 +29,7 @@ const Login = () => {
       history.push('/doodle') 
     } catch (err) {
       // const errorMessageToSend = `${response.data.message}. Please contact us if you have forgotten your password`
-      // console.log('🐝 ~ file: Login.js ~ line 29 ~ errorMessageToSend', errorMessageToSend)
+      //console.log('🐝 ~ file: Login.js ~ line 29 ~ errorMessageToSend', errorMessageToSend)
       console.log('🐝 ~ file: Login.js ~ line 32 ~ err', err)
     }
   }

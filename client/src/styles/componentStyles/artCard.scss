@@ -15,10 +15,15 @@
   min-height:420px ;
 }
 
-.card-footer{
-  margin-bottom: 0px;
-  align-self: baseline;
-}
+
+  .card-footer{
+    height: 20%;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 50px
+  }
+
+
 
 .card-header-title {
   align-items: center;
@@ -29,3 +34,7 @@
   padding: 0px;
 }
 
+footer{
+  margin-block-end: auto;
+
+}

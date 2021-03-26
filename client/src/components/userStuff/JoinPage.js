@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 //import { getTokenFromLocalStorage } from '../helpers/authHelp'
-const UserAuth = () => {
+const JoinPage = () => {
   // pass in props wether user clicked on the login or the register 
   // use conditional return to check each form. 
   //data is the same so . but is it worth it ? yes 
@@ -12,12 +12,12 @@ const UserAuth = () => {
 
   
   const [isUserLoggedIn, setIsUserLoggedIn]  = useState(false)
-  console.log('🐝 ~ file: UserAuth.js ~ line 14 ~ isUserLoggedIn', isUserLoggedIn)
+  console.log('🐝 ~ file: JoinPage.js ~ line 14 ~ isUserLoggedIn', isUserLoggedIn)
   
   useEffect(() => {
     const token = window.localStorage.getItem('token')
     // const token = getTokenFromLocalStorage()
-    console.log('🐝 ~ file: UserAuth.js ~ line 19 ~ token', token)
+    console.log('🐝 ~ file: JoinPage.js ~ line 19 ~ token', token)
     setIsUserLoggedIn(!!token)
   },[isUserLoggedIn])
 
@@ -53,13 +53,13 @@ const UserAuth = () => {
       const dataToSend = formData
       console.log('🤖 ~ formData', formData)
       const response =  await axios.post('api/join', dataToSend)
-      console.log('🟢 ~ file: UserAuth.js ~ line 44 ~ response', response)
+      console.log('🟢 ~ file: JoinPage.js ~ line 44 ~ response', response)
       console.log('signup 🥳')
       
       history.push('/login') //!change back to /
     } catch (err) {
       setErrors(err.response.data)
-      console.log('🔴 ~ file: UserAuth.js ~ line 44 ~ response',err.response.data.message.message)
+      console.log('🔴 ~ file: JoinPage.js ~ line 44 ~ response',err.response.data.message.message)
     }
   }
 
@@ -165,4 +165,4 @@ const UserAuth = () => {
   )
 }
 
-export default UserAuth
+export default JoinPage
