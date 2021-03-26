@@ -7,7 +7,6 @@ const Home = () => {
     <>
       <section className="hero is-medium is-link">
         <div className="hero-body" id="hero-body">
-          {/* <a href="https://i.imgur.com/Of47BNO.jpg"></a> */}
           <p className="title">
             Medium hero
           </p>
@@ -25,13 +24,13 @@ const Home = () => {
         </div>
         <ul className="grid">
           <li className="grid-item">
-            <div className="location page-doodle">
-              <h3 className="location-title shadow">Doodle</h3>
+            <div className="homepage page-doodle">
+              <h3 className="homepage-title shadow">Doodle</h3>
             </div>
           </li>
           <li className="grid-item">
-            <div className="location page-gallery">
-              <h3 className="location-title shadow">Gallery</h3>
+            <div className="homepage page-gallery">
+              <h3 className="homepage-title shadow">Gallery</h3>
             </div>
           </li>
 
