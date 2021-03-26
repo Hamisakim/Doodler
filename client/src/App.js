@@ -1,9 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-<<<<<<< HEAD
-=======
+
 //import Canvas from './Canvas'
->>>>>>> development
+
 import Gallery from './components/Gallery'
 import Doodle from './components/Doodle'
 import Navbar from './components/Nav_and_Footer/NavBar'
