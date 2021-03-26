@@ -4,8 +4,8 @@ import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 
 const Doodle = () => {
-  const [backgroundColor, setBackgroundColor] = useState('#fafafa')
-  const [brushColor, setBrushColor] = useState('#ffc600')
+  const [backgroundColor, setBackgroundColor] = useState('#fff')
+  const [brushColor, setBrushColor] = useState('#B3B3B3')
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
 
@@ -43,6 +43,11 @@ const Doodle = () => {
       await axios.post('/api/artwork', newFormData)
     }
     sendArtwork()
+  }
+
+  const handleClear = () => {
+    doodle.clear()
+    setBackgroundColor('#fff')
   }
 
   console.log(formData)
@@ -132,7 +137,8 @@ const Doodle = () => {
         <div>
           <button className="button is-primary" onClick={() => handleSave()}> Save </button>
           <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
-          <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button>
+          {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
+          <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
         </div>
       </div>  
     </div>
