@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 import { dbURI } from '../config/environment.js'    
 import artworkData from './data/artworkData.js'
 import Artwork from '../models/artworkModel.js'
+import User from '../models/userModel.js'
+import userData from '../db/data/userData.js'
 
 const seedDataBase = async () => {
 
@@ -11,9 +13,18 @@ const seedDataBase = async () => {
 
     await mongoose.connection.db.dropDatabase()
     console.log('🟦  DB Dropped 🟦 ')
-   
+
+    const users = await User.create(userData)
+    console.log('🐝 ~ file: seeds.js ~ line 18 ~ users', users)
+    console.log(`🌱 DB seeded with ${users.length} users`)
+
+    const artworkWithUsers = artworkData.map(artwork => {
+      artwork.owner = users[0]._id
+      return artwork
+    })
+
     //* Add artworks 
-    const artworks = await Artwork.create(artworkData)
+    const artworks = await Artwork.create(artworkWithUsers)
     console.log(`🌱 DB seeded with ${artworks.length}🌱 `)
 
     await mongoose.connection.close()
