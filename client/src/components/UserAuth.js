@@ -66,7 +66,7 @@ const UserAuth = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
-    history.push('/join')
+    history.push('/login')
     setIsUserLoggedIn(false)
   }
 
@@ -81,7 +81,7 @@ const UserAuth = () => {
         isUserLoggedIn ? 
           <div className="box has-text-centered"> 
             <h1>you are logged in in already </h1>
-            <button className='button' onClick={handleLogout} >Logout</button>
+            <button className='button is-danger' onClick={handleLogout} >Logout</button>
           </div>
       
           : 
