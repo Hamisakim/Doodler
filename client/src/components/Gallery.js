@@ -23,12 +23,10 @@ const Gallery = () => {
           return  <div className="gallery-canvas" key={artwork._id}>
             <CanvasDraw
               // imediate loading on gallery, animated load on individual doodle show page
-              //loadTimeOffset={2.75}
               immediateLoading
+              //loadTimeOffset={2.75}
               disabled
               hideGrid
-              canvasHeight={348}
-              canvasWidth={348}
               backgroundColor={JSON.parse(artwork.doodleData).backgroundColor}
               saveData={artwork.doodleData}
             />
