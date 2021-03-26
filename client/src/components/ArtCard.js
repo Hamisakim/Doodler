@@ -27,7 +27,6 @@ const ArtCard = ( { title, _id, doodleData }) => {
             <div  className='' > 
               <div className='card-header-title'>
                 <h1>{title}</h1>
-               
               </div>
               <div className='card-image'>
                 <CanvasDraw className='canvas-container'       
@@ -35,7 +34,8 @@ const ArtCard = ( { title, _id, doodleData }) => {
                   hideGrid
                   saveData={doodleData}
                   canvasWidth={350}
-                  canvasHeight={350}                  
+                  canvasHeight={350}   
+                  backgroundColor={JSON.parse(doodleData).backgroundColor}               
                 //saveData={artwork.doodleData}
                 />
               </div> 
