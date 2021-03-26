@@ -1,11 +1,9 @@
-
 import '../styles/componentStyles/gallery.scss'
 import Loader from 'react-loader-spinner'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ArtCard from './ArtCard'
-
 
 
 const Gallery = () => {
@@ -30,8 +28,9 @@ const Gallery = () => {
   )
   return (
     <div className='container'>
+
       <div className='columns is-multiline'>
-        {doodles.map(artwork => {
+        {/* {doodles.map(artwork => {
           console.log('parsed', JSON.parse(artwork.doodleData).backgroundColor)
           return <div className="gallery-canvas" key={artwork._id}>
             <CanvasDraw
@@ -47,7 +46,7 @@ const Gallery = () => {
             <p>{artwork.title}</p>
           </div>
 
-        })}
+        })} */}
 
       </div>
       <div className='gallery columns is-multiline'>
@@ -61,6 +60,7 @@ const Gallery = () => {
 
         })}
       </div>
+    </div>
 
   )
 }
