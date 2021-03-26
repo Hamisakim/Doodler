@@ -19,12 +19,13 @@ const Gallery = () => {
     <div className='container'>
       <div className='columns is-multiline'>
         {doodles.map(artwork => {
+          console.log('parsed', JSON.parse(artwork.doodleData).backgroundColor)
           return  <div className="gallery-canvas" key={artwork._id}>
             <CanvasDraw
               disabled
               hideGrid
+              backgroundColor={JSON.parse(artwork.doodleData).backgroundColor}
               saveData={artwork.doodleData}
-              //saveData={artwork.doodleData}
             />
             <hr />
             <p>{artwork.title}</p>
