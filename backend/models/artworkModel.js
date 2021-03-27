@@ -13,7 +13,9 @@ const commentSchema = new mongoose.Schema({
 //? Like schema 
 const favouriteSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false } //? need ref to find who liked what 
-})
+},
+{ timestamps: true }
+)
 
 
 const artworkSchema = new mongoose.Schema({
@@ -41,4 +43,4 @@ artworkSchema.set('toJSON', { virtuals: true })
 
 
 
-export default mongoose.model('Artwork', artworkSchema) 
+export default mongoose.model('Artwork', artworkSchema)
