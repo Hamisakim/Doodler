@@ -6,15 +6,13 @@ const commentSchema = new mongoose.Schema({
   rating: { type: Number, required: false, min: 1, max: 5 },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false },
   username: { type: String , required: false }
-	 
 },
 { timestamps: true
 })
 
 //? Like schema 
 const favouriteSchema = new mongoose.Schema({
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false }, //? need ref to find who liked what 
-  like: { type: Number, required: true, value: 1 }
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false } //? need ref to find who liked what 
 })
 
 
@@ -24,9 +22,23 @@ const artworkSchema = new mongoose.Schema({
   doodleData: { type: Object, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
   comments: [commentSchema],
-  favourites: { type: Number, required: false, default: 0 }
+  favourites: [ favouriteSchema ]
 },
 { timestamps: true }
 )
+
+//!* Total likes/favourites 
+artworkSchema
+  .virtual('totalFavourites')
+  .get(function(){
+    if (this.favourites.length === 0) return 'No favourites'
+    const total = this.favourites.length
+    //console.log('🐝 ~ file: artworkModel.js ~ line 36 ~ total', total)
+    return total
+  })
+
+artworkSchema.set('toJSON', { virtuals: true })
+
+
 
 export default mongoose.model('Artwork', artworkSchema) 

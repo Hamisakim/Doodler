@@ -33,7 +33,8 @@ router.route('/:id/comment/:commentId')
 
 //* add a like / favourite 
 router.route('/:id/like')
-  .post(addLike)
+  .post(secureRoute,addLike)
+	
 
 // router.route('/:id/favourite')
 

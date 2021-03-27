@@ -1,11 +1,10 @@
 import Artwork from '../models/artworkModel.js'
 
-//* get all artworks 
+//*----- Artworks -------------------------------------------------
 export const getAllArtwork = async(req, res) => {
   const artwork = await Artwork.find().populate('owner')
   return res.status(200).json(artwork)
 }
-//* Get one artwork 
 export const getOneArtwork = async (req, res) => {
   try {
     const { id } = req.params
@@ -20,8 +19,6 @@ export const getOneArtwork = async (req, res) => {
     return res.status(404).json({ 'message': 'Not found' })
   }
 }
-
-//* Add one artwork
 export const addArtwork = async(req, res) => {
   try {
     console.log('⭐️  Adding artwork')
@@ -37,9 +34,6 @@ export const addArtwork = async(req, res) => {
     return res.status(422).json(err)
   }
 }
-
-
-//* delete artwork 
 export const deleteArtwork = async (req, res) => {
   try {
     const { id } = req.params
@@ -57,7 +51,9 @@ export const deleteArtwork = async (req, res) => {
     return res.status(404).json( { message: err.message } )
   }
 }
+//! ---------------------------------------------------------------
 
+//*-----Comments---------------------------------------------------
 export const addComment = async (req, res) => {
   try {
     const { id } = req.params
@@ -72,8 +68,6 @@ export const addComment = async (req, res) => {
     return res.status(500).json({ message: err.message })
   }
 }
-
-
 export const deleteComment = async (req, res) => {
   console.log('Deleting')
   try {
@@ -92,17 +86,73 @@ export const deleteComment = async (req, res) => {
     return res.status(500).json({ message: err.message })
   }
 }
+//! ---------------------------------------------------------------
 
 
+
+
+//*-----Likes/Favourites-------------------------------------------
 export const addLike = async (req, res) => {
-  console.log('🟩 Adding Like 🟩' )
-	  try {
+
+ 
+ 
+  try {
+    console.log('🟩 Adding Like 🟩' )
     const { id } = req.params
+
     const artworkToLike = await Artwork.findById(id)
-    console.log('🐝 ~ file: artworkController.js ~ line 101 ~ artwork', artworkToLike)
+    const favouritesArray = artworkToLike.favourites
+    
+    console.log('🐝 ~ file: artworkController.js ~ line 104 ~ favouritesArray', favouritesArray)
+    const currentUser = req.currentUser
+    const checkIfLiked =  favouritesArray.find(item => item.owner !== Number)
+
+    console.log('🐝 ~ file: artworkController.js ~ line 111 ~ checkIfLiked', checkIfLiked)
+    console.log('🐝 ~ file: artworkController.js ~ line 108 ~ req.currentUser._id', req.currentUser._id)
+
+
+    
+    const newLike = { owner: req.currentUser }
+  
+
+    
+    console.log('🐝 ~ file: artworkController.js ~ line 115 ~ currentUser', currentUser)
+    artworkToLike.favourites.push(newLike)
+    await	artworkToLike.save()
+    
+    
+    // const checkIfLiked = favouritesArray.map((item)=>{
+    //   console.log('🐝 ~ file: artworkController.js ~ line 108 ~ item.owner', item.owner)
+    //   if (item.owner === req.currentUser._id){
+    //     console.log('matched like')
+    //     return true 
+    //   } 
+    // })
+    // const checkIfLiked =  favouritesArray.find(item => item.owner === currentUser)
+    
+    
+   
+    //const hasUserLikedAlready = 0
+    //console.log('🐝 ~ file: artworkController.js ~ line 104 ~ hasUserLikedAlready', hasUserLikedAlready)
+
+
+    // const checkIfLiked = favouritesArray.filter((item)=>{
+    //   item.owner === req.currentUser._id 
+    //   if (item.owner === req.currentUser._id){
+    //     console.log('already likes')
+    //   }
+    //   console.log('🐝 ~ file: artworkController.js ~ line 112 ~ item', item)
+    // })
+
+    
+    // const hasUserLikedAlready = () => {
+    // }
+    // hasUserLikedAlready()
+
     if (!artworkToLike) {
       throw new Error('🟥 no artwork found to like 🟥 ')
     }
+
 
   } catch (err) {
     console.log('🐝 ~ file: artworkController.js ~ line 107 ~ error', err)
@@ -111,5 +161,12 @@ export const addLike = async (req, res) => {
   }
 }
 
+export const deleteLike = async (req, res) => {
+
+
+}
+
+
+//!-----------------------------------------------------------------
 // only logged in people can add
 // we need to add the user ref to the post body req.
