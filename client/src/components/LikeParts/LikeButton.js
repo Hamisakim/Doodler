@@ -27,7 +27,8 @@ const LikeButton = ({ id }) => {
 
   return (
     <div>
-      <img src={redHeart} width={'60rem'} height={'60rem'} onClick={handleLike} className="like-btn card-footer-item" />
+      <img src={redHeart} width={'60rem'} height={'60rem'} onClick={handleLike} className="like-btn " />
+      {/* //* class to remove later  card-footer-item */}
     </div>
   )
 }

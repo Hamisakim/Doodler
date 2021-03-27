@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
   })
   // eslint-disable-next-line no-unused-vars
   const [ wasLoginSuccess, setWasLoginSuccess ] = useState(null)
-  console.log('🐝 ~ file: Login.js ~ line 15 ~ responseMessage', wasLoginSuccess)
+  console.log('🐝 ~ file: Login.js ~ line 15 ~ wasLoginSuccess', wasLoginSuccess)
 
   console.log('🐝 ~ file: Login.js ~ line 11 ~ formData', formData)
   const handleChange = (event) => {
@@ -25,18 +25,50 @@ const Login = () => {
   }
 
   const handleSubmit = async (event) => {
+    console.log('🐝 ~ file: Login.js ~ line 28 ~ event', event)
     event.preventDefault()
+    // if()
     try {
       const response = await axios.post('api/login', formData)
       console.log('🐝 ~ file: Login.js ~ line 26 ~ response', response.data.message)
       setWasLoginSuccess(true)
+      notifyPopup(true)
       window.localStorage.setItem('token',response.data.token)
       history.push('/doodle') 
     } catch (err) {
       console.log('🐝 ~ file: Login.js ~ line 33 ~ err', err.response)
       setWasLoginSuccess(false)
+      notifyPopup(false)
     }
   }
+
+  const notifyPopup = (wasLoginSuccess) => {
+    console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
+    if (wasLoginSuccess === true){
+      toast.success('Enjoy doodling!', {
+        position: 'top-center',
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false
+      })
+    } else if (wasLoginSuccess === false) {
+      toast.error('🙀 something went wrong... Please try again!', {
+        position: 'top-center',
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false
+      }) 
+    }
+  }
+
 
   return (
     <div>
@@ -72,7 +104,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="field">
-                <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
+                <button onClick={notifyPopup} className="button is-block is-info is-large is-fullwidth">Login</button><br />
               </div>
             </form>
           </div>

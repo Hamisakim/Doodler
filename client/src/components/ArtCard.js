@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/authHelp.js'
-import LikeButton from './buttons/LikeButton'
+import LikeButton from './LikeParts/LikeButton'
 
-const ArtCard = ( { title, id, doodleData, owner }) => {
+const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  }) => {
+  console.log('🐝 ~ file: ArtCard.js ~ line 12 ~ totalFavourites', totalFavourites)
   console.log('🐝 ~ file: ArtCard.js ~ line 10 ~ id', id)
   const [isFlipped, setIsFlipped] = useState(false)
 
@@ -46,7 +47,17 @@ const ArtCard = ( { title, id, doodleData, owner }) => {
               </div> 
             </div>
             <footer className="card-footer">
-              <LikeButton id={id} />
+              
+              <div className='card-footer-item'>
+                <div className='card-like-btn-things'>
+                  <LikeButton id={id} />
+                  {/* </div> */}
+                  {/* <div className='card-footer-item'> */}
+                  {/* <h2>{totalFavourites}</h2> */}
+                  <h2>{totalFavourites}</h2>
+                  
+                </div>
+              </div>
             </footer>   
           </div>
 
@@ -61,11 +72,11 @@ const ArtCard = ( { title, id, doodleData, owner }) => {
             </div>
             <hr/> 
             <div className='card-content'>
-              <p>Porta id tincidunt aliquant utricles orci pellentesque facilisis Libero. . fusee. Eliseo critique cum litoral interdum eros donec tortor magna.</p>
+              <p>{description}</p>
               <button className='button'>See more</button>
             </div>
             <footer className="card-footer">
-              <LikeButton id={id} />
+              <LikeButton id={id} /> 
                 artist name and profile pic
             </footer>   
           </div>
