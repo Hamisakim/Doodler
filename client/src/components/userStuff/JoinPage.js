@@ -59,7 +59,7 @@ const JoinPage = () => {
       history.push('/login') //!change back to /
     } catch (err) {
       setErrors(err.response.data)
-      console.log('🔴 ~ file: JoinPage.js ~ line 44 ~ response',err.response.data.message.message)
+      console.log('🔴 ~ file: JoinPage.js ~ line 44 ~ response',err.response.data.message)
     }
   }
 
@@ -95,9 +95,9 @@ const JoinPage = () => {
                   <div className="field">
                     <p className="control has-icons-left has-icons-right">
                       <input className="input is-medium" 
-                        name="email" 
-                        placeholder="Email" 
-                        value={formData.email}
+                        name="username" 
+                        placeholder="Username" 
+                        value={formData.username}
                         onChange={handleChange}
                       />
                       <span className="icon is-medium is-left">
@@ -111,9 +111,9 @@ const JoinPage = () => {
                   <div className="field">
                     <p className="control has-icons-left has-icons-right">
                       <input className="input is-medium" 
-                        name="username" 
-                        placeholder="Username" 
-                        value={formData.username}
+                        name="email" 
+                        placeholder="Email" 
+                        value={formData.email}
                         onChange={handleChange}
                       />
                       <span className="icon is-medium is-left">
@@ -132,6 +132,7 @@ const JoinPage = () => {
                         placeholder="Password" 
                         value={formData.password}
                         onChange={handleChange}
+                        type='password'
                       />
                       <span className="icon is-small is-left">
                         <i className="fas fa-lock"></i>
@@ -145,6 +146,7 @@ const JoinPage = () => {
                         placeholder="Confirm Password" 
                         value={formData.passwordConfirmation}
                         onChange={handleChange}
+                        type='password'
                       />
                       <span className="icon is-small is-left">
                         <i className="fas fa-lock"></i>
