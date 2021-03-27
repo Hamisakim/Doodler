@@ -4,14 +4,16 @@ import React, { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import { Link } from 'react-router-dom'
 import CanvasDraw from '../drawing/index'
+import LZString from 'lz-string'
 
 const ArtCard = ( { title, _id, doodleData }) => {
   const [isFlipped, setIsFlipped] = useState(false)
 
-  const [width, setWidth] = useState(400)
-  const [height, setHeight] = useState(400)
+  // const [width, setWidth] = useState(400)
+  // const [height, setHeight] = useState(400)
 
-
+  const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodleData)
+  console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
   const handleClick = () => {
     setIsFlipped(!isFlipped)
@@ -32,11 +34,10 @@ const ArtCard = ( { title, _id, doodleData }) => {
                 <CanvasDraw className='canvas-container'       
                   disabled
                   hideGrid
-                  saveData={doodleData}
-                  // canvasWidth={350}
-                  // canvasHeight={350}   
-                  backgroundColor={JSON.parse(doodleData).backgroundColor}               
-                //saveData={artwork.doodleData}
+                  //saveData={doodleData}
+                  saveData={decompressedDoodleData}
+                  backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
+              
                 />
               </div> 
             </div>

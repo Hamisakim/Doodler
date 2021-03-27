@@ -86,7 +86,7 @@ class Canvas extends Component {
             />
           </div>
           <div>
-            <label>Brush-Radius:</label>
+            <label>Brush Radius:</label>
             <input
               type="number"
               value={this.state.drawData.brushRadius}
@@ -96,7 +96,7 @@ class Canvas extends Component {
             />
           </div>
           <div>
-            <label>Lazy-Radius:</label>
+            <label>Lazy Radius:</label>
             <input
               type="number"
               value={this.state.drawData.lazyRadius}

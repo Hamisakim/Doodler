@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
+import LZString from 'lz-string'
 
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
  
@@ -38,10 +39,17 @@ const Doodle = () => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
+
   const handleSave = () => {
-    const artworkToSend = doodle.getSaveData()
+    //const artworkToSend = doodle.getSaveData()
+    const artworkToSend = LZString.compressToEncodedURIComponent(doodle.getSaveData())
     const newFormData = { ...formData, doodleData: artworkToSend, formData }
     setFormData(newFormData)
+
+    // const compressed = LZString.compress(doodle.getSaveData())
+    // console.log('original', doodle.getSaveData())
+    // console.log('compressed', compressed)
+    // console.log('decompressed', LZString.decompress(compressed))
 
     const sendArtwork = async () => {
       await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
@@ -49,11 +57,17 @@ const Doodle = () => {
     }
     sendArtwork()
   }
+
   const handleClear = () => {
     doodle.clear()
     setBackgroundColor('#fff')
   }
+
   console.log(formData)
+  // const compressed = LZString.compress('hi there')
+  // console.log('compressed', compressed)
+  // console.log('compressed', LZString.decompress(compressed))
+
   return (
     <>
       <div className="page-wrapper">
@@ -72,7 +86,7 @@ const Doodle = () => {
             <div>
               <div>
                 <div>
-                  <label>Brush-Radius:</label>
+                  <label>Brush Radius:</label>
                   <div className="slidecontainer">
                     <input type="range" min="1" max="30" value={brushRadius} className="slider" id="myRange" onChange={e =>
                       setBrushRadius(parseInt(e.target.value, 10))
@@ -80,7 +94,7 @@ const Doodle = () => {
                   </div>
                 </div>
                 <div>
-                  <label>Lazy-Radius:</label>
+                  <label>Lazy Radius:</label>
                   <div className="slidecontainer">
                     <input type="range" min="1" max="100" value={lazyRadius} className="slider" id="myRange" onChange={e =>
                       setLazyRadius(parseInt(e.target.value, 10))
@@ -90,7 +104,7 @@ const Doodle = () => {
               </div>
             </div>
             <div>
-              <label>BrushColor:</label>
+              <label>Brush Color:</label>
               <div>
                 <CompactPicker
                   color={brushColor}
@@ -101,7 +115,7 @@ const Doodle = () => {
               </div>
             </div>
             <div>
-              <label>BackgroundColor:</label>
+              <label>Background Color:</label>
               <div>
                 <CompactPicker
                   color={backgroundColor}

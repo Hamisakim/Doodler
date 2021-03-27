@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ArtCard from './ArtCard'
+//import LZString from 'lz-string'
 
 
 const Gallery = () => {

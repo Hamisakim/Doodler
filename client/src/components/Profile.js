@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import ArtCard from './ArtCard'
+//import React, { useState, useEffect } from 'react'
+import React from 'react'
+//import axios from 'axios'
+//import ArtCard from './ArtCard'
+//import LZString from 'lz-string'
 
-const Profile = ({ username } ) => {
+//const Profile = ({ username } ) => {
+const Profile = ( ) => {
 
-  const [artwork, setArtwork] = useState(null)
+  //const [artwork, setArtwork] = useState(null)
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get('api/artwork')
-      setArtwork(response.data)
-    }
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await axios.get('api/artwork')
+  //     setArtwork(response.data)
+  //   }
+  //    getData()
+  // }, [])
 
   return (
     <div className="section">
-      <div className="box">
+      {/* <div className="box">
         <div className="tile is-vertical">
           <div className="tile">
             <figure className="image is-128x128">
@@ -55,7 +58,7 @@ const Profile = ({ username } ) => {
             </div>
           }
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
