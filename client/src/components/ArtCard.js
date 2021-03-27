@@ -4,8 +4,12 @@ import React, { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import { Link } from 'react-router-dom'
 import CanvasDraw from '../drawing/index'
+import axios from 'axios'
+import { getTokenFromLocalStorage } from '../helpers/authHelp.js'
+import LikeButton from './buttons/LikeButton'
 
-const ArtCard = ( { title, _id, doodleData }) => {
+const ArtCard = ( { title, id, doodleData, owner }) => {
+  console.log('🐝 ~ file: ArtCard.js ~ line 10 ~ id', id)
   const [isFlipped, setIsFlipped] = useState(false)
 
   const [width, setWidth] = useState(400)
@@ -17,6 +21,7 @@ const ArtCard = ( { title, _id, doodleData }) => {
     setIsFlipped(!isFlipped)
     console.log('🤖 ~ isFlipped', isFlipped)
   }
+
   return (
     <>
       <div className='has-text-centered'>
@@ -35,13 +40,13 @@ const ArtCard = ( { title, _id, doodleData }) => {
                   saveData={doodleData}
                   // canvasWidth={350}
                   // canvasHeight={350}   
-                  backgroundColor={JSON.parse(doodleData).backgroundColor}               
+                  //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
                 //saveData={artwork.doodleData}
                 />
               </div> 
             </div>
             <footer className="card-footer">
-              <a href="#" className="card-footer-item">❤️</a>
+              <LikeButton id={id} />
             </footer>   
           </div>
 
@@ -60,7 +65,7 @@ const ArtCard = ( { title, _id, doodleData }) => {
               <button className='button'>See more</button>
             </div>
             <footer className="card-footer">
-              <a href="#" className="card-footer-item">❤️</a>
+              <LikeButton id={id} />
                 artist name and profile pic
             </footer>   
           </div>

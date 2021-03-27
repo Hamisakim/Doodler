@@ -49,8 +49,7 @@ export const deleteArtwork = async (req, res) => {
     console.log('🆘 Something went wrong')
     console.log('⭐️',err.message)
     return res.status(404).json( { message: err.message } )
-  }
-}
+  }}
 //! ---------------------------------------------------------------
 
 //*-----Comments---------------------------------------------------
@@ -91,101 +90,101 @@ export const deleteComment = async (req, res) => {
 
 //*-----Likes/Favourites-------------------------------------------
 
-export const checkIfLiked = async (req, _res) => {
-  console.log('Check')
-  const { id } = req.params
-  const artworkToLike = await Artwork.findById(id)
-  const favouritesArray = artworkToLike.favourites
+//!ignore
+// export const checkIfLiked = async (req, _res) => {
+//   console.log('Check')
+//   const { id } = req.params
+//   const artworkToLike = await Artwork.findById(id)
+//   const favouritesArray = artworkToLike.favourites
  
-  console.log('🐝 ~ file: artworkController.js ~ line 100 ~ likedAlready', artworkToLike)
-
-}
+//   console.log('🐝 ~ file: artworkController.js ~ line 100 ~ likedAlready', artworkToLike)
+// }
 
 //! this function is super messy atm.... Struggling to find a way to check if user has liked already...
-// export const addLike = async (req, res) => {
-//   const currentUser = req.currentUser._id
-//   console.log('🐝 ~ file: artworkController.js ~ line 97 ~ currentUser', currentUser)  
-//   try {
-//     console.log('🟩 Adding Like 🟩' )
-//     const { id } = req.params
+export const addLike = async (req, res) => {
+  const currentUser = req.currentUser._id
+  console.log('🐝 ~ file: artworkController.js ~ line 97 ~ currentUser', currentUser)  
+  try {
+    console.log('🟩 Adding Like 🟩' )
+    const { id } = req.params
 
-//     const artworkToLike = await Artwork.findById(id)
-//     const favouritesArray = artworkToLike.favourites
+    const artworkToLike = await Artwork.findById(id)
+    const favouritesArray = artworkToLike.favourites
     
-//     //console.log('🐝 ~ file: artworkController.js ~ line 104 ~ favouritesArray', favouritesArray)
-//     const filteredArrayWithLikeOwnerId = favouritesArray.map((item)=>{
-//       const owner = item.owner
-//       let isLiked = false
-//       console.log('🐝 ~ file: artworkController.js ~ line 115 ~ ownerID',  owner._id)
-//       if (owner._id === currentUser){
-//         console.log('🐝 ~ file: artworkController.js ~ line 121 ~ currentUser', currentUser)
-//         console.log('found same')
-//         isLiked = true
-//       } else {
-//         console.log('not liked ')
-//         isLiked = false
-//       }
-//       return isLiked
-//     })
-//     console.log('🐝 ~ file: artworkController.js ~ line 129 ~ filteredArrayWithLikeOwnerId', filteredArrayWithLikeOwnerId)
-//     //console.log('🐝 ~ file: artworkController.js ~ line 109 ~ filteredArrayWithLikeOwnerId', filteredArrayWithLikeOwnerId)
-//     //const userLikedAlready =  filteredArrayWithLikeOwnerId.find((item) => {
-//     //return item === currentUser
-//     //})
+    //console.log('🐝 ~ file: artworkController.js ~ line 104 ~ favouritesArray', favouritesArray)
+    const filteredArrayWithLikeOwnerId = favouritesArray.map((item)=>{
+      const owner = item.owner
+      let isLiked = false
+      console.log('🐝 ~ file: artworkController.js ~ line 115 ~ ownerID',  owner._id)
+      if (owner._id === currentUser){
+        console.log('🐝 ~ file: artworkController.js ~ line 121 ~ currentUser', currentUser)
+        console.log('found same')
+        isLiked = true
+      } else {
+        console.log('not liked ')
+        isLiked = false
+      }
+      return isLiked
+    })
+    console.log('🐝 ~ file: artworkController.js ~ line 129 ~ filteredArrayWithLikeOwnerId', filteredArrayWithLikeOwnerId)
+    //console.log('🐝 ~ file: artworkController.js ~ line 109 ~ filteredArrayWithLikeOwnerId', filteredArrayWithLikeOwnerId)
+    //const userLikedAlready =  filteredArrayWithLikeOwnerId.find((item) => {
+    //return item === currentUser
+    //})
 
-//     //console.log('🐝 ~ file: artworkController.js ~ line 111 ~ checkIfLiked', userLikedAlready)
-//     //console.log('🐝 ~ file: artworkController.js ~ line 108 ~ req.currentUser._id', req.currentUser._id)
+    //console.log('🐝 ~ file: artworkController.js ~ line 111 ~ checkIfLiked', userLikedAlready)
+    //console.log('🐝 ~ file: artworkController.js ~ line 108 ~ req.currentUser._id', req.currentUser._id)
 
 
     
-//     const newLike = { owner: req.currentUser }
+    const newLike = { owner: req.currentUser }
   
 
     
-//     //console.log('🐝 ~ file: artworkController.js ~ line 115 ~ currentUser', currentUser)
-//     artworkToLike.favourites.push(newLike)
-//     await	artworkToLike.save()
+    //console.log('🐝 ~ file: artworkController.js ~ line 115 ~ currentUser', currentUser)
+    artworkToLike.favourites.push(newLike)
+    await	artworkToLike.save()
     
     
-//     // const checkIfLiked = favouritesArray.map((item)=>{
-//     //   console.log('🐝 ~ file: artworkController.js ~ line 108 ~ item.owner', item.owner)
-//     //   if (item.owner === req.currentUser._id){
-//     //     console.log('matched like')
-//     //     return true 
-//     //   } 
-//     // })
-//     // const checkIfLiked =  favouritesArray.find(item => item.owner === currentUser)
+    // const checkIfLiked = favouritesArray.map((item)=>{
+    //   console.log('🐝 ~ file: artworkController.js ~ line 108 ~ item.owner', item.owner)
+    //   if (item.owner === req.currentUser._id){
+    //     console.log('matched like')
+    //     return true 
+    //   } 
+    // })
+    // const checkIfLiked =  favouritesArray.find(item => item.owner === currentUser)
     
     
    
-//     //const hasUserLikedAlready = 0
-//     //console.log('🐝 ~ file: artworkController.js ~ line 104 ~ hasUserLikedAlready', hasUserLikedAlready)
+    //const hasUserLikedAlready = 0
+    //console.log('🐝 ~ file: artworkController.js ~ line 104 ~ hasUserLikedAlready', hasUserLikedAlready)
 
 
-//     // const checkIfLiked = favouritesArray.filter((item)=>{
-//     //   item.owner === req.currentUser._id 
-//     //   if (item.owner === req.currentUser._id){
-//     //     console.log('already likes')
-//     //   }
-//     //   console.log('🐝 ~ file: artworkController.js ~ line 112 ~ item', item)
-//     // })
+    // const checkIfLiked = favouritesArray.filter((item)=>{
+    //   item.owner === req.currentUser._id 
+    //   if (item.owner === req.currentUser._id){
+    //     console.log('already likes')
+    //   }
+    //   console.log('🐝 ~ file: artworkController.js ~ line 112 ~ item', item)
+    // })
 
     
-//     // const hasUserLikedAlready = () => {
-//     // }
-//     // hasUserLikedAlready()
+    // const hasUserLikedAlready = () => {
+    // }
+    // hasUserLikedAlready()
 
-//     if (!artworkToLike) {
-//       throw new Error('🟥 no artwork found to like 🟥 ')
-//     }
-//     res.status(200).json( { message: 'liked!' })
+    if (!artworkToLike) {
+      throw new Error('🟥 no artwork found to like 🟥 ')
+    }
+    res.status(200).json( { message: 'liked!' })
 
-//   } catch (err) {
-//     console.log('🐝 ~ file: artworkController.js ~ line 107 ~ error', err)
-//     res.status(500).json( { message: err.message })
+  } catch (err) {
+    console.log('🐝 ~ file: artworkController.js ~ line 107 ~ error', err)
+    res.status(500).json( { message: err.message })
 		
-//   }
-// }
+  }
+}
 
 export const deleteLike = async (req, res) => {
 

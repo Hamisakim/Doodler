@@ -2,6 +2,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
   const history = useHistory()

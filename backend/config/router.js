@@ -1,6 +1,6 @@
 import express from 'express'
 //! import add like
-import { getAllArtwork, addArtwork, getOneArtwork, addComment, deleteComment, deleteArtwork,  checkIfLiked } from '../controllers/artworkController.js'
+import { getAllArtwork, addArtwork, getOneArtwork, addComment, deleteComment, deleteArtwork, addLike } from '../controllers/artworkController.js'
 import { registerUser, loginUser } from '../controllers/authController.js'
 import { secureRoute } from './secureRoute.js'
 
@@ -16,7 +16,7 @@ router.route('/artwork/:id')
   .get(getOneArtwork)
   .delete(secureRoute, deleteArtwork)
 
-
+  
 router.route('/login')
   .post(loginUser)
 
@@ -34,8 +34,8 @@ router.route('/:id/comment/:commentId')
 
 //* add a like / favourite 
 router.route('/:id/like')
-  .post(secureRoute, checkIfLiked)
-  // .post(secureRoute,addLike)
+  //.post(secureRoute, checkIfLiked)
+  .post(secureRoute,addLike)
 	
 
 // router.route('/:id/favourite')
