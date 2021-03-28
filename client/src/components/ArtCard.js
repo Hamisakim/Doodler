@@ -31,9 +31,10 @@ const ArtCard = ( { title, _id, doodleData }) => {
                 <h1>{title}</h1>
               </div>
               <div className='card-image'>
-                <CanvasDraw className='canvas-container'       
+                <CanvasDraw       
                   disabled
                   hideGrid
+                  immediateLoading={true}
                   //saveData={doodleData}
                   saveData={decompressedDoodleData}
                   backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 

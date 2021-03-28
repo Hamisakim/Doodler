@@ -1,6 +1,26 @@
 .page-wrapper {
+  margin: 60px auto;
+  width: 520px;
   min-height: 90vh;
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.canvas-container {
+  transform: scale(1.5);
+}
+
+.doodle-comments-wrapper {
+  margin: 100px 0 0 0;
+}
+
+
+// * {
+//   border: 1px #000 solid;
+// }
+
+.description-wrapper {
+  margin: 0 0 100px 0;
 }

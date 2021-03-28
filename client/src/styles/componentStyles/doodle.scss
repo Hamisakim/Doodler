@@ -82,11 +82,12 @@ input[type="range"]::-moz-range-thumb:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 60px auto;
 }
 
 .split-col-wraper {
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
 }
 
 .col {
