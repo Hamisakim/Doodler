@@ -58,7 +58,7 @@ const ArtCard = ( { title, _id, doodleData }) => {
             <hr/> 
             <div className='card-content'>
               <p>Porta id tincidunt aliquant utricles orci pellentesque facilisis Libero. . fusee. Eliseo critique cum litoral interdum eros donec tortor magna.</p>
-              <button className='button'>See more</button>
+              <Link to={`/gallery/${_id}`} className='button'>See more</Link>
             </div>
             <footer className="card-footer">
               <a href="#" className="card-footer-item">❤️</a>
