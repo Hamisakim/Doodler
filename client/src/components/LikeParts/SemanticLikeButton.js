@@ -5,11 +5,11 @@ import axios from 'axios'
 
 //* Pass in the ID as props from parent component. 
 //* will send authentication header to DB
-'//*'
-
-
+//* Add check to see if user is logged in so they can like! 
+//?______________________________________________________________________
 
 const LikeButton = ({ id }) => {
+  //?____________Function ______________________________________________________
 
   const handleLike = async () => {
     const token = getTokenFromLocalStorage()

@@ -42,6 +42,7 @@ const Login = () => {
     }
   }
 
+  //? This handles the toastify pop up 
   const notifyPopup = (wasLoginSuccess) => {
     console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
     if (wasLoginSuccess === true){
