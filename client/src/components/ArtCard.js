@@ -5,8 +5,10 @@ import ReactCardFlip from 'react-card-flip'
 import { Link } from 'react-router-dom'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
-import { getTokenFromLocalStorage } from '../helpers/authHelp.js'
+//import { getTokenFromLocalStorage } from '../helpers/authHelp.js'
 import LikeButton from './LikeParts/LikeButton'
+import { Card, Icon, Image } from 'semantic-ui-react'
+
 
 const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  }) => {
   console.log('🐝 ~ file: ArtCard.js ~ line 12 ~ totalFavourites', totalFavourites)
@@ -23,68 +25,55 @@ const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  
     console.log('🤖 ~ isFlipped', isFlipped)
   }
 
+  const extra = (
+    <a>
+      <Icon name='user' />
+      16 Friends
+    </a>
+  )
+  
+
   return (
-    <>
-      <div className='has-text-centered'>
-      
-        <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' onClick={handleClick}>
+    <> 
+      <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' onClick={handleClick}>
+        <div className='card-front' onClick={handleClick}>
+          <Card 
+            image={<CanvasDraw className='canvas-container'       
+              disabled
+              hideGrid
+              saveData={doodleData}
+              // canvasWidth={350}
+              // canvasHeight={350}   
+              //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
+              //saveData={artwork.doodleData}
+            />}
+            header='Elliot Baker'
+            meta='Friend'
+            description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
+            extra={extra}
+          />
+        </div>
 
-          <div  className='card' onClick={handleClick}>
-            <div  className='' > 
-              <div className='card-header-title'>
-                <h1>{title}</h1>
-              </div>
-              <div className='card-image'>
-                <CanvasDraw className='canvas-container'       
-                  disabled
-                  hideGrid
-                  saveData={doodleData}
-                  // canvasWidth={350}
-                  // canvasHeight={350}   
-                  //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
-                //saveData={artwork.doodleData}
-                />
-              </div> 
-            </div>
-            <footer className="card-footer">
-              
-              <div className='card-footer-item'>
-                <div className='card-like-btn-things'>
-                  <LikeButton id={id} />
-                  {/* </div> */}
-                  {/* <div className='card-footer-item'> */}
-                  {/* <h2>{totalFavourites}</h2> */}
-                  <h2>{totalFavourites}</h2>
-                  
-                </div>
-              </div>
-            </footer>   
-          </div>
-
-
-          <div className='card' onClick={handleClick} >
-            <div className='card-header-title'>
-              <h1>
-                {title}
-              </h1>
-              <h2>Owner</h2>
-
-            </div>
-            <hr/> 
-            <div className='card-content'>
-              <p>{description}</p>
-              <button className='button'>See more</button>
-            </div>
-            <footer className="card-footer">
-              <LikeButton id={id} /> 
-                artist name and profile pic
-            </footer>   
-          </div>
- 
-
-        </ReactCardFlip>
-      </div>
+        <div className='card-back' onClick={handleClick}>
+          <Card
+            image={<CanvasDraw className='canvas-container'       
+              disabled
+              hideGrid
+              saveData={doodleData}
+            // canvasWidth={350}
+            // canvasHeight={350}   
+            //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
+            //saveData={artwork.doodleData}
+            />}
+            header='Elliot Baker'
+            meta='Friend'
+            description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
+            extra={extra}
+          />
+        </div>
+      </ReactCardFlip>
     </>
   )
+
 }
 export default ArtCard
