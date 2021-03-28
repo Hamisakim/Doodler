@@ -10,6 +10,7 @@ const Login = () => {
     username: '',
     password: ''
   })
+  
   console.log('🐝 ~ file: Login.js ~ line 11 ~ formData', formData)
   const handleChange = (event) => {
     //?get the value of what's being typed in the form and updating state
@@ -17,6 +18,7 @@ const Login = () => {
     console.log('🐝 ~ file: Login.js ~ line 14 ~ event', event)
     setFormData(newFormData)
   }
+
   const handleSubmit = async (event) => {
     console.log('🐝 ~ file: Login.js ~ line 21 ~ handleSubmit', )
     //?sending to our api
@@ -33,6 +35,7 @@ const Login = () => {
       console.log('🐝 ~ file: Login.js ~ line 32 ~ err', err)
     }
   }
+
   return (
     <div>
       <section className="section">
