@@ -1,7 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useHistory, useLocation } from 'react-router-dom'
+
+import { userIsAuthenticated } from '../../helpers/authHelp'
 
 const NavBar = () => {
+
+  const location = useLocation()
+  useEffect(() => {
+
+  }, [location.pathname])
+
+  const history = useHistory()
+  const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    history.push('/')
+  }
+
   return (
     <nav className="navbar is-light">
       <div className="container">
@@ -16,12 +30,24 @@ const NavBar = () => {
           <Link to="/gallery" className="navbar-item">Gallery</Link>
         </div>
         <div className="navbar-end">
+          { !userIsAuthenticated() &&
+        <>
           <Link to="/join" className="navbar-item">
-            Join
+            Sign Up
           </Link>
+
           <Link to="/login" className="navbar-item">
             Login
           </Link>
+        </>
+          }
+          { userIsAuthenticated() &&
+        <>
+          <div className="navbar-item" onClick={handleLogout}>
+            Logout
+          </div>
+        </>
+          }
         </div>
       </div>
     </nav>

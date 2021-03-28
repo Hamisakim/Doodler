@@ -26,7 +26,7 @@ const Login = () => {
       //* adding token
       window.localStorage.setItem('token',response.data.token)
       console.log('🐝 ~ file: Login.js ~ line 26 ~ response', response)
-      history.push('/doodle') 
+      history.push('/doodle-new') 
     } catch (err) {
       // const errorMessageToSend = `${response.data.message}. Please contact us if you have forgotten your password`
       //console.log('🐝 ~ file: Login.js ~ line 29 ~ errorMessageToSend', errorMessageToSend)
