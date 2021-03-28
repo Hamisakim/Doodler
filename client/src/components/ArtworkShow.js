@@ -2,6 +2,7 @@ import '../styles/componentStyles/artworkPage.scss'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import ReactStars from 'react-rating-stars-component'
 
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
@@ -20,10 +21,16 @@ const ArtworkShow = () => {
     getData()
   }, [])
 
+  const handleRating = (newRating) => {
+    console.log(newRating)
+  }
+
   if (!doodle) return null
 
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
   console.log('parsed bg', decompressedDoodleData.backgroundColor)
+
+  console.log(doodle)
 
   return (
     <div className="page-wrapper">
@@ -47,14 +54,27 @@ const ArtworkShow = () => {
       <div className="doodle-comments-wrapper">
         <div className="doodle-add-comment">
           <form>
-            <ipnut
+            <ReactStars
+              count={5}
+              onChange={handleRating}
+              size={24}
+              isHalf={true}
+              emptyIcon={<i className="far fa-star"></i>}
+              halfIcon={<i className="fa fa-star-half-alt"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+            />
+            <input
+              className="input"
               placeholder="leave comment"
-              value={6}
+              
             />
             <div>star wrapper: select checkboxes, with values 1-5</div>
           </form>
         </div>
-        <div className="doodle-show-comments"></div>
+        <div className="doodle-show-comments">
+          <p>map through comments here</p>
+        </div>
       </div>
     </div>
   )
