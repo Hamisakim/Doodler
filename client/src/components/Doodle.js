@@ -1,9 +1,12 @@
 import '../styles/componentStyles/doodle.scss'
 import React, { useState, useEffect, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 
+import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
+ 
 const Doodle = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
   const [brushColor, setBrushColor] = useState('#B3B3B3')
@@ -11,6 +14,8 @@ const Doodle = () => {
   const [lazyRadius, setLazyRadius] = useState(12)
 
   let doodle = useRef(null)
+
+  const history = useHistory()
 
   const [formData, setFormData] = useState({
     title: '',
@@ -35,12 +40,12 @@ const Doodle = () => {
   }
   const handleSave = () => {
     const artworkToSend = doodle.getSaveData()
-    const newFormData = { ...formData, doodleData: artworkToSend }
+    const newFormData = { ...formData, doodleData: artworkToSend, formData }
     setFormData(newFormData)
 
     const sendArtwork = async () => {
-
-      await axios.post('/api/artwork', newFormData)
+      await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      history.push('/profile')
     }
     sendArtwork()
   }
@@ -133,7 +138,15 @@ const Doodle = () => {
           </div>
           <hr />
           <div>
+            { !userIsAuthenticated() &&
+            <>
+              <button className="button"> Save </button>
+              <p>*sign up to save</p>
+            </> 
+            }
+            { userIsAuthenticated() && 
             <button className="button is-primary" onClick={() => handleSave()}> Save </button>
+            }
             <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
             {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
             <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
