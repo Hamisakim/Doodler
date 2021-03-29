@@ -47,8 +47,11 @@ router.route('/users')
 router.route('/users/:id')
   .get(getSingleUser)
 
-router.route('/users/:id/bio')
-  .put(addBio)
+router.route('/users/:id/bio') //* front end make sure userId is being passed
+  .post(addBio)
+
+// router.route('/users/:id/bio/:bio-id') //* front end make sure userId is being passed
+//   .put(addBio)
 
 
 

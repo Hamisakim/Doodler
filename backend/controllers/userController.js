@@ -33,12 +33,23 @@ export const getSingleUser = async(req, res) => {
 export const addBio = async (req, res) => {
   try {
     const { id } = req.params
+    console.log('🐝 ~ file: userController.js ~ line 36 ~ req.params', req.params)
     const profileToEdit = await User.findById(id)
+    console.log('🐝 ~ file: userController.js ~ line 38 ~ profileToEdit', profileToEdit)
+    if (!profileToEdit) throw new Error('profile not found')
     
-    const bioToAdd = { ...bioToAdd, bio: req.body }
+    console.log('🐝 ~ file: userController.js ~ line 41 ~ profileToEdit.bio.length', profileToEdit.bio.length)
+    
+    if (profileToEdit.bio.length === 0) {
+      profileToEdit.bio.push(req.body)
+      await profileToEdit.save()
+    } else if (profileToEdit.bio.length > 0) {
+      profileToEdit.bio.pop()
+      profileToEdit.bio.push(req.body)
+      await profileToEdit.save()
+    }
 
-    console.log(profileToEdit.bio)
-
+    res.status(200).json(profileToEdit)
   } catch (err) {
     console.log('🆘 Something went wrong!', err)
     return res.status(404).json({ 'message': 'Couldnt add bio' })
