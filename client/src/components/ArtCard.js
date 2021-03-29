@@ -13,30 +13,25 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 //! WITH SEMANTIC 
 const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  }) => {
   const [isFlipped, setIsFlipped] = useState(false)
-
   const [width, setWidth] = useState(400)
   const [height, setHeight] = useState(400)
-
-
 
   const handleClick = () => {
     setIsFlipped(!isFlipped)
   }
 
-  const extra = (
+  const likeButton = (
     <a>
-      <SemanticLikeButton />
-      {totalFavourites}
+      <SemanticLikeButton id={id} totalFavourites={totalFavourites}/>
     </a>
   )
   
-
   return (
     <> 
-      <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' onClick={handleClick}>
-        <div className='card-front' onClick={handleClick}>
-          <Card 
-            header={title}
+      <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' >
+       
+        {/* <div className='card-front' onClick={handleClick}>
+          <Card
             image={<CanvasDraw className='canvas-container'       
               disabled
               hideGrid
@@ -46,17 +41,54 @@ const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  
               //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
               //saveData={artwork.doodleData}
             />}
-            extra={extra}
-          />
-        </div>
+            extra={likeButton}
+          > 
+            <Card.Header>{title}</Card.Header>
+          </Card>
+        </div> */}
 
-        <div className='card-back' onClick={handleClick}>
-          <Card
+
+        <div className='card-front' onClick={handleClick}>
+          <div className="ui card">
+            <div className="image">
+              <CanvasDraw className='canvas-container'       
+                disabled
+                hideGrid
+                saveData={doodleData}
+              // canvasWidth={350}
+              // canvasHeight={350}   
+              //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
+              //saveData={artwork.doodleData}
+              />
+            </div>
+            <div className="content"></div>
+            <div className="header">{title}</div>
+            <div className="">
+              <SemanticLikeButton id={id}/>
+            </div>
+          </div>
+        </div>
+    
+
+
+        <div className='card-back' >
+          {/* <Card
             header={title}
             meta=''
             description={description}
-            extra={extra}
-          />
+            extra={likeButton}
+          /> */}
+          <Card>
+            <Card.Content onClick={handleClick}>
+              <Card.Header>{title}</Card.Header>
+              <Card.Description>
+                {description}
+              </Card.Description>
+            </Card.Content>
+            <div className="content">
+              <SemanticLikeButton id={id} />
+            </div>
+          </Card>
         </div>
        
       </ReactCardFlip>

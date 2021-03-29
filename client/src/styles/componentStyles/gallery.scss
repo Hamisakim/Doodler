@@ -1,14 +1,16 @@
-
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/grid/columns.sass";
 @import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 // $buttonColor: red;
+
+
+
 
 .loader-container{
   text-align: center;
   height: 80vh;
   }
   
-
-
 
   .gallery {
     background-color: rgba(72, 255, 0, 0.15);

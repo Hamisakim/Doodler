@@ -37,7 +37,7 @@ router.route('/:id/like')
   //.post(secureRoute, checkIfLiked)
   .post(secureRoute,addLike)
 	
-
+router.route('/:id/:likeId')
 // router.route('/:id/favourite')
 
 

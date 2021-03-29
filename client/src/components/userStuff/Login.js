@@ -1,10 +1,10 @@
-
+import 'bulma/bulma.sass'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { loginPopUp } from '../../helpers/popUps.js' //* handles the pop-up
+// import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
   const history = useHistory()
@@ -16,7 +16,6 @@ const Login = () => {
   const [ wasLoginSuccess, setWasLoginSuccess ] = useState(null)
   console.log('🐝 ~ file: Login.js ~ line 15 ~ wasLoginSuccess', wasLoginSuccess)
 
-  console.log('🐝 ~ file: Login.js ~ line 11 ~ formData', formData)
   const handleChange = (event) => {
     //?get the value of what's being typed in the form and updating state
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -25,50 +24,22 @@ const Login = () => {
   }
 
   const handleSubmit = async (event) => {
-    console.log('🐝 ~ file: Login.js ~ line 28 ~ event', event)
     event.preventDefault()
     // if()
     try {
       const response = await axios.post('api/login', formData)
       console.log('🐝 ~ file: Login.js ~ line 26 ~ response', response.data.message)
       setWasLoginSuccess(true)
-      notifyPopup(true)
+      loginPopUp(true)
       window.localStorage.setItem('token',response.data.token)
       history.push('/doodle') 
     } catch (err) {
       console.log('🐝 ~ file: Login.js ~ line 33 ~ err', err.response)
       setWasLoginSuccess(false)
-      notifyPopup(false)
+      loginPopUp(false)
     }
   }
 
-  //? This handles the toastify pop up 
-  const notifyPopup = (wasLoginSuccess) => {
-    console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
-    if (wasLoginSuccess === true){
-      toast.success('Enjoy doodling!', {
-        position: 'top-center',
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        pauseOnFocusLoss: false
-      })
-    } else if (wasLoginSuccess === false) {
-      toast.error('🙀 something went wrong... Please try again!', {
-        position: 'top-center',
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        pauseOnFocusLoss: false
-      }) 
-    }
-  }
 
 
   return (
@@ -76,7 +47,7 @@ const Login = () => {
       <section className="section">
         <div className="container">
           <div className="columns">
-            <h2>{wasLoginSuccess}</h2>
+
             <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
               <legend className='has-text-centered'> <h1>Login </h1></legend>
               <div className="field">
@@ -105,7 +76,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="field">
-                <button onClick={notifyPopup} className="button is-block is-info is-large is-fullwidth">Login</button><br />
+                <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
               </div>
             </form>
           </div>

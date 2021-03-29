@@ -1,6 +1,33 @@
-*{
+.header{
   text-align: center;
 }
+
+.card-front{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-back{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.card{
+  min-width: 350px;
+  min-height: 420px;
+}
+
+.Toastify__toast--success {
+  background-color: orange;
+}
+
+.like-btn-and-counter{
+  text-align: center;
+}
+
+/*
 .card-image{
   display: flex;
   justify-content: center;
@@ -48,4 +75,4 @@ footer{
   h2{
     font-size: 2rem;
   }
-}
+} */
