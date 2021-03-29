@@ -1,3 +1,4 @@
+import '../../styles/componentStyles/navbar.scss'
 import React, { useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 
