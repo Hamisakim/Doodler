@@ -28,6 +28,8 @@ const Gallery = () => {
     </div>
 
   )
+
+  
   return (
     <div className='container'>
 
