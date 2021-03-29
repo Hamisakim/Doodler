@@ -19,7 +19,6 @@ const DoodleEdit = () => {
   const [lazyRadius, setLazyRadius] = useState(12)
   const [doodle, setDoodle] = useState(null)
   const [doodleData, setDoodleData] = useState('')
-  //const [userId, setUserId] = useState(null)
 
   let doodleRef = useRef(null)
 
@@ -55,21 +54,13 @@ const DoodleEdit = () => {
     setBackgroundColor(doodleBg)
     console.log('doodle', doodle)
   }, [doodle])
-
-  // useEffect(() => {
-  //   const payload = getPayloadFromToken()
-  //   const userId = payload.sub
-  //   console.log('payload', payload)
-  //   console.log('userId', userId)
-  //   setUserId(userId)
-  // }, [getPayloadFromToken()])
   
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
 
-  const handleSave = () => {
+  const handleUpdate = () => {
     const artworkToSend = LZString.compressToEncodedURIComponent(doodleRef.getSaveData())
     const newFormData = { ...formData, doodleData: artworkToSend, formData }
     setFormData(newFormData)
@@ -85,6 +76,7 @@ const DoodleEdit = () => {
   const handleClear = () => {
     doodleRef.clear()
     setBackgroundColor('#fff')
+    doodleRef.loadSaveData(doodleData, true)
   }
 
   //if (!doodle) return null
@@ -176,14 +168,8 @@ const DoodleEdit = () => {
           </div>
           <hr />
           <div>
-            { !userIsAuthenticated() &&
-            <>
-              <button className="button"> Save </button>
-              <p>*sign up to save</p>
-            </> 
-            }
             { userIsAuthenticated() && 
-            <button className="button is-primary" onClick={() => handleSave()}> Save </button>
+            <button className="button is-primary" onClick={() => handleUpdate()}> Update </button>
             }
             <button className="button is-warning" onClick={() => doodleRef.undo()}> Undo </button>
             {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
