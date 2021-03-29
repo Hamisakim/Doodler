@@ -6,13 +6,14 @@ import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 import LZString from 'lz-string'
 
-import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
+import { getPayloadFromToken, getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
  
 const DoodleNew = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
   const [brushColor, setBrushColor] = useState('#B3B3B3')
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
+  const [userId, setUserId] = useState(null)
 
   let doodle = useRef(null)
 
@@ -21,7 +22,6 @@ const DoodleNew = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    //doodleData: '{"lines":[],"width":400,"height":400}'
     doodleData: ''
   })
   useEffect(() => {
@@ -31,17 +31,20 @@ const DoodleNew = () => {
     setLazyRadius(lazyRadius)
   }, [])
 
-  // useEffect(() => {
-  //   setFormData(formData)
-  // }, [formData])
-  
+  useEffect(() => {
+    const payload = getPayloadFromToken()
+    const userId = payload.sub
+    console.log('payload', payload)
+    console.log('userId', userId)
+    setUserId(userId)
+  }, [getPayloadFromToken()])
+
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
 
   const handleSave = () => {
-    //const artworkToSend = doodle.getSaveData()
     const artworkToSend = LZString.compressToEncodedURIComponent(doodle.getSaveData())
     const newFormData = { ...formData, doodleData: artworkToSend, formData }
     setFormData(newFormData)
@@ -53,7 +56,7 @@ const DoodleNew = () => {
 
     const sendArtwork = async () => {
       await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-      history.push('/profile')
+      history.push(`/profile/${userId}`)
     }
     sendArtwork()
   }
@@ -88,7 +91,7 @@ const DoodleNew = () => {
                 <div>
                   <label>Brush Radius:</label>
                   <div className="slidecontainer">
-                    <input type="range" min="1" max="30" value={brushRadius} className="slider" id="myRange" onChange={e =>
+                    <input type="range" min="1" max="60" value={brushRadius} className="slider" id="myRange" onChange={e =>
                       setBrushRadius(parseInt(e.target.value, 10))
                     } />
                   </div>

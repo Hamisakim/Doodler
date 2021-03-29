@@ -19,6 +19,7 @@ const DoodleEdit = () => {
   const [lazyRadius, setLazyRadius] = useState(12)
   const [doodle, setDoodle] = useState(null)
   const [doodleData, setDoodleData] = useState('')
+  //const [userId, setUserId] = useState(null)
 
   let doodleRef = useRef(null)
 
@@ -54,6 +55,14 @@ const DoodleEdit = () => {
     setBackgroundColor(doodleBg)
     console.log('doodle', doodle)
   }, [doodle])
+
+  // useEffect(() => {
+  //   const payload = getPayloadFromToken()
+  //   const userId = payload.sub
+  //   console.log('payload', payload)
+  //   console.log('userId', userId)
+  //   setUserId(userId)
+  // }, [getPayloadFromToken()])
   
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -68,7 +77,7 @@ const DoodleEdit = () => {
     const sendArtwork = async () => {
       // ! PUT request here, make route in back end
       await axios.put(`/api/artwork/${params.id}/edit`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-      history.push('/profile')
+      history.push(`/gallery/${params.id}`)
     }
     sendArtwork()
   }
@@ -76,7 +85,6 @@ const DoodleEdit = () => {
   const handleClear = () => {
     doodleRef.clear()
     setBackgroundColor('#fff')
-
   }
 
   //if (!doodle) return null
@@ -102,7 +110,7 @@ const DoodleEdit = () => {
                 <div>
                   <label>Brush Radius:</label>
                   <div className="slidecontainer">
-                    <input type="range" min="1" max="30" value={brushRadius} className="slider" id="myRange" onChange={e =>
+                    <input type="range" min="1" max="60" value={brushRadius} className="slider" id="myRange" onChange={e =>
                       setBrushRadius(parseInt(e.target.value, 10))
                     } />
                   </div>

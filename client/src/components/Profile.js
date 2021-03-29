@@ -23,7 +23,6 @@ const Profile = () => {   //{ username }
 
   useEffect(() => {
     const getSingleUser = async () => {
-      console.log('params.id', params.id)
       const response = await axios.get(`/api/users/${params.id}`)
       setUser(response.data)
     }
@@ -35,6 +34,13 @@ const Profile = () => {   //{ username }
     }
     getAllArtwork()
   }, [])
+
+  // useEffect(() => {
+  //   console.log('fsds',params.id)
+  //   if (params.id === undefined) {
+  //     history.push('/login')
+  //   }
+  // }, [])
 
   useEffect(() => {
     if (!allArtwork) return null
@@ -109,7 +115,7 @@ const Profile = () => {   //{ username }
                   ))}
                 </>
                 :
-                <p>no art yet</p>
+                <p>no art yet, add a LINK to doodle page</p>
               }
             </div>
           </div>
