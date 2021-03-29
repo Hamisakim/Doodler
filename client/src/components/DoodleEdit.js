@@ -36,6 +36,7 @@ const DoodleEdit = () => {
     const getData = async () => {
       const response = await axios.get(`/api/artwork/${params.id}`)
       setDoodle(response.data)
+      setFormData(response.data)
     }
     getData()
   }, [])
@@ -45,31 +46,14 @@ const DoodleEdit = () => {
     setBrushRadius(brushRadius)
     setLazyRadius(lazyRadius)
 
-    
-    // const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
-    // console.log('parsed bg', decompressedDoodleData.backgroundColor)
-    // const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
-    // setDoodleData(decompressedDoodleData)
-    // setBackgroundColor(doodleBg)
-    // console.log('doodleData', doodleData)
-    // if (!doodle) return null
-    // handleBug()
-    
-  }, [])
-
-  useEffect(() => {
     if (!doodle) return null
-    handleBug()
-  }, [doodle])
-
-  const handleBug = () => {
     const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
     console.log('parsed bg', decompressedDoodleData.backgroundColor)
     const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
     setDoodleData(decompressedDoodleData)
     setBackgroundColor(doodleBg)
-    console.log('doodleData', doodleData)
-  }
+    console.log('doodle', doodle)
+  }, [doodle])
   
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -95,10 +79,7 @@ const DoodleEdit = () => {
 
   }
 
-  // const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
-  // console.log('parsed bg', decompressedDoodleData.backgroundColor)
-  // const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
-  if (!doodle) return null
+  //if (!doodle) return null
   return (
     <>
       <div className="page-wrapper">
@@ -169,6 +150,7 @@ const DoodleEdit = () => {
                 placeholder="Title"
                 name="title"
                 value={formData.title}
+                //value={doodle.title}
                 onChange={handleChange}
               />
             </div>
@@ -179,6 +161,7 @@ const DoodleEdit = () => {
                 placeholder="description"
                 name="description"
                 value={formData.description}
+                //value={doodle.description}
                 onChange={handleChange}
               />
             </div>
