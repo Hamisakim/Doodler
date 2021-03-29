@@ -73,9 +73,13 @@ const DoodleEdit = () => {
     sendArtwork()
   }
 
-  const handleClear = () => {
+  const handleRevert = () => {
     doodleRef.clear()
-    setBackgroundColor('#fff')
+    console.log('doodle', doodle)
+    console.log('doodleData', doodleData)
+    const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
+    const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
+    setBackgroundColor(doodleBg)
     doodleRef.loadSaveData(doodleData, true)
   }
 
@@ -173,7 +177,7 @@ const DoodleEdit = () => {
             }
             <button className="button is-warning" onClick={() => doodleRef.undo()}> Undo </button>
             {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
-            <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
+            <button className="button is-danger" onClick={() => handleRevert()}> Revert </button>
           </div>
 
         </div>
