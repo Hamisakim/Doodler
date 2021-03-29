@@ -6,7 +6,7 @@ const Home = () => {
 
 
   return (
-    <>
+    <div className="homepage-wrapper">
       <div className="section-header">
         <h2 className="section-title">
           <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo" className="second-logo"></img>
@@ -32,25 +32,36 @@ const Home = () => {
         </ul>
       </section>
       <section>
-        // To use lazy loading, set a data-lazy attribute
-        // on your img tags and leave off the src
+        {/* <head>
+          <title>My Now Amazing Webpage</title>
+          <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+          <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+        </head>
+        <body>
 
-        <img data-lazy="img/lazyfonz1.png" />
+          <div className="your-class">
+            <div>your content</div>
+            <div>your content</div>
+            <div>your content</div>
+          </div>
 
-        {/* $('.lazy').slick({
-          lazyLoad: 'ondemand',
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }); */}
+          <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+          <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+          <script type="text/javascript" src="slick/slick.min.js"></script>
 
-        $('.autoplay').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-        });
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $('.your-class').slick({
+                setting- name: setting-value
+              });
+            });
+          </script>
+
+        </body>
+ */}
+
       </section>
-    </>
+    </div>
   )
 }
 
