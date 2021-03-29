@@ -4,6 +4,8 @@
     "browserslist",
     "bulma",
     "donec",
-    "tincidunt"
+    "fullwidth",
+    "tincidunt",
+    "toastify"
   ]
 }

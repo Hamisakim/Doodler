@@ -1,8 +1,15 @@
 /* eslint-disable no-undef */
+import 'bulma/bulma.sass'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { loginPopUp } from '../../helpers/popUps.js'
+
+
 //import { getTokenFromLocalStorage } from '../helpers/authHelp'
+
+
+
 const JoinPage = () => {
   // pass in props wether user clicked on the login or the register 
   // use conditional return to check each form. 
@@ -10,7 +17,9 @@ const JoinPage = () => {
   // simple button will switch the condition to true or false if user has account or not 
   // easy 
 
-  
+  // eslint-disable-next-line no-unused-vars
+  const [ wasLoginSuccess, setWasLoginSuccess ] = useState(null)
+  console.log('🐝 ~ file: JoinPage.js ~ line 20 ~ wasLoginSuccess', wasLoginSuccess)
   const [isUserLoggedIn, setIsUserLoggedIn]  = useState(false)
   console.log('🐝 ~ file: JoinPage.js ~ line 14 ~ isUserLoggedIn', isUserLoggedIn)
   
@@ -48,32 +57,41 @@ const JoinPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     try {
       const dataToSend = formData
       console.log('🤖 ~ formData', formData)
       const response =  await axios.post('api/join', dataToSend)
       console.log('🟢 ~ file: JoinPage.js ~ line 44 ~ response', response)
       console.log('signup 🥳')
-      
-      history.push('/login') //!change back to /
+      if (response){
+        //const formToSendToLogin = { }
+        const username  =  formData.username 
+        console.log('🐝 ~ file: JoinPage.js ~ line 66 ~ username', username)
+        const password = formData.password
+        const loginData = { usernameOrEmail: username, password: password }
+        console.log('🐝 ~ file: JoinPage.js ~ line 69 ~ password', password)
+        console.log('🐝 ~ file: JoinPage.js ~ line 67 ~ loginData', loginData)
+        const loginResponse = await axios.post('api/login',loginData )
+        console.log('🐝 ~ file: Login.js ~ line 26 ~ response', loginResponse.data.message)
+        loginPopUp(true)
+        window.localStorage.setItem('token',loginResponse.data.token)
+      }
+      history.push('/doodle') 
+      //history.push('/login') //!change back to /
     } catch (err) {
-      setErrors(err.response.data)
-      console.log('🔴 ~ file: JoinPage.js ~ line 44 ~ response',err.response.data.message.message)
+      setErrors(err.response)
+      console.log('🔴 ~ file: JoinPage.js ~ line 44 ~ response',err.response)
+      //setWasLoginSuccess(false)
+      loginPopUp(false)
     }
   }
-
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
     history.push('/login')
+    // eslint-disable-next-line no-undef
     setIsUserLoggedIn(false)
   }
-
-
-
-
-
 
   return (
     <>
@@ -83,9 +101,7 @@ const JoinPage = () => {
             <h1>you are logged in in already </h1>
             <button className='button is-danger' onClick={handleLogout} >Logout</button>
           </div>
-      
-          : 
-   
+          : //? conditional render 
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
               <div className="box">
@@ -95,9 +111,9 @@ const JoinPage = () => {
                   <div className="field">
                     <p className="control has-icons-left has-icons-right">
                       <input className="input is-medium" 
-                        name="email" 
-                        placeholder="Email" 
-                        value={formData.email}
+                        name="username" 
+                        placeholder="Username" 
+                        value={formData.username}
                         onChange={handleChange}
                       />
                       <span className="icon is-medium is-left">
@@ -111,9 +127,9 @@ const JoinPage = () => {
                   <div className="field">
                     <p className="control has-icons-left has-icons-right">
                       <input className="input is-medium" 
-                        name="username" 
-                        placeholder="Username" 
-                        value={formData.username}
+                        name="email" 
+                        placeholder="Email" 
+                        value={formData.email}
                         onChange={handleChange}
                       />
                       <span className="icon is-medium is-left">
@@ -132,6 +148,7 @@ const JoinPage = () => {
                         placeholder="Password" 
                         value={formData.password}
                         onChange={handleChange}
+                        type='password'
                       />
                       <span className="icon is-small is-left">
                         <i className="fas fa-lock"></i>
@@ -145,6 +162,7 @@ const JoinPage = () => {
                         placeholder="Confirm Password" 
                         value={formData.passwordConfirmation}
                         onChange={handleChange}
+                        type='password'
                       />
                       <span className="icon is-small is-left">
                         <i className="fas fa-lock"></i>
