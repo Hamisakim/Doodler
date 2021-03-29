@@ -1,7 +1,7 @@
 import '../styles/componentStyles/profile.scss'
 
-import React, { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import ArtCard from './ArtCard'
 
@@ -10,57 +10,62 @@ import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHe
 
 const Profile = () => {   //{ username } 
   const [user, setUser] = useState(null)
-  const [artwork, setArtwork] = useState(null)
-  const [bio, setBio] = useState(null)
+  const [allArtwork, setAllArtwork] = useState(null)
+  const [userArtwork, setUserArtwork] = useState(null)
+  const [formData, setFormData] = useState({
+    bio: ''
+  })
 
-  const doodle = useRef(null)
   const params = useParams()
+  const history = useHistory()
+
+
 
   useEffect(() => {
-
     const getSingleUser = async () => {
+      console.log('params.id', params.id)
       const response = await axios.get(`/api/users/${params.id}`)
       setUser(response.data)
     }
     getSingleUser()
 
-    const getArtwork = async () => {
-      const response = await axios.get('api/artwork')
-      setArtwork(response.data)
+    const getAllArtwork = async () => {
+      const response = await axios.get('/api/artwork')
+      setAllArtwork(response.data)
     }
-    getArtwork()
-
-    const saveBio = async () => {
-      const response = await axios.put(`/api/users/${params.id}/bio`)
-      setBio(response.data)
-    }
-    saveBio()
+    getAllArtwork()
   }, [])
 
-  
-  console.log('user ->', user)
-  console.log('bio ->', bio)
+  useEffect(() => {
+    if (!allArtwork) return null
+    const userArtworkArray = allArtwork.filter(doodle => {
+      return doodle.owner._id === params.id
+    })
+    setUserArtwork(userArtworkArray)
+    console.log(userArtwork)
+    
+  }, [allArtwork])
 
-
-  const [formData, setFormData] = useState({
-    bio: ''
-  })
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
-  const handleSave = () => {
-    const bioToSend = doodle.getSaveData()
+
+  const handleSaveBio = () => {
+    const bioToSend = formData.bio
     const newFormData = { ...formData, bio: bioToSend, formData }
     setFormData(newFormData)
 
     const sendBio = async () => {
-      await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
       history.push('/profile')
     }
     sendBio()
+        
   }
 
+  if (!user) return null
+  if (!userArtwork) return null
   return (
 
     <div className="main">
@@ -75,6 +80,9 @@ const Profile = () => {   //{ username }
               <figure className="profile-pic image is-128x128">
                 <img src="https://bulma.io/images/placeholders/128x128.png"></img>
               </figure>
+              {/* { user.bio &&
+                <p>{user.bio}</p>
+              } */}
             </div>
             <div>
               <input
@@ -85,7 +93,7 @@ const Profile = () => {   //{ username }
                 onChange={handleChange}
               />
               { userIsAuthenticated() && 
-                <button className="button is-primary" onClick={() => handleSave()}> Save </button>
+                <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
               }
             </div>
           </div>
@@ -93,13 +101,17 @@ const Profile = () => {   //{ username }
         <div className="box">
           <h2>Your Doodles</h2>
           <div>
-            { artwork &&
-              <div className="columns">
-                { artwork.map( art => (
-                  <ArtCard key={art._id} {...art} />
-                ))}
-              </div>
-            }
+            <div className="columns">
+              { userArtwork.length > 0 ?
+                <>
+                  { userArtwork.map( art => (
+                    <ArtCard key={art._id} {...art} />
+                  ))}
+                </>
+                :
+                <p>no art yet</p>
+              }
+            </div>
           </div>
         </div>
       </div>

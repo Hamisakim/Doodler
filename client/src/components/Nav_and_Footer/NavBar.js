@@ -26,7 +26,7 @@ const NavBar = () => {
     console.log('payload', payload)
     console.log('userId', userId)
     setUserId(userId)
-  }, [])
+  }, [getPayloadFromToken()])
 
   //acess payload from local storage and pass into usi is owner function
   return (
