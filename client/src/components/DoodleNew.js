@@ -130,8 +130,11 @@ const DoodleNew = () => {
             </div>
           </div>
         </div>
+        
         <div className="doodle-details-wrapper">
           <div>
+            { userIsAuthenticated() &&
+          <>
             <hr />
             <div>
               <input
@@ -152,25 +155,28 @@ const DoodleNew = () => {
                 onChange={handleChange}
               />
             </div>
-          </div>
-          <hr />
-          <div>
-            { !userIsAuthenticated() &&
-            <>
-              <button className="button"> Save </button>
-              <p>*sign up to save</p>
-            </> 
+          </>
             }
+          </div> 
+          <hr />
+          <div> 
             { userIsAuthenticated() && 
             <button className="button is-primary" onClick={() => handleSave()}> Save </button>
             }
             <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
             {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
             <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
+            { !userIsAuthenticated() &&
+            <>
+              {/* <button className="button"> Save </button> */}
+              <p>*sign up to save(insert link to login page here)</p>
+            </> 
+            }
           </div>
 
         </div>
       </div>
+    
     </>
   )
 }
