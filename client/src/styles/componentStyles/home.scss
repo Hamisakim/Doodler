@@ -39,9 +39,9 @@ img {
 	background-size:cover;
 }
 .page-doodle {
-	background-image:
-		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-		// url('../images/fitzroy.jpg');
+	height: 250px;
+  width: 449.5px;
+  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
 }
 .page-gallery {
 	background-image:
@@ -72,3 +72,47 @@ img {
 
 /* Hero Slider*/
 
+.carousel-wrapper {
+  height: 60vh;
+  // width: 100px;
+}
+
+.doodle-gif {
+  height: 250px;
+  width: 449.5px;
+  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+}
+
+
+/* Hero */
+
+.carousel-images {
+  height: 30rem;
+  width:30rem
+}
+
+// .hero {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-height:700px;
+
+// 	color:#fff;
+// 	text-align:center;
+
+//   height: 60vh;
+// 	// background-image:
+// 	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+// 	// 	url('../images/melbourne.jpg');
+// 	// background-size:cover;
+// }
+
+// .hero-content {
+// 	max-width:600px;
+// 	font-weight: 700;
+// }
+// .hero-content p {
+// 	font-size:24px;
+// }
+// .hero-button {
+// 	margin-top:20px;
