@@ -1,11 +1,11 @@
 import '../styles/componentStyles/artworkPage.scss'
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import ReactStars from 'react-rating-stars-component'
-
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
+import { userIsOwner } from '../helpers/authHelp'
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
@@ -35,7 +35,10 @@ const ArtworkShow = () => {
   return (
     <div className="page-wrapper">
       <div className="description-wrapper">
-        <h1 className="title">{doodle.title}</h1>
+        <div className="desc-top-row">
+          <h1 className="title">{doodle.title}</h1>
+          <p>{doodle.owner.username}</p>
+        </div>
         { doodle.description &&
         <p>{doodle.description}</p>
         }
@@ -67,14 +70,15 @@ const ArtworkShow = () => {
             <input
               className="input"
               placeholder="leave comment"
-              
             />
-            <div>star wrapper: select checkboxes, with values 1-5</div>
           </form>
         </div>
         <div className="doodle-show-comments">
           <p>map through comments here</p>
         </div>
+        { userIsOwner(doodle.owner._id) && 
+        <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
+        }
       </div>
     </div>
   )

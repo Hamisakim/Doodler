@@ -9,6 +9,7 @@ import Profile from './components/Profile'
 import JoinPage from './components/userStuff/JoinPage'
 import Login from './components/userStuff/Login'
 import ArtworkShow from './components/ArtworkShow'
+import DoodleEdit from './components/DoodleEdit'
 
 
 const App = () => {
@@ -28,6 +29,10 @@ const App = () => {
 
           <Route path='/doodle-new'>
             <DoodleNew />
+          </Route>
+
+          <Route path="/gallery/:id/edit">
+            <DoodleEdit />
           </Route>
 
           <Route path="/gallery/:id">

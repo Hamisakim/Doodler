@@ -1,39 +1,50 @@
+/* eslint-disable no-unused-vars */
+
 import '../styles/componentStyles/doodle.scss'
 import React, { useState, useEffect, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 import LZString from 'lz-string'
 
-import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
- 
-const DoodleNew = () => {
+
+
+import { userIsAuthenticated } from '../helpers/authHelp'
+
+const DoodleEdit = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
   const [brushColor, setBrushColor] = useState('#B3B3B3')
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
+  const [doodle, setDoodle] = useState(null)
 
-  let doodle = useRef(null)
+  let doodleRef = useRef(null)
 
-  const history = useHistory()
+  //const history = useHistory()
 
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    //doodleData: '{"lines":[],"width":400,"height":400}'
     doodleData: ''
   })
+
+  const params = useParams()
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get(`/api/artwork/${params.id}`)
+      setDoodle(response.data)
+    }
+    getData()
+  }, [])
+
   useEffect(() => {
     setBackgroundColor(backgroundColor)
     setBrushColor(brushColor)
     setBrushRadius(brushRadius)
     setLazyRadius(lazyRadius)
   }, [])
-
-  // useEffect(() => {
-  //   setFormData(formData)
-  // }, [formData])
   
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -41,32 +52,36 @@ const DoodleNew = () => {
   }
 
   const handleSave = () => {
-    //const artworkToSend = doodle.getSaveData()
-    const artworkToSend = LZString.compressToEncodedURIComponent(doodle.getSaveData())
+    const artworkToSend = LZString.compressToEncodedURIComponent(doodleRef.getSaveData())
     const newFormData = { ...formData, doodleData: artworkToSend, formData }
     setFormData(newFormData)
 
-    // const compressed = LZString.compress(doodle.getSaveData())
-    // console.log('original', doodle.getSaveData())
-    // console.log('compressed', compressed)
-    // console.log('decompressed', LZString.decompress(compressed))
-
     const sendArtwork = async () => {
-      await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-      history.push('/profile')
+      // ! PUT request here, make route in back end
+      // await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      // history.push('/profile')
     }
     sendArtwork()
   }
 
   const handleClear = () => {
-    doodle.clear()
+    doodleRef.clear()
     setBackgroundColor('#fff')
+
   }
 
+  if (!doodle) return null
+
+  const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
+  console.log('parsed bg', decompressedDoodleData.backgroundColor)
+  const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
+
+  //setBackgroundColor(JSON.parse(decompressedDoodleData).backgroundColor)
+
+  // setBackgroundColor(doodleBg)
+
+
   console.log(formData)
-  // const compressed = LZString.compress('hi there')
-  // console.log('compressed', compressed)
-  // console.log('compressed', LZString.decompress(compressed))
 
   return (
     <>
@@ -75,11 +90,12 @@ const DoodleNew = () => {
           <div className="col">
             <CanvasDraw
               className="doodle-canvas"
-              ref={canvasDraw => (doodle = canvasDraw)}
+              ref={canvasDraw => (doodleRef = canvasDraw)}
               brushColor={brushColor}
               backgroundColor={backgroundColor}
               brushRadius={brushRadius}
               lazyRadius={lazyRadius}
+              saveData={decompressedDoodleData}
             />
           </div>
           <div className="col">
@@ -161,7 +177,7 @@ const DoodleNew = () => {
             { userIsAuthenticated() && 
             <button className="button is-primary" onClick={() => handleSave()}> Save </button>
             }
-            <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
+            <button className="button is-warning" onClick={() => doodleRef.undo()}> Undo </button>
             {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
             <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
           </div>
@@ -171,4 +187,4 @@ const DoodleNew = () => {
     </>
   )
 }
-export default DoodleNew
+export default DoodleEdit
