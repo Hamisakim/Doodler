@@ -56,7 +56,7 @@ export const addComment = async (req, res) => {
     const { id } = req.params
     const artworkToAddTo = await Artwork.findById(id) 
     if (!artworkToAddTo) throw new Error('🔴 No artwork found to add 🔴')
-    const newComment = { ...req.body,username: req.currentUser.username , owner: req.currentUser }
+    const newComment = { ...req.body, username: req.currentUser.username , owner: req.currentUser }
     artworkToAddTo.comments.push(newComment)
     await artworkToAddTo.save()
     return res.status(200).json({ message: 'comment added ' })
