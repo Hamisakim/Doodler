@@ -11,6 +11,8 @@ import Login from './components/userStuff/Login'
 import ArtworkShow from './components/ArtworkShow'
 import DoodleEdit from './components/DoodleEdit'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   return (
@@ -54,7 +56,7 @@ const App = () => {
         </Switch>
         <Footer />
       </BrowserRouter>
-
+      <ToastContainer />
     </>
   )
 }

@@ -7,6 +7,13 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 })
 
+//?reverse relationship so we get the user created artwork 
+userSchema.virtual('usersArtwork', { 
+  ref: 'Artwork',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
 userSchema.set('toJSON', {
   virtuals: true,
   transform(_doc, json) {
@@ -14,6 +21,9 @@ userSchema.set('toJSON', {
     return json
   }
 })
+
+
+
 
 userSchema
   .virtual('passwordConfirmation') // defining name of virtual field

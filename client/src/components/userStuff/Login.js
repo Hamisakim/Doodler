@@ -1,17 +1,21 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+import 'bulma/bulma.sass'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
+import { loginPopUp } from '../../helpers/popUps.js' //* handles the pop-up
+// import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
   const history = useHistory()
   const [formData, setFormData] = useState({
-    username: '',
+    usernameOrEmail: '',
     password: ''
   })
-  
-  console.log('🐝 ~ file: Login.js ~ line 11 ~ formData', formData)
+  // eslint-disable-next-line no-unused-vars
+  const [ wasLoginSuccess, setWasLoginSuccess ] = useState(null)
+  console.log('🐝 ~ file: Login.js ~ line 15 ~ wasLoginSuccess', wasLoginSuccess)
+
   const handleChange = (event) => {
     //?get the value of what's being typed in the form and updating state
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -20,19 +24,20 @@ const Login = () => {
   }
 
   const handleSubmit = async (event) => {
-    console.log('🐝 ~ file: Login.js ~ line 21 ~ handleSubmit', )
-    //?sending to our api
     event.preventDefault()
+    // if()
     try {
       const response = await axios.post('api/login', formData)
-      //* adding token
+      console.log('🐝 ~ file: Login.js ~ line 26 ~ response', response.data.message)
+      setWasLoginSuccess(true)
+      loginPopUp(true)
       window.localStorage.setItem('token',response.data.token)
       console.log('🐝 ~ file: Login.js ~ line 26 ~ response', response)
       history.push('/doodle-new') 
     } catch (err) {
-      // const errorMessageToSend = `${response.data.message}. Please contact us if you have forgotten your password`
-      //console.log('🐝 ~ file: Login.js ~ line 29 ~ errorMessageToSend', errorMessageToSend)
-      console.log('🐝 ~ file: Login.js ~ line 32 ~ err', err)
+      console.log('🐝 ~ file: Login.js ~ line 33 ~ err', err.response)
+      setWasLoginSuccess(false)
+      loginPopUp(false)
     }
   }
 
@@ -41,17 +46,18 @@ const Login = () => {
       <section className="section">
         <div className="container">
           <div className="columns">
+
             <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
               <legend className='has-text-centered'> <h1>Login </h1></legend>
               <div className="field">
-                <label className="label">Username</label>
+                <label className="label">Username or Email</label>
                 <div className="control">
                   <input
                     className="input"
-                    placeholder="username"
-                    name="username"
+                    placeholder="Username or email"
+                    name="usernameOrEmail"
                     onChange={handleChange}
-                    value={formData.email}
+                    value={formData.usernameOrEmail}
                   />
                 </div>
               </div>

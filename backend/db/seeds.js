@@ -26,9 +26,9 @@ const seedDataBase = async () => {
     //* Add artworks 
     const artworks = await Artwork.create(artworkWithUsers)
     console.log(`🌱 DB seeded with ${artworks.length}🌱 `)
-
     await mongoose.connection.close()
     console.log('BYE FELICIA ✌️')
+    
   } catch (err) {
     console.log('🤖 ~ file: seeds.js ~ line 8 ~ err', err)
     await mongoose.connection.close()

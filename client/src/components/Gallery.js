@@ -10,6 +10,7 @@ import ArtCard from './ArtCard'
 const Gallery = () => {
   const [doodles, setDoodles] = useState([])
   console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get('/api/artwork')
@@ -35,7 +36,7 @@ const Gallery = () => {
           console.log('parsed', JSON.parse(artwork.doodleData).backgroundColor)
           return <div className="gallery-canvas" key={artwork._id}>
             <CanvasDraw
-              // imediate loading on gallery, animated load on individual doodle show page
+              // immediate loading on gallery, animated load on individual doodle show page
               immediateLoading
               //loadTimeOffset={2.75}
               disabled
