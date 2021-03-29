@@ -27,6 +27,10 @@ const Gallery = () => {
       <Loader className='loader-container' type="CIRCLES" color="#00BFFF" height={'20vh'} width={'20vh'} />
     </div>
   )
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
   
   return (
     <div className='container'>
