@@ -55,7 +55,7 @@ const ArtworkShow = () => {
       <div className="description-wrapper">
         <div className="desc-top-row">
           <h1 className="title">{doodle.title}</h1>
-          <p>{doodle.owner.username}</p>
+          <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
         </div>
         { doodle.description &&
         <p>{doodle.description}</p>
