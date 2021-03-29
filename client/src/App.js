@@ -9,6 +9,8 @@ import Profile from './components/Profile'
 import JoinPage from './components/userStuff/JoinPage'
 import Login from './components/userStuff/Login'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   return (
@@ -21,7 +23,7 @@ const App = () => {
             <Home />
           </Route>
 
-          <Route path='/gallery'>
+          <Route path={'/gallery'}>
             <Gallery />
           </Route>
 
@@ -43,7 +45,7 @@ const App = () => {
         </Switch>
         <Footer />
       </BrowserRouter>
-
+      <ToastContainer />
     </>
   )
 }

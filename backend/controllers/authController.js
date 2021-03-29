@@ -7,7 +7,8 @@ export const registerUser = async(req, res) => {
   const checkEmail = await User.findOne( { username: req.body.email })
   try {
     if (checkUsername){
-      throw new Error('Username taken')
+      throw new Error('Username taken'),
+      res.status(202).json({ message: 'username taken', usernameTaken: true })
     } 
     if (checkEmail){
       throw new Error('Email taken')
@@ -21,17 +22,22 @@ export const registerUser = async(req, res) => {
   }
 }
 
+//!Make login via username or email 
 export const loginUser = async(req, res) => {
+  console.log('🐝 ~ file: authController.js ~ line 27 ~ req', req)
   try {
-    const userToLogIn = await User.findOne({ username: req.body.username })
-    console.log('🤖 ~ file: authController.js ~ line 19 ~ userToLogIn', userToLogIn)
+    const userToLogIn = await User.findOne({ $or: [{ username: req.body.usernameOrEmail }, { email: req.body.usernameOrEmail } ] })
+    console.log('🤖 ~ file: authController.js ~ line 30 ~ userToLogIn', userToLogIn)
     if (!userToLogIn || !userToLogIn.validatePassword(req.body.password)) {
-      throw new Error('🟥 authcontroller ~ unauth')
+      throw new Error( '🟥 Login details incorrect' )
     }
     const token = jwt.sign({ sub: userToLogIn._id }, secret, { expiresIn: '7 days' })
     return res.status(200).json({ message: `Welcome back ${userToLogIn.username }`, token })
   } catch (err) {
-    console.log(err)
-    return res.status(409).json({ message: 'Unauthorized' })
+    console.log('🐝 ~ file: authController.js ~ line 38 ~ err', err)
+    return (
+      res.status(401).json( { message: '🟥 Unauthorized' } )
+      //res.status(401).json( { message: err } )
+    )
   }
 }
