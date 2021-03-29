@@ -2,7 +2,7 @@
 
 import '../styles/componentStyles/doodle.scss'
 import React, { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
@@ -10,7 +10,7 @@ import LZString from 'lz-string'
 
 
 
-import { userIsAuthenticated } from '../helpers/authHelp'
+import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/authHelp'
 
 const DoodleEdit = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
@@ -22,7 +22,7 @@ const DoodleEdit = () => {
 
   let doodleRef = useRef(null)
 
-  //const history = useHistory()
+  const history = useHistory()
 
   const [formData, setFormData] = useState({
     title: '',
@@ -67,8 +67,8 @@ const DoodleEdit = () => {
 
     const sendArtwork = async () => {
       // ! PUT request here, make route in back end
-      // await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-      // history.push('/profile')
+      await axios.put(`/api/artwork/${params.id}/edit`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      history.push('/profile')
     }
     sendArtwork()
   }

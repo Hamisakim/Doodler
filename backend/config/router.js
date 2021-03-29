@@ -1,6 +1,6 @@
 import express from 'express'
 //! import add like
-import { getAllArtwork, addArtwork, getOneArtwork, addComment, deleteComment, deleteArtwork, addLike } from '../controllers/artworkController.js'
+import { getAllArtwork, addArtwork, editArtwork, getOneArtwork, addComment, deleteComment, deleteArtwork, addLike } from '../controllers/artworkController.js'
 import { getAllUsers, getSingleUser, addBio } from '../controllers/userController.js'
 import { registerUser, loginUser } from '../controllers/authController.js'
 import { secureRoute } from './secureRoute.js'
@@ -17,6 +17,8 @@ router.route('/artwork/:id')
   .get(getOneArtwork)
   .delete(secureRoute, deleteArtwork)
 
+router.route('/artwork/:id/edit')  
+  .put(secureRoute, editArtwork)
   
 router.route('/login')
   .post(loginUser)

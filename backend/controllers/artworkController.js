@@ -33,6 +33,22 @@ export const addArtwork = async(req, res) => {
     return res.status(422).json(err)
   }
 }
+
+export const editArtwork = async (req, res) => {
+  try {
+    const { id } = req.params
+    console.log(id)
+    const artworkToEdit = await Artwork.findById(id)
+    if (!artworkToEdit) throw new Error()
+    Object.assign(artworkToEdit, req.body)
+    await artworkToEdit.save()
+    return res.status(202).json(artworkToEdit)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ 'message': 'Not found' })
+  }
+}
+
 export const deleteArtwork = async (req, res) => {
   try {
     const { id } = req.params
