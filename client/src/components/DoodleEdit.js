@@ -18,6 +18,7 @@ const DoodleEdit = () => {
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
   const [doodle, setDoodle] = useState(null)
+  const [doodleData, setDoodleData] = useState('')
 
   let doodleRef = useRef(null)
 
@@ -40,11 +41,35 @@ const DoodleEdit = () => {
   }, [])
 
   useEffect(() => {
-    setBackgroundColor(backgroundColor)
     setBrushColor(brushColor)
     setBrushRadius(brushRadius)
     setLazyRadius(lazyRadius)
+
+    
+    // const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
+    // console.log('parsed bg', decompressedDoodleData.backgroundColor)
+    // const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
+    // setDoodleData(decompressedDoodleData)
+    // setBackgroundColor(doodleBg)
+    // console.log('doodleData', doodleData)
+    // if (!doodle) return null
+    // handleBug()
+    
   }, [])
+
+  useEffect(() => {
+    if (!doodle) return null
+    handleBug()
+  }, [doodle])
+
+  const handleBug = () => {
+    const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
+    console.log('parsed bg', decompressedDoodleData.backgroundColor)
+    const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
+    setDoodleData(decompressedDoodleData)
+    setBackgroundColor(doodleBg)
+    console.log('doodleData', doodleData)
+  }
   
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -70,19 +95,10 @@ const DoodleEdit = () => {
 
   }
 
+  // const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
+  // console.log('parsed bg', decompressedDoodleData.backgroundColor)
+  // const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
   if (!doodle) return null
-
-  const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
-  console.log('parsed bg', decompressedDoodleData.backgroundColor)
-  const doodleBg = JSON.parse(decompressedDoodleData).backgroundColor
-
-  //setBackgroundColor(JSON.parse(decompressedDoodleData).backgroundColor)
-
-  // setBackgroundColor(doodleBg)
-
-
-  console.log(formData)
-
   return (
     <>
       <div className="page-wrapper">
@@ -95,7 +111,8 @@ const DoodleEdit = () => {
               backgroundColor={backgroundColor}
               brushRadius={brushRadius}
               lazyRadius={lazyRadius}
-              saveData={decompressedDoodleData}
+              saveData={doodleData}
+              immediateLoading={true}
             />
           </div>
           <div className="col">
