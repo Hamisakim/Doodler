@@ -19,6 +19,12 @@ const canvasStyle = {
   position: 'absolute'
 }
 
+// const canvasStyle = {
+//   display: 'block',
+//   position: 'relative',
+//   bottom: '348px'
+// }
+
 const canvasTypes = [
   {
     name: 'interface',
