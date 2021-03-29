@@ -25,3 +25,23 @@ export const getSingleUser = async(req, res) => {
     return res.status(404).json({ 'message': 'Not found' })
   }
 }
+
+
+//*-----Bio---------------------------------------------------
+
+
+export const addBio = async (req, res) => {
+  try {
+    const { id } = req.params
+    const profileToEdit = await User.findById(id)
+    
+    const bioToAdd = { ...bioToAdd, bio: req.body }
+
+    console.log(profileToEdit.bio)
+
+  } catch (err) {
+    console.log('🆘 Something went wrong!', err)
+    return res.status(404).json({ 'message': 'Couldnt add bio' })
+  }
+
+}
