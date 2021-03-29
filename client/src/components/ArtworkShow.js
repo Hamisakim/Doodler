@@ -6,12 +6,14 @@ import ReactStars from 'react-rating-stars-component'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
+import ArtCard from './ArtCard'
+
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
 
   const params = useParams()
-  console.log('params ->', params.id)
+  // console.log('params ->', params.id)
 
   useEffect(() => {
     const getData = async () => {
@@ -25,12 +27,28 @@ const ArtworkShow = () => {
     console.log(newRating)
   }
 
+  // STUUFFFF
+  const [doodles, setDoodles] = useState([])
+  // console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get('/api/artwork')
+      // console.log('🐝 ~ file: Gallery.js ~ line 17 ~ response', response)
+      //setDoodles(null)
+      setDoodles(response.data)
+    }
+    getData()
+  }, [])
+
+  // STUFFF
+
   if (!doodle) return null
 
+  console.log('comments>>>', doodle.comments.commentText)
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
-  console.log('parsed bg', decompressedDoodleData.backgroundColor)
+  // console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
-  console.log(doodle)
 
   return (
     <div className="page-wrapper">
@@ -74,7 +92,13 @@ const ArtworkShow = () => {
           </form>
         </div>
         <div className="doodle-show-comments">
-          <p>map through comments here</p>
+          <div className='gallery columns is-multiline'>
+            {doodles.map((doodle) => {
+              <div key={doodle.comments} className='column  is-one-third art-card-container'>
+                <ArtCard {...doodle.comments.commentText} />
+              </div>
+            })}
+          </div>
         </div>
         { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
@@ -86,4 +110,3 @@ const ArtworkShow = () => {
 
 export default ArtworkShow
 
-//scale canvas to make it larger in screen
