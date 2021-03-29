@@ -33,7 +33,7 @@ const artworkSchema = new mongoose.Schema({
 artworkSchema
   .virtual('totalFavourites')
   .get(function(){
-    if (this.favourites.length === 0) return 'No favourites'
+    if (this.favourites.length === 0) return 0
     const total = this.favourites.length
     //console.log('🐝 ~ file: artworkModel.js ~ line 36 ~ total', total)
     return total

@@ -171,6 +171,7 @@ export const addLike = async (req, res) => {
 export const deleteLike = async (req, _res) => {
   console.log('🐝 ~ file: artworkController.js ~ line 168 ~ req', req.params)
   console.log('🐝 ~ file: artworkController.js ~ line 168 ~ req', req)
+  // eslint-disable-next-line no-empty
   try {
   
   } catch (err) {

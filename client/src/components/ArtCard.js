@@ -20,34 +20,10 @@ const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  
     setIsFlipped(!isFlipped)
   }
 
-  const likeButton = (
-    <a>
-      <SemanticLikeButton id={id} totalFavourites={totalFavourites}/>
-    </a>
-  )
   
   return (
     <> 
       <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' >
-       
-        {/* <div className='card-front' onClick={handleClick}>
-          <Card
-            image={<CanvasDraw className='canvas-container'       
-              disabled
-              hideGrid
-              saveData={doodleData}
-              // canvasWidth={350}
-              // canvasHeight={350}   
-              //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
-              //saveData={artwork.doodleData}
-            />}
-            extra={likeButton}
-          > 
-            <Card.Header>{title}</Card.Header>
-          </Card>
-        </div> */}
-
-
         <div className='card-front' onClick={handleClick}>
           <div className="ui card">
             <div className="image">
@@ -55,9 +31,9 @@ const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  
                 disabled
                 hideGrid
                 saveData={doodleData}
-              // canvasWidth={350}
-              // canvasHeight={350}   
-              //!backgroundColor={JSON.parse(doodleData).backgroundColor}               
+                // canvasWidth={350}
+                // canvasHeight={350}   
+                backgroundColor={JSON.parse(doodleData).backgroundColor}               
               //saveData={artwork.doodleData}
               />
             </div>
@@ -85,9 +61,9 @@ const ArtCard = ( { title, id, doodleData, owner, description, totalFavourites  
                 {description}
               </Card.Description>
             </Card.Content>
-            <div className="content">
+            {/* <div className="content">
               <SemanticLikeButton id={id} />
-            </div>
+            </div> */}
           </Card>
         </div>
        

@@ -2,8 +2,6 @@ import { toast } from 'react-toastify'
 
 //**** just import the function and pass in parameter!! */
 
-
-
 export const loginPopUp = (wasLoginSuccess) => { //* boolean
   //console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
   if (wasLoginSuccess === true){
