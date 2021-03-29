@@ -41,7 +41,7 @@ const App = () => {
             <ArtworkShow />
           </Route>
 
-          <Route path='/profile'>
+          <Route path='/profile/:id'>
             <Profile />
           </Route>
 

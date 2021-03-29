@@ -47,6 +47,8 @@ router.route('/users')
 router.route('/users/:id')
   .get(getSingleUser)
 
+router.route('/users/:id/bio')
+.put()
 
 
 

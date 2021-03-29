@@ -1,6 +1,7 @@
 import '../styles/componentStyles/profile.scss'
 
 import React, { useState, useEffect, useRef } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import ArtCard from './ArtCard'
 
@@ -8,25 +9,38 @@ import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHe
 
 
 const Profile = () => {   //{ username } 
+  const [user, setUser] = useState(null)
   const [artwork, setArtwork] = useState(null)
-  // const [user, setUser] = useState(null)
+  const [bio, setBio] = useState(null)
+
   const doodle = useRef(null)
+  const params = useParams()
 
   useEffect(() => {
-    const getData = async () => {
+
+    const getSingleUser = async () => {
+      const response = await axios.get(`/api/users/${params.id}`)
+      setUser(response.data)
+    }
+    getSingleUser()
+
+    const getArtwork = async () => {
       const response = await axios.get('api/artwork')
       setArtwork(response.data)
     }
-    getData()
+    getArtwork()
+
+    const saveBio = async () => {
+      const response = await axios.put(`/api/users/${params.id}/bio`)
+      setBio(response.data)
+    }
+    saveBio()
   }, [])
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const response = await axios.get('api/user')
-  //     setUser(response.data)
-  //   }
-  //   getData()
-  // }, [])
+  
+  console.log('user ->', user)
+  console.log('bio ->', bio)
+
 
   const [formData, setFormData] = useState({
     bio: ''

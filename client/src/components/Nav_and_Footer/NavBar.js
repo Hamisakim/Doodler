@@ -1,10 +1,13 @@
 import '../../styles/componentStyles/navbar.scss'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 
-import { userIsAuthenticated } from '../../helpers/authHelp'
+import { getPayloadFromToken, userIsAuthenticated } from '../../helpers/authHelp'
+
+// userIsOwner
 
 const NavBar = () => {
+  const [userId, setUserId] = useState(null)
 
   const location = useLocation()
   useEffect(() => {
@@ -17,6 +20,15 @@ const NavBar = () => {
     history.push('/')
   }
 
+  useEffect(() => {
+    const payload = getPayloadFromToken()
+    const userId = payload.sub
+    console.log('payload', payload)
+    console.log('userId', userId)
+    setUserId(userId)
+  }, [])
+
+  //acess payload from local storage and pass into usi is owner function
   return (
     <nav className="navbar is-light">
       <div className="container">
@@ -26,7 +38,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-start">
-          <Link to="/profile" className="navbar-item">Profile</Link>
+          <Link to={`/profile/${userId}`} className="navbar-item">Profile</Link>
           <Link to="/doodle-new" className="navbar-item">Doodle</Link>
           <Link to="/gallery" className="navbar-item">Gallery</Link>
         </div>
