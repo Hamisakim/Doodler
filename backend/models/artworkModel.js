@@ -17,7 +17,6 @@ const favouriteSchema = new mongoose.Schema({
 { timestamps: true }
 )
 
-
 const artworkSchema = new mongoose.Schema({
   title: { type: String, required: true, maxlength: 60 },
   description: { type: String, required: false, maxlength: 500 },
