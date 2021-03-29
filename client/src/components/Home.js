@@ -1,10 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import '../styles/componentStyles/home.scss'
 import { Link } from 'react-router-dom'
-
+import DemoCarousel from '../components/Carousel'
 const Home = () => {
-
-
   return (
     <div className="homepage-wrapper">
       <div className="section-header">
@@ -15,12 +14,11 @@ const Home = () => {
       <section className="hero is-medium is-link">
         <div className="hero-body" id="hero-body">
         </div>
-
       </section>
       <section className="section">
         <ul className="grid">
           <li className="grid-item">
-            <Link to="/doodle-new" className="homepage page-doodle">
+            <Link to="/doodle" className="homepage page-doodle">
               <h3 className="homepage-title shadow">Doodle</h3>
             </Link>
           </li>
@@ -32,37 +30,9 @@ const Home = () => {
         </ul>
       </section>
       <section>
-        {/* <head>
-          <title>My Now Amazing Webpage</title>
-          <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-          <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-        </head>
-        <body>
-
-          <div className="your-class">
-            <div>your content</div>
-            <div>your content</div>
-            <div>your content</div>
-          </div>
-
-          <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-          <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-          <script type="text/javascript" src="slick/slick.min.js"></script>
-
-          <script type="text/javascript">
-            $(document).ready(function() {
-              $('.your-class').slick({
-                setting- name: setting-value
-              });
-            });
-          </script>
-
-        </body>
- */}
-
+        <DemoCarousel />
       </section>
     </div>
   )
 }
-
 export default Home

@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 //! comment schema 
 const commentSchema = new mongoose.Schema({
-  commentText: { type: String, required: true },
+  commentText: { type: String, required: false }, //! Sami change to false for star rating 
   rating: { type: Number, required: false, min: 1, max: 5 },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false },
   username: { type: String , required: false }
