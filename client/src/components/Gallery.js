@@ -26,8 +26,8 @@ const Gallery = () => {
     <div className='container'>
       <Loader className='loader-container' type="CIRCLES" color="#00BFFF" height={'20vh'} width={'20vh'} />
     </div>
-
   )
+  
   return (
     <div className='container'>
 
