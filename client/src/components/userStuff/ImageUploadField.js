@@ -5,7 +5,6 @@ const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
 
 
-
 export const ImageUploadField = ({ handleImageUrl, value }) => {
   const handleUpload = async event => {
     const data = new FormData()
@@ -13,7 +12,12 @@ export const ImageUploadField = ({ handleImageUrl, value }) => {
     data.append('upload_preset', uploadPreset)
     const res = await axios.post(uploadUrl, data)
     handleImageUrl(res.data.url)
+    console.log('response', res)
   }
+
+
+
+
   return (
     <>
       {value ?

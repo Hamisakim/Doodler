@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import axios from 'axios'
 import { ImageUploadField } from '../userStuff/ImageUploadField'
+// import Select from 'react-select'
 
 
 
@@ -19,7 +20,8 @@ const ProfileForm = () => {
   }
   const handleSubmit = event => {
     event.PreventDefault()
-    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    window.alert(`Submitting ${JSON.stringify(formData)}`)
     console.log('handleSubmit', handleSubmit)// this line needs to change so that we submit to our db
   }
 
