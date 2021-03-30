@@ -49,18 +49,6 @@ const App = () => {
             <DoodleEdit />
           </Route>
 
-<<<<<<< HEAD
-          <Route path="/gallery/:id">
-            <ArtworkShow />
-          </Route> 
-         
-          {/* <Route path="/:id"> 
-           //could only make the route for starts work if we use this route
-            <ArtworkShow />
-          </Route>  */}
-=======
->>>>>>> c409479e57749f92571d786f6b78cf7a22aeddb6
-
           <Route exact path='/profile/:id'>
             <Profile />
           </Route>

@@ -6,7 +6,7 @@ import axios from 'axios'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
-import ArtCard from './ArtCard'
+//import ArtCard from './ArtCard'
 //import StarsAndRating from './CommentParts/StarsAndRating'
 import CommentForm from './CommentParts/CommentForm'
 
@@ -25,16 +25,18 @@ const ArtworkShow = () => {
     getData()
   }, [])
  
-  const [doodles, setDoodles] = useState([])
-  console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  // const [doodles, setDoodles] = useState([])
+  // console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+
   
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get('/api/artwork')
-      setDoodles(response.data)
-    }
-    getData()
-  }, [])
+  
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await axios.get('/api/artwork')
+  //     setDoodles(response.data)
+  //   }
+  //   getData()
+  // }, [])
 
 
   if (!doodle) return null
@@ -69,15 +71,16 @@ const ArtworkShow = () => {
       </div>
       <div className="doodle-comments-wrapper">
         { !userIsOwner(doodle.owner._id) &&
-        <CommentForm />
+        <CommentForm { ...doodle } />
         }
         <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
-            {doodles.map((doodle) => {
+
+            {/* {doodles.map((doodle) => {
               <div key={doodle.comments} className='column  is-one-third art-card-container'>
                 <ArtCard {...doodle.comments.commentText} />
               </div>
-            })}
+            })} */}
           </div>
         </div>
         { userIsOwner(doodle.owner._id) && 
