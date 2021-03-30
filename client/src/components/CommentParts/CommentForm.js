@@ -12,9 +12,6 @@ const CommentForm = ({ doodles }) => {
 
   }
 
-  router.route('/:id/comment')
-  .post(secureRoute, addComment)
-
   return (
     <div className="doodle-add-comment">
       <form>
