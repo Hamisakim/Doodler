@@ -13,24 +13,31 @@ const CommentFeed = ({ _id }) => {
 
   useEffect(() => {
     getComments()
+    const interval = setInterval(getComments, 5000)
+    return () => {
+      clearInterval(interval)
+    }
+
   }, [])
 
   const getComments = async () =>{ 
     const response = await axios.get(`/api/artwork/${_id}/getComments`) 
-    // console.log('🐝 ~ file: CommentFeed.js ~ line 21 ~ response', response)
+    console.log('🔵 GETTING COMMENTS ')
     const newCommentsArray = response.data
-    console.log('🐝 ~ file: CommentFeed.js ~ line 23 ~ newCommentsArray', newCommentsArray)
+
     setCommentsArray(newCommentsArray)
   }
 
+  // setTimeout(() => {
+  //   getComments()  
+  // }, 0)
+
   //! when we go live set this timer off ---------
-  setInterval(() => { //? refreshes number of likes every x seconds //! don't delete 
-    console.log(' GETT🔵')
-    getComments()  
-  }, 10 * 1000) //? x * 1000ms 
+  // setInterval(() => { //? refreshes number of likes every x seconds //! don't delete 
+  //   console.log(' GETT🔵')
+  //   getComments()  
+  // }, 10 * 1000) //? x * 1000ms 
   //! -----------------------------------
-
-
 
   return (
     <div className="box">
