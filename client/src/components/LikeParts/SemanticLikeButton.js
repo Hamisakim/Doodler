@@ -98,9 +98,6 @@ const LikeButton = ({ id }) => {
   }
 
 
-
-
-
   return (
     <div className='like-btn-and-counter '>
       <Button as='div' labelPosition='right'>

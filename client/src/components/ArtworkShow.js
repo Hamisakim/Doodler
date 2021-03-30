@@ -7,8 +7,8 @@ import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
 import ArtCard from './ArtCard'
-import StarsAndRating from './CommentParts/StarsAndRating'
-
+//import StarsAndRating from './CommentParts/StarsAndRating'
+import CommentForm from './CommentParts/CommentForm'
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
@@ -44,6 +44,7 @@ const ArtworkShow = () => {
   // console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
   const { id } = doodle
+  console.log('id', id)
   return (
     <div className="page-wrapper">
       <div className="description-wrapper">
@@ -67,25 +68,9 @@ const ArtworkShow = () => {
         </div>
       </div>
       <div className="doodle-comments-wrapper">
-        <div className="doodle-add-comment">
-          <form>
-            <StarsAndRating doodles={doodles} id={id} />
-            {/* <ReactStars
-              count={5}
-              onChange={handleRating}
-              size={24}
-              isHalf={true}
-              emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#ffd700"
-            /> */}
-            <input
-              className="input"
-              placeholder="leave comment"
-            />
-          </form>
-        </div>
+        { !userIsOwner(doodle.owner._id) &&
+        <CommentForm />
+        }
         <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
             {doodles.map((doodle) => {
