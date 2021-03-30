@@ -6,6 +6,9 @@ import { getPayloadFromToken, userIsAuthenticated } from '../../helpers/authHelp
 
 // userIsOwner
 
+import logo from  '../../assets/Logo.png'
+
+
 const NavBar = () => {
   const [userId, setUserId] = useState(null)
 
@@ -34,7 +37,7 @@ const NavBar = () => {
       <div className="container">
         <div className="navbar-brand">
           <Link to="/">
-            <span role="img" aria-label="logo" className="title">😎</span>
+            <img src={logo} alt="Doodle Logo" className="second-logo"></img>
           </Link>
         </div>
         <div className="navbar-start">

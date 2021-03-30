@@ -2,13 +2,15 @@
 import React from 'react'
 import '../styles/componentStyles/home.scss'
 import { Link } from 'react-router-dom'
-import DemoCarousel from '../components/Carousel'
+
+import DemoCarousel from '../components/userStuff/Carousel'
+
 const Home = () => {
   return (
-    <div className="homepage-wrapper">
+    <div className="main">
       <div className="section-header">
         <h2 className="section-title">
-          <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo" className="second-logo"></img>
+          <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo"></img>
         </h2>
       </div>
       <section className="hero is-medium is-link">
