@@ -118,26 +118,45 @@ export const addLike = async (req, res) => {
     
     console.log('🐝 ~ file: artworkController.js ~ line 107 ~ hasUserLikedBefore', hasUserLikedBefore)
     if (hasUserLikedBefore) {
-
       const likeToRemove = await artworkToLike.favourites.id(hasUserLikedBefore._id)
-
       await likeToRemove.remove()
       await	artworkToLike.save()
       res.status(200).json( { message: 'Dis-liked!' })
     } else if (!hasUserLikedBefore) {
-
       artworkToLike.favourites.push(newLike)
       await	artworkToLike.save()
-
       res.status(200).json( { message: 'liked!' })
     }
-    
-
   } catch (err) {
     console.log('🐝 ~ file: artworkController.js ~ line 128 ~ error', err)
     res.status(500).json( { message: err.message })
   }
 }
 //!-----------------------------------------------------------------
-// only logged in people can add
-// we need to add the user ref to the post body req.
+
+export const newRating = async (req, res) => {
+  console.log('🐝 ~ file: artworkController.js ~ line 122 ~ req', req.body)
+  const { id } = req.params
+  const  newRating = req.body
+  if (!id) throw new Error('No Artwork with ID to rate')
+  //console.log('🐝 ~ file: artworkController.js ~ line 130 ~ rating', newRating)
+  //console.log('🐝 ~ file: artworkController.js ~ line 129 ~ id', id)
+  try {
+    const artworkToRate = await Artwork.findById(id)
+    artworkToRate.comments.push( { ...newRating } )
+    console.log('🐝 ~ file: artworkController.js ~ line 130 ~ artworkToRate.comments', artworkToRate.comments)
+    await	artworkToRate.save()
+    //* copy in the currentUserLoggedInId check for edit star
+    res.status(200).json( { message: `${newRating.rating}`})
+  } catch (err) {
+    console.log('🐝 ~ file: artworkController.js ~ line 137 ~ error', err)
+    // eslint-disable-next-line no-undef
+    res.status(500).json( { message: err.message })
+  }
+  console.log('New Rating🟦')
+  console.log('🐝 ~ file: artworkController.js ~ line 128 ~ req', req.body)
+
+
+
+
+}

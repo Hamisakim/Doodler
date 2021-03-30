@@ -11,11 +11,11 @@ import { toast } from 'react-toastify'
 //* Pass in the ID as props from parent component. 
 //* will send authentication header to DB
 //* Add check to see if user is logged in so they can like! 
+//* Will keep current likes = to those on database 
 
 const LikeButton = ({ id }) => {
   console.log('🐝 ~ file: SemanticLikeButton.js ~ line 18 ~ id', id)
   const [totalFavourites, setTotalFavourites] = useState(0)
-  const [likeSuccess, setLikeSuccess] = useState(false) 
   const [userLikedAlready, setUserLikedAlready] = useState(null)
   console.log('🐝 ~ file: SemanticLikeButton.js ~ line 20 ~ userLikedAlready', userLikedAlready)
 
@@ -24,7 +24,7 @@ const LikeButton = ({ id }) => {
   }, [])
 
 
-  //! when we go live set this off ---------
+  //! when we go live set this timer off ---------
   // setInterval(() => { //? refreshes number of likes every x seconds //! don't delete 
   //   refreshFavourites()  
   // }, 5 * 1000) //? x * 1000ms 
@@ -51,29 +51,11 @@ const LikeButton = ({ id }) => {
     if (hasUserLikedBefore){
       setUserLikedAlready(true)
     }
-
   }
-
-
-
-
-
-  const handleLike = async () => {
-    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 59 ~ handleLike' )
-    const notifyPopup = (wasLikeSuccess) => {
-      if (wasLikeSuccess === true){ //!for testing = false 
-        toast.success('Liked!', {
-          position: 'top-center',
-          autoClose: 2500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          pauseOnFocusLoss: false
-        })
-      } else toast.error('Unliked!', {
-        position: 'top-center', 
+  const notifyPopup = (wasLikeSuccess) => { //! put this outside 
+    if (wasLikeSuccess === true){ //!for testing = false 
+      toast.success('Liked!', {
+        position: 'top-center',
         autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
@@ -82,24 +64,35 @@ const LikeButton = ({ id }) => {
         progress: undefined,
         pauseOnFocusLoss: false
       })
-    } 
+    } else toast.error('Unliked!', {
+      position: 'top-center', 
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  } 
+
+
+  const handleLike = async () => {
+    setUserLikedAlready(!userLikedAlready)
+    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 59 ~ handleLike' )
     try {   
       console.log('✅')
       const token = getTokenFromLocalStorage()
       const likeResponse = await axios.post(`api/${id}/like`, null, { headers: { Authorization: `Bearer ${token}` } } ) 
       console.log('🐝 ~ file: SemanticLikeButton.js ~ line 57 ~ likeResponse', likeResponse.data.message)
       refreshFavourites()
-      setLikeSuccess(!likeSuccess)
       if (likeResponse.data.message === 'liked!') {
         notifyPopup(true)
       } else {
         notifyPopup(false)
       }
-      
-      //console.log('🐝 ~ file: ArtCard.js ~ line 25 ~ postResponse', postResponse)
     } catch (err) {
       console.log('🔴 ~ file: ArtCard.js ~ line 31~ err', err.message)
-      setLikeSuccess(false)
       notifyPopup(false)
     }
   }

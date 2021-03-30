@@ -24,6 +24,7 @@ const Profile = () => {   //{ username }
   useEffect(() => {
     const getSingleUser = async () => {
       const response = await axios.get(`/api/users/${params.id}`)
+      console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
       setUser(response.data)
     }
     getSingleUser()
@@ -82,7 +83,7 @@ const Profile = () => {   //{ username }
               <h1 className="title">Profile</h1>
             </div>
             <div>
-              <h1>{user.username}</h1>
+              {/* <h1>{user.username}</h1> */}
               <figure className="profile-pic image is-128x128">
                 <img src="https://bulma.io/images/placeholders/128x128.png"></img>
               </figure>
