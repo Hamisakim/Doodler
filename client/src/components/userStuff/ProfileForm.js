@@ -18,21 +18,24 @@ const ProfileForm = () => {
   const handleChange = event => {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
+
   const handleSubmit = event => {
-    event.PreventDefault()
-    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
-    window.alert(`Submitting ${JSON.stringify(formData)}`)
-    console.log('handleSubmit', handleSubmit)// this line needs to change so that we submit to our db
+    event.preventDefault()
+    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+
+    // console.log('handleSubmit', handleSubmit)// this line needs to change so that we submit to our db
   }
 
   const handleImageUrl = url => {
     setFormData({ ...formData, profileImage: url })
   }
-
+  console.log('formdata', formData)
   return (
     <>
       <h1>ProfileForm</h1>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+      >
         <div className="field">
           <label className="label">First Name:</label>
           <div className="control">
@@ -105,7 +108,10 @@ const ProfileForm = () => {
           </div>
         </div>
         <div className="field">
-          <button className="button is-fullwidth is-dark" type="submit">Submit</button>
+          <button
+
+
+            className="button is-fullwidth is-dark" type="submit">Submit</button>
         </div>
       </form>
     </>
