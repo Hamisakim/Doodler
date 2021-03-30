@@ -4,6 +4,9 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 
 import { userIsAuthenticated } from '../../helpers/authHelp'
 
+import logo from  '../../assets/Logo.png'
+
+
 const NavBar = () => {
 
   const location = useLocation()
@@ -22,7 +25,7 @@ const NavBar = () => {
       <div className="container">
         <div className="navbar-brand">
           <Link to="/">
-            <span role="img" aria-label="logo" className="title">😎</span>
+            <img src={logo} alt="Doodle Logo" className="second-logo"></img>
           </Link>
         </div>
         <div className="navbar-start">

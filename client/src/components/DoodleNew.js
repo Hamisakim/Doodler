@@ -6,6 +6,8 @@ import CanvasDraw from '../drawing/index'
 import axios from 'axios'
 import LZString from 'lz-string'
 
+import create from  '../assets/Create.png'
+
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
  
 const DoodleNew = () => {
@@ -71,6 +73,7 @@ const DoodleNew = () => {
   return (
     <>
       <div className="page-wrapper">
+        <img src={ create } alt="Create" className="title-img"></img>
         <div className="split-col-wraper">
           <div className="col">
             <CanvasDraw

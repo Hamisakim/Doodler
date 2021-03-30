@@ -6,6 +6,7 @@ import ArtCard from './ArtCard'
 
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
 
+import profile from  '../assets/Profile.png'
 
 const Profile = () => {   //{ username } 
   const [artwork, setArtwork] = useState(null)
@@ -54,7 +55,7 @@ const Profile = () => {   //{ username }
         <div className="box">
           <div className="tile is-vertical">
             <div>
-              <h1 className="title">Profile</h1>
+              <img src={ profile } alt="Profile" className="title-img"></img>
             </div>
             <div>
               <h1>username</h1>

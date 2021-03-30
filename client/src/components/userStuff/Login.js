@@ -1,4 +1,4 @@
-import 'bulma/bulma.sass'
+import '../styles/componentStyles/login.scss'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
@@ -42,10 +42,10 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <section className="section">
-        <div className="container">
-          <div className="columns">
+    <div className="main">
+      {/* <section className="section"> */}
+        {/* <div className="container"> */}
+          {/* <div className="columns"> */}
 
             <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
               <legend className='has-text-centered'> <h1>Login </h1></legend>
@@ -78,9 +78,9 @@ const Login = () => {
                 <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
               </div>
             </form>
-          </div>
-        </div>
-      </section>
+          {/* </div> */}
+        {/* </div> */}
+      {/* </section> */}
     </div>
   )
 }
