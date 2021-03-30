@@ -23,12 +23,13 @@ const Profile = () => {   //{ username }
 
 
   useEffect(() => {
-    const getSingleUser = async () => {
+    const getSingleUser =  async () => {
       const response = await axios.get(`/api/users/${params.id}`)
       console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
       setUser(response.data)
     }
     getSingleUser()
+    console.log('user ->', user)
 
     const getAllArtwork = async () => {
       const response = await axios.get('/api/artwork')
@@ -72,6 +73,8 @@ const Profile = () => {   //{ username }
         
   }
 
+ 
+  
   if (!user) return null
   if (!userArtwork) return null
   return (

@@ -42,8 +42,8 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites 
             <hr/> 
             <div className='card-content'>
               <p>{description}</p>
-              <Link to={`/${_id}`} className='button'>See more</Link>
-              {/* <Link to={`/gallery/${_id}`} className='button'>See more</Link> */}
+              {/* <Link to={`/${_id}`} className='button'>See more</Link> */}
+              <Link to={`/gallery/${_id}`} className='button'>See more</Link>
               <div className="content"></div>
               <div className="header">{title}</div>
               <div className="">

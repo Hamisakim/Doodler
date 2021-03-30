@@ -1,6 +1,6 @@
 import express from 'express'
 //! import add like
-import { getAllArtwork, addArtwork, getOneArtwork, editArtwork, addComment, deleteComment, deleteArtwork, addLike, newRating } from '../controllers/artworkController.js'
+import { getAllArtwork, addArtwork, getOneArtwork, editArtwork, addComment, deleteComment, deleteArtwork, addLike, newRating, getAvgRating } from '../controllers/artworkController.js'
 import { getAllUsers, getSingleUser, addBio } from '../controllers/userController.js'
 import { registerUser, loginUser } from '../controllers/authController.js'
 import { secureRoute } from './secureRoute.js'
@@ -59,5 +59,11 @@ router.route('/users/:id/bio') //* front end make sure userId is being passed
 //   .post(secureRoute, newRating)
 router.route('/gallery/:id/rate')
   .post(secureRoute, newRating)
+
+router.route('/artwork/:id/avgRating')
+  .get(getAvgRating)
+
+  
+
 
 export default router

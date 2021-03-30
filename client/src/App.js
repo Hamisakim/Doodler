@@ -21,6 +21,9 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Switch>
+          <Route path="/gallery/:id">
+            <ArtworkShow />
+          </Route> 
 
           <Route exact path="/">
             <Home />
@@ -46,15 +49,8 @@ const App = () => {
             <DoodleEdit />
           </Route>
 
-          <Route path="/gallery/:id">
-            <ArtworkShow />
-          </Route> 
-         
-          <Route path="/:id"> {/*  could only make the route for starts work if we use this route */}
-            <ArtworkShow />
-          </Route> 
 
-          <Route path='/profile/:id'>
+          <Route exact path='/profile/:id'>
             <Profile />
           </Route>
 
