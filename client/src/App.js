@@ -21,6 +21,10 @@ const App = () => {
         <Navbar />
         <Switch>
           
+          <Route path="/gallery/:id/edit">
+            <DoodleEdit />
+          </Route>
+
           <Route path="/gallery/:id">
             <ArtworkShow />
           </Route> 
@@ -43,10 +47,6 @@ const App = () => {
 
           <Route path='/doodle-new'>
             <DoodleNew />
-          </Route>
-
-          <Route path="/gallery/:id/edit">
-            <DoodleEdit />
           </Route>
 
           <Route exact path='/profile/:id'>

@@ -99,6 +99,32 @@ export const deleteComment = async (req, res) => {
     return res.status(500).json({ message: err.message })
   }
 }
+
+
+export const getComments = async (req, res) => {
+
+  try {
+    const { id } = req.params
+    const artwork = await Artwork.findById(id)
+    if (!artwork) throw new Error('No artwork found')
+    const commentsArray = artwork.comments 
+    // if(!commentsArray.lenght === 0 )
+    console.log('🐝 ~ file: artworkController.js ~ line 108 ~ commentsArray', commentsArray)
+    res.status(200).json(commentsArray)
+  
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ message: err.message })
+  }
+
+}
+
+
+
+
+
+
+
 //! ---------------------------------------------------------------
 //*-----Likes/Favourites-------------------------------------------
 //* this will like / unlike based on if user has liked the artwork already, based on their id

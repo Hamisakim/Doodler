@@ -9,6 +9,7 @@ import { userIsOwner } from '../helpers/authHelp'
 //import ArtCard from './ArtCard'
 //import StarsAndRating from './CommentParts/StarsAndRating'
 import CommentForm from './CommentParts/CommentForm'
+import CommentFeed from './CommentParts/CommentFeed'
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
@@ -73,16 +74,17 @@ const ArtworkShow = () => {
         { !userIsOwner(doodle.owner._id) &&
         <CommentForm { ...doodle } />
         }
-        <div className="doodle-show-comments">
+        <CommentFeed _id={id}  />
+        {/* <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
 
-            {/* {doodles.map((doodle) => {
+            {doodles.map((doodle) => {
               <div key={doodle.comments} className='column  is-one-third art-card-container'>
                 <ArtCard {...doodle.comments.commentText} />
               </div>
-            })} */}
+            })}
           </div>
-        </div>
+        </div> */}
         { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
         }

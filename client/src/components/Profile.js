@@ -16,27 +16,29 @@ const Profile = () => {   //{ username }
   const [formData, setFormData] = useState({
     bio: ''
   })
-
+  
   const params = useParams()
   const history = useHistory()
-
+  
+  console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
 
   useEffect(() => {
-    const getSingleUser =  async () => {
-      const response = await axios.get(`/api/users/${params.id}`)
-      console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
-      setUser(response.data)
-    }
     getSingleUser()
     console.log('user ->', user)
-
-    const getAllArtwork = async () => {
-      const response = await axios.get('/api/artwork')
-      setAllArtwork(response.data)
-    }
     getAllArtwork()
   }, [])
+
+  const getSingleUser =  async () => {
+    const response = await axios.get(`/api/users/${params.id}`)
+    console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
+    setUser(response.data)
+  }
+
+  const getAllArtwork = async () => {
+    const response = await axios.get('/api/artwork')
+    setAllArtwork(response.data)
+  }
 
   // useEffect(() => {
   //   console.log('fsds',params.id)
@@ -115,9 +117,16 @@ const Profile = () => {   //{ username }
             <div className="columns">
               { userArtwork.length > 0 ?
                 <>
-                  { userArtwork.map( art => (
+                {/* userArtwork.map((artwork) => {
+                  <div key={artwork._id} className='column  is-one-third art-card-container'>
+                    <ArtCard {...artwork} />
+                  </div>
+}
+                  */} 
+                  {/* { userArtwork. art => (
                     <ArtCard key={art._id} {...art} />
-                  ))}
+                  ))} */}
+              
                 </>
                 :
                 <p>no art yet, add a LINK to doodle page</p>
