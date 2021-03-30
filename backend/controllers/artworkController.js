@@ -123,8 +123,8 @@ export const newRating = async (req, res) => {
   const { id } = req.params
   const  newRating = req.body
   if (!id) throw new Error('No Artwork with ID to rate')
-  console.log('🐝 ~ file: artworkController.js ~ line 130 ~ rating', newRating)
-  console.log('🐝 ~ file: artworkController.js ~ line 129 ~ id', id)
+  //console.log('🐝 ~ file: artworkController.js ~ line 130 ~ rating', newRating)
+  //console.log('🐝 ~ file: artworkController.js ~ line 129 ~ id', id)
   try {
     const artworkToRate = await Artwork.findById(id)
     artworkToRate.comments.push( { ...newRating } )

@@ -40,6 +40,18 @@ artworkSchema
 
 artworkSchema.set('toJSON', { virtuals: true })
 
+//!* Total likes/favourites 
+artworkSchema
+  .virtual('avgRating')
+  .get(function() {
+    if (!this.comments.length) return 'Not yet rated'
+    const sum = this.comments.reduce((acc, curr) => {
+      return acc + curr.rating
+    }, 0)
+    return sum / this.comments.length
+  })
+
+artworkSchema.set('toJSON', { virtuals: true })
 
 
 export default mongoose.model('Artwork', artworkSchema)

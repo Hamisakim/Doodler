@@ -1,10 +1,9 @@
-//import 'bulma/bulma.sass'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-// eslint-disable-next-line no-unused-vars
+
 import { loginPopUp } from '../../helpers/popUps.js' //* handles the pop-up
-// import 'react-toastify/dist/ReactToastify.css'
+
 
 const Login = () => {
   const history = useHistory()
@@ -12,7 +11,7 @@ const Login = () => {
     usernameOrEmail: '',
     password: ''
   })
-  // eslint-disable-next-line no-unused-vars
+
   const [ wasLoginSuccess, setWasLoginSuccess ] = useState(null)
   console.log('🐝 ~ file: Login.js ~ line 15 ~ wasLoginSuccess', wasLoginSuccess)
 

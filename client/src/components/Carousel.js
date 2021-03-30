@@ -4,8 +4,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 
 const DemoCarousel = () => {
-  return (
-    <Carousel className="hero">
+  return (  
+    <Carousel interval={3000} autoPlay={true}	className="hero">
       <div>
         <img className='carousel-images' src="https://i.imgur.com/Huco3rp.jpg" />
         <p className="legend">Legend 1</p>

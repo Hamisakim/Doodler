@@ -15,7 +15,9 @@ const StarsAndRating = ( { id } ) => {
   const [currentUserRating, setCurrentUserRating] = useState()
   console.log('🐝 ~ file: StarsAndRating.js ~ line 13 ~ freshRating', freshRating)
 
-
+  useEffect(()=>{
+  
+  },[])
 
 
   const handleRating = async (newRating) => {
@@ -33,17 +35,7 @@ const StarsAndRating = ( { id } ) => {
       console.log('🐝 ~ file: StarsAndRating.js ~ line 39 ~ err', err)
     }
   
-  
-  
-  
-  
   }
-
-
-
-
-
-
 
   return (
     <div className='stars-container'>
