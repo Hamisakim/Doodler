@@ -2,13 +2,9 @@
 import React from 'react'
 import '../styles/componentStyles/home.scss'
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD
 
 import DemoCarousel from '../components/userStuff/Carousel'
 
-=======
-import DemoCarousel from '../components/Carousel'
->>>>>>> development
 const Home = () => {
   return (
     <div className="main">
