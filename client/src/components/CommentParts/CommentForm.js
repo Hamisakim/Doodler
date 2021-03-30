@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import StarsAndRating from './StarsAndRating'
 import axios from 'axios'
 
 const CommentForm = ({ doodles }) => {
   //? get ID from doodles and pass into the startsAndRating
   //? may be worth doing like u originally said and have this handle the whole rating and comment it's self 
+  const []
   
   const handleCommentPost = async() => {
-    await axios.post(`/api/${doodles.id}/comment`)
+    await axios.post(`/api/${doodles.id}/comment`, formData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
 
 
   }
-
-  router.route('/:id/comment')
-  .post(secureRoute, addComment)
 
   return (
     <div className="doodle-add-comment">
