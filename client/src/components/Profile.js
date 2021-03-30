@@ -1,10 +1,10 @@
 import '../styles/componentStyles/profile.scss'
 
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom' //, useHistory 
+import { useParams, Link, useLocation } from 'react-router-dom' //, useHistory 
 import axios from 'axios'
 import ArtCard from './ArtCard'
-import { userIsAuthenticated } from '../helpers/authHelp' // getTokenFromLocalStorage,
+import { userIsOwner } from '../helpers/authHelp' // getTokenFromLocalStorage,
 
 import profile from '../assets/Profile.png'
 // import ProfileForm from '../components/userStuff/ProfileForm'
@@ -19,7 +19,8 @@ const Profile = () => {   //{ username }
   
   const params = useParams()
   // const history = useHistory()
-  
+  const location = useLocation()
+
   console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
 
@@ -27,7 +28,7 @@ const Profile = () => {   //{ username }
     getSingleUser()
     console.log('user ->', user)
     getAllArtwork()
-  }, [])
+  }, [location.pathname])
 
   const getSingleUser =  async () => {
     const response = await axios.get(`/api/users/${params.id}`)
@@ -97,7 +98,7 @@ const Profile = () => {   //{ username }
                 <p>{user.bio}</p>
               } */}
             </div>
-            {userIsAuthenticated() &&
+            {userIsOwner(user._id) &&
               <Link to="/profile-form">
                 <button className="button is-dark"> Edit profile</button>
               </Link>
