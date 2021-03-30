@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import { ImageUploadField } from '../userStuff/ImageUploadField'
 import '../../styles/componentStyles/profileForm.scss'
+import axios from 'axios'
+import { getTokenFromLocalStorage } from '../../helpers/authHelp'
 
 
 
@@ -14,13 +17,32 @@ const ProfileForm = () => {
     bio: '',
     profileImage: ''
   })
+  const [user, setUser] = useState(null)
+
+  const params = useParams()
+  console.log('params id', params.id)
+  const history = useHistory()
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const response = await axios.get(`/api/users/${params.id}`)
+      setUser(response.data)
+      setFormData(response.data)
+    }
+    getUserData()
+    console.log('get user ->', user)
+  }, [])
+
   const handleChange = event => {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    // ! put request for updated form data
+    await axios.put(`/api/users/${params.id}`, formData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+    history.push(`/profile/${params.id}`)
 
     // console.log('handleSubmit', handleSubmit)// this line needs to change so that we submit to our db
   }
@@ -28,7 +50,8 @@ const ProfileForm = () => {
   const handleImageUrl = url => {
     setFormData({ ...formData, profileImage: url })
   }
-  console.log('formdata', formData)
+  //console.log('formdata', formData)
+  if (!user) return null
   return (
     <main> 
       <>

@@ -75,8 +75,6 @@ const Profile = () => {   //{ username }
   //   sendBio()
 
   // }
-
- 
   
   if (!user) return null
   if (!userArtwork) return null
@@ -90,16 +88,26 @@ const Profile = () => {   //{ username }
               <img src={profile} alt="Profile" className="title-img"></img>
             </div>
             <div>
-              {/* <h1>{user.username}</h1> */}
+              <h1 className="title is-3">{user.username}</h1>
               <figure className="profile-pic image is-128x128">
-                <img src="https://bulma.io/images/placeholders/128x128.png"></img>
+                <img src={user.profilePicture}></img>
               </figure>
-              {/* { user.bio &&
-                <p>{user.bio}</p>
-              } */}
+              { user.bio &&
+              <>
+                <h4 className="title is-5">Bio:</h4>
+                <p className="subtitle is-5">{user.bio}</p>
+              </> 
+              }
+              { user.location &&
+              <>
+                <h4 className="title is-5">Location:</h4>
+                <p className="subtitle is-5">{user.location}</p>
+              </> 
+              }
+
             </div>
             {userIsOwner(user._id) &&
-              <Link to="/profile-form">
+              <Link to={`/profile/${user._id}/profile-form`}>
                 <button className="button is-dark"> Edit profile</button>
               </Link>
             }

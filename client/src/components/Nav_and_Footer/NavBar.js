@@ -1,7 +1,6 @@
 import '../../styles/componentStyles/navbar.scss'
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-
 import { getPayloadFromToken, userIsAuthenticated } from '../../helpers/authHelp'
 
 // userIsOwner
@@ -26,8 +25,8 @@ const NavBar = () => {
   useEffect(() => {
     const payload = getPayloadFromToken()
     const userId = payload.sub
-    console.log('payload', payload)
-    console.log('userId', userId)
+    // console.log('payload', payload)
+    // console.log('userId', userId)
     setUserId(userId)
   }, [getPayloadFromToken()])
 

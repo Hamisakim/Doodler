@@ -76,7 +76,7 @@ const JoinPage = () => {
         loginPopUp(true)
         window.localStorage.setItem('token',loginResponse.data.token)
       }
-      history.push('/doodle') 
+      history.push('/doodle-new') 
       //history.push('/login') //!change back to /
     } catch (err) {
       setErrors(err.response)
