@@ -117,16 +117,9 @@ const Profile = () => {   //{ username }
             <div className="columns">
               { userArtwork.length > 0 ?
                 <>
-                {/* userArtwork.map((artwork) => {
-                  <div key={artwork._id} className='column  is-one-third art-card-container'>
-                    <ArtCard {...artwork} />
-                  </div>
-}
-                  */} 
-                  {/* { userArtwork. art => (
+                  {userArtwork.map(art => (
                     <ArtCard key={art._id} {...art} />
-                  ))} */}
-              
+                  ))}
                 </>
                 :
                 <p>no art yet, add a LINK to doodle page</p>
