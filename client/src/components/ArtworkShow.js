@@ -2,11 +2,12 @@ import '../styles/componentStyles/artworkPage.scss'
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
-import ReactStars from 'react-rating-stars-component'
+// import ReactStars from 'react-rating-stars-component'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
 import ArtCard from './ArtCard'
+import StarsAndRating from './CommentParts/StarsAndRating'
 
 
 const ArtworkShow = () => {
@@ -18,30 +19,23 @@ const ArtworkShow = () => {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(`/api/artwork/${params.id}`)
+      console.log('🐝 ~ file: ArtworkShow.js ~ line 22 ~ response', response)
       setDoodle(response.data)
     }
     getData()
   }, [])
-
-  const handleRating = (newRating) => {
-    console.log(newRating)
-  }
-
-  // STUUFFFF
+ 
   const [doodles, setDoodles] = useState([])
-  // console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
   
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get('/api/artwork')
-      // console.log('🐝 ~ file: Gallery.js ~ line 17 ~ response', response)
-      //setDoodles(null)
       setDoodles(response.data)
     }
     getData()
   }, [])
 
-  // STUFFF
 
   if (!doodle) return null
 
@@ -49,13 +43,13 @@ const ArtworkShow = () => {
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
   // console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
-
+  const { id } = doodle
   return (
     <div className="page-wrapper">
       <div className="description-wrapper">
         <div className="desc-top-row">
           <h1 className="title">{doodle.title}</h1>
-          <p>{doodle.owner.username}</p>
+          <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
         </div>
         { doodle.description &&
         <p>{doodle.description}</p>
@@ -75,7 +69,8 @@ const ArtworkShow = () => {
       <div className="doodle-comments-wrapper">
         <div className="doodle-add-comment">
           <form>
-            <ReactStars
+            <StarsAndRating doodles={doodles} id={id} />
+            {/* <ReactStars
               count={5}
               onChange={handleRating}
               size={24}
@@ -84,7 +79,7 @@ const ArtworkShow = () => {
               halfIcon={<i className="fa fa-star-half-alt"></i>}
               fullIcon={<i className="fa fa-star"></i>}
               activeColor="#ffd700"
-            />
+            /> */}
             <input
               className="input"
               placeholder="leave comment"

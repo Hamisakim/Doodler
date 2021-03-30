@@ -1,5 +1,5 @@
 //! Re-enable BULMA for each style sheet!!! 
-//!!@import "~bulma/bulma.sass";
+@import "~bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
@@ -21,4 +21,7 @@ div.main {
   // font-family: 'Architects Daughter', cursive;
   font-family: 'Patrick Hand', cursive;
   font-weight: bolder;
+}
+body{
+  display: block !important;
 }

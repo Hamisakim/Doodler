@@ -1,6 +1,7 @@
 import '../styles/componentStyles/profile.scss'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import ArtCard from './ArtCard'
 
@@ -9,45 +10,70 @@ import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHe
 import profile from  '../assets/Profile.png'
 
 const Profile = () => {   //{ username } 
-  const [artwork, setArtwork] = useState(null)
-  // const [user, setUser] = useState(null)
-  const doodle = useRef(null)
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get('api/artwork')
-      setArtwork(response.data)
-    }
-    getData()
-  }, [])
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const response = await axios.get('api/user')
-  //     setUser(response.data)
-  //   }
-  //   getData()
-  // }, [])
-
+  const [user, setUser] = useState(null)
+  const [allArtwork, setAllArtwork] = useState(null)
+  const [userArtwork, setUserArtwork] = useState(null)
   const [formData, setFormData] = useState({
     bio: ''
   })
+
+  const params = useParams()
+  const history = useHistory()
+
+
+
+  useEffect(() => {
+    const getSingleUser = async () => {
+      const response = await axios.get(`/api/users/${params.id}`)
+      console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
+      setUser(response.data)
+    }
+    getSingleUser()
+
+    const getAllArtwork = async () => {
+      const response = await axios.get('/api/artwork')
+      setAllArtwork(response.data)
+    }
+    getAllArtwork()
+  }, [])
+
+  // useEffect(() => {
+  //   console.log('fsds',params.id)
+  //   if (params.id === undefined) {
+  //     history.push('/login')
+  //   }
+  // }, [])
+
+  useEffect(() => {
+    if (!allArtwork) return null
+    const userArtworkArray = allArtwork.filter(doodle => {
+      return doodle.owner._id === params.id
+    })
+    setUserArtwork(userArtworkArray)
+    console.log(userArtwork)
+    
+  }, [allArtwork])
+
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
-  const handleSave = () => {
-    const bioToSend = doodle.getSaveData()
+
+  const handleSaveBio = () => {
+    const bioToSend = formData.bio
     const newFormData = { ...formData, bio: bioToSend, formData }
     setFormData(newFormData)
 
     const sendBio = async () => {
-      await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
       history.push('/profile')
     }
     sendBio()
+        
   }
 
+  if (!user) return null
+  if (!userArtwork) return null
   return (
 
     <div className="main">
@@ -58,10 +84,13 @@ const Profile = () => {   //{ username }
               <img src={ profile } alt="Profile" className="title-img"></img>
             </div>
             <div>
-              <h1>username</h1>
+              {/* <h1>{user.username}</h1> */}
               <figure className="profile-pic image is-128x128">
                 <img src="https://bulma.io/images/placeholders/128x128.png"></img>
               </figure>
+              {/* { user.bio &&
+                <p>{user.bio}</p>
+              } */}
             </div>
             <div>
               <input
@@ -72,7 +101,7 @@ const Profile = () => {   //{ username }
                 onChange={handleChange}
               />
               { userIsAuthenticated() && 
-                <button className="button is-primary" onClick={() => handleSave()}> Save </button>
+                <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
               }
             </div>
           </div>
@@ -80,13 +109,17 @@ const Profile = () => {   //{ username }
         <div className="box">
           <h2>Your Doodles</h2>
           <div>
-            { artwork &&
-              <div className="columns">
-                { artwork.map( art => (
-                  <ArtCard key={art._id} {...art} />
-                ))}
-              </div>
-            }
+            <div className="columns">
+              { userArtwork.length > 0 ?
+                <>
+                  { userArtwork.map( art => (
+                    <ArtCard key={art._id} {...art} />
+                  ))}
+                </>
+                :
+                <p>no art yet, add a LINK to doodle page</p>
+              }
+            </div>
           </div>
         </div>
       </div>
