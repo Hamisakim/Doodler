@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 // need id of artowrk comments feed is based on
 // then we can get the comments via api get request 
@@ -11,16 +11,20 @@ const CommentFeed = ({ _id }) => {
   const [commentsArray, setCommentsArray] = useState([])
   console.log('🐝 ~ file: CommentFeed.js ~ line 12 ~ commentsArray', commentsArray)
 
-  // useEffect(() => {
-  //   getComments()
+  useEffect(() => {
+    getComments()
+    const interval = setInterval(getComments, 5000)
+    return () => {
+      clearInterval(interval)
+    }
 
-  // }, [])
+  }, [])
 
   const getComments = async () =>{ 
     const response = await axios.get(`/api/artwork/${_id}/getComments`) 
-    // console.log('🐝 ~ file: CommentFeed.js ~ line 21 ~ response', response)
+    console.log('🔵 GETTING COMMENTS ')
     const newCommentsArray = response.data
-    console.log('🐝 ~ file: CommentFeed.js ~ line 23 ~ newCommentsArray', newCommentsArray)
+
     setCommentsArray(newCommentsArray)
   }
 
@@ -29,13 +33,11 @@ const CommentFeed = ({ _id }) => {
   // }, 0)
 
   //! when we go live set this timer off ---------
-  setInterval(() => { //? refreshes number of likes every x seconds //! don't delete   
-    console.log(' GETT🔵')
-    getComments()  
-  }, 10 * 1000) //? x * 1000ms 
+  // setInterval(() => { //? refreshes number of likes every x seconds //! don't delete 
+  //   console.log(' GETT🔵')
+  //   getComments()  
+  // }, 10 * 1000) //? x * 1000ms 
   //! -----------------------------------
-
-
 
   return (
     <div className="box">
