@@ -1,4 +1,4 @@
-import '../styles/componentStyles/login.scss'
+// import '../styles/componentStyles/login.scss'
 
 import React, { useState } from 'react'
 import axios from 'axios'
@@ -45,42 +45,42 @@ const Login = () => {
   return (
     <div className="main">
       {/* <section className="section"> */}
-        {/* <div className="container"> */}
-          {/* <div className="columns"> */}
+      {/* <div className="container"> */}
+      {/* <div className="columns"> */}
 
-            <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
-              <legend className='has-text-centered'> <h1>Login </h1></legend>
-              <div className="field">
-                <label className="label">Username or Email</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    placeholder="Username or email"
-                    name="usernameOrEmail"
-                    onChange={handleChange}
-                    value={formData.usernameOrEmail}
-                  />
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">Password</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChange}
-                    //value={formData.password}
-                  />
-                </div>
-              </div>
-              <div className="field">
-                <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
-              </div>
-            </form>
-          {/* </div> */}
-        {/* </div> */}
+      <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
+        <legend className='has-text-centered'> <h1>Login </h1></legend>
+        <div className="field">
+          <label className="label">Username or Email</label>
+          <div className="control">
+            <input
+              className="input"
+              placeholder="Username or email"
+              name="usernameOrEmail"
+              onChange={handleChange}
+              value={formData.usernameOrEmail}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Password</label>
+          <div className="control">
+            <input
+              className="input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+              //value={formData.password}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
+        </div>
+      </form>
+      {/* </div> */}
+      {/* </div> */}
       {/* </section> */}
     </div>
   )
