@@ -1,0 +1,80 @@
+@import '~bulma/bulma.sass';
+
+.header{
+  text-align: center;
+}
+
+.card-front{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-back{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.card{
+  min-width: 350px;
+  min-height: 420px;
+}
+
+.Toastify__toast--success {
+  background-color: orange;
+}
+
+.like-btn-and-counter{
+  text-align: center;
+}
+
+/*
+.card-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .canvas-container{
+    margin:0;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.card{ 
+  min-height:420px ;
+}
+
+
+  .card-footer{
+    height: 20%;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 50px
+  }
+
+
+
+.card-header-title {
+  align-items: center;
+  color: #363636;
+  display: flex;
+
+  font-weight: 700;
+  padding: 0px;
+}
+
+footer{
+  margin-block-end: auto;
+
+}
+
+.card-like-btn-things{
+  display: flex;
+  align-items: center;
+  h2{
+    font-size: 2rem;
+  }
+} */

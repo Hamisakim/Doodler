@@ -1,0 +1,145 @@
+@import "~bulma/bulma.sass";
+.section {
+	padding:5px 0;
+}
+.section-header,
+.section-footer {
+	text-align: center;
+}
+img {
+  height: 60px;
+}
+.grid {
+	display: flex;
+	justify-content: space-between;
+	text-align:center;
+	list-style: none;
+  object-fit: fill;
+}
+.grid-item {
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	margin:20px;
+  object-fit: fill;
+}
+/* Grid */
+.homepage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: stretch;
+	height:250px;
+	padding:20px;
+	color:#fff;
+	background-size:cover;
+}
+.page-doodle {
+	height: 250px;
+  width: 449.5px;
+  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+}
+.page-gallery {
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		// url('../images/st-kilda.jpg');
+}
+.homepage-title {
+	margin:0 0 10px;
+	font-size: 50px;
+	line-height: 1.1;
+}
+#hero-body {
+  background-color: #87CEEB;
+}
+#footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.homepage-wrapper {
+  min-height: 80vh;
+}
+/* Hero Slider*/
+.carousel-wrapper {
+  height: 60vh;
+  // width: 100px;
+}
+.doodle-gif {
+  height: 250px;
+  width: 449.5px;
+  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+}
+/* Hero */
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height:700px;
+	color:#fff;
+	text-align:center;
+  height: 60vh;
+	// background-image:
+	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+	// 	url('../images/melbourne.jpg');
+	// background-size:cover;
+}
+.hero-content {
+	max-width:600px;
+	font-weight: 700;
+}
+.hero-content p {
+	font-size:24px;
+}
+.hero-button {
+	margin-top:20px;
+}
+
+.carousel-wrapper {
+  height: 60vh;
+  // width: 100px;
+}
+
+.doodle-gif {
+  height: 250px;
+  width: 449.5px;
+  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+}
+
+
+/* Hero */
+
+// .carousel-images {
+//   height: 30rem;
+//   width:30rem
+// }
+
+// .hero {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-height:700px;
+
+// 	color:#fff;
+// 	text-align:center;
+
+//   height: 60vh;
+// 	// background-image:
+// 	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+// 	// 	url('../images/melbourne.jpg');
+// 	// background-size:cover;
+// }
+
+// .hero-content {
+// 	max-width:600px;
+// 	font-weight: 700;
+// }
+// .hero-content p {
+// 	font-size:24px;
+// }
+// .hero-button {
+// 	margin-top:20px;
+
+.carousel-images{
+  max-height: 50rem;
+  max-width: 50rem;
+}
