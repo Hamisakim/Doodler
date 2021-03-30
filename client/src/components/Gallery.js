@@ -31,7 +31,7 @@ const Gallery = () => {
   )
   
   return (
-    <div className='main'>
+    <div className=''>
       <img src={ gallery } alt="Gallery" className="title-img"></img>
 
       <div className='columns is-multiline'>
