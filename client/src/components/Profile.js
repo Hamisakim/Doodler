@@ -7,7 +7,8 @@ import ArtCard from './ArtCard'
 
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
 
-import profile from  '../assets/Profile.png'
+import profile from '../assets/Profile.png'
+// import ProfileForm from '../components/userStuff/ProfileForm'
 
 const Profile = () => {   //{ username } 
   const [user, setUser] = useState(null)
@@ -51,7 +52,7 @@ const Profile = () => {   //{ username }
     })
     setUserArtwork(userArtworkArray)
     console.log(userArtwork)
-    
+
   }, [allArtwork])
 
   const handleChange = (event) => {
@@ -65,11 +66,11 @@ const Profile = () => {   //{ username }
     setFormData(newFormData)
 
     const sendBio = async () => {
-      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
       history.push('/profile')
     }
     sendBio()
-        
+
   }
 
   if (!user) return null
@@ -81,7 +82,7 @@ const Profile = () => {   //{ username }
         <div className="box">
           <div className="tile is-vertical">
             <div>
-              <img src={ profile } alt="Profile" className="title-img"></img>
+              <img src={profile} alt="Profile" className="title-img"></img>
             </div>
             <div>
               {/* <h1>{user.username}</h1> */}
@@ -100,7 +101,7 @@ const Profile = () => {   //{ username }
                 value={formData.description}
                 onChange={handleChange}
               />
-              { userIsAuthenticated() && 
+              {userIsAuthenticated() &&
                 <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
               }
             </div>
@@ -110,9 +111,9 @@ const Profile = () => {   //{ username }
           <h2>Your Doodles</h2>
           <div>
             <div className="columns">
-              { userArtwork.length > 0 ?
+              {userArtwork.length > 0 ?
                 <>
-                  { userArtwork.map( art => (
+                  {userArtwork.map(art => (
                     <ArtCard key={art._id} {...art} />
                   ))}
                 </>
@@ -120,10 +121,11 @@ const Profile = () => {   //{ username }
                 <p>no art yet, add a LINK to doodle page</p>
               }
             </div>
+            {/* <ProfileForm /> */}
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   )
 }
 
