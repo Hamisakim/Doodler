@@ -60,7 +60,7 @@ const CommentForm = ({ _id }) => {
           onChange={handleCommentChange}
           name="commentText"
         />
-        <button className="button" onClick={handleCommentPost}>Sumbit</button>
+        <button className="button" onClick={handleCommentPost}>Submit Comment</button>
       </form>
     </div>
   )
