@@ -2,23 +2,24 @@
 import React from 'react'
 import '../styles/componentStyles/home.scss'
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD
 
 import DemoCarousel from '../components/userStuff/Carousel'
 
+=======
+import DemoCarousel from '../components/Carousel'
+>>>>>>> development
 const Home = () => {
-
-
   return (
-    <div className="homepage-wrapper">
+    <div className="main">
       <div className="section-header">
         <h2 className="section-title">
-          <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo" className="second-logo"></img>
+          <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo"></img>
         </h2>
       </div>
       <section className="hero is-medium is-link">
         <div className="hero-body" id="hero-body">
         </div>
-
       </section>
       <section className="section">
         <ul className="grid">
@@ -36,10 +37,8 @@ const Home = () => {
       </section>
       <section>
         <DemoCarousel />
-
       </section>
     </div>
   )
 }
-
 export default Home

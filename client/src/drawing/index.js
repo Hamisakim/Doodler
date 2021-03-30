@@ -337,6 +337,9 @@ export default class extends PureComponent {
     canvas.height = height
     canvas.style.width = width
     canvas.style.height = height
+
+    // canvas.background = backgroundColor
+    // canvas.style.backgroundColor = backgroundColor
   };
 
   getPointerPos = e => {

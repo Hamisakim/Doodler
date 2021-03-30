@@ -1,10 +1,15 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
+const bioSchema = new mongoose.Schema({
+  text: { type: String, required: false, maxlength: 300, default: 'Tell us about yourself' }
+})
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 30 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  bio: [bioSchema]
 })
 
 //?reverse relationship so we get the user created artwork 
@@ -21,8 +26,6 @@ userSchema.set('toJSON', {
     return json
   }
 })
-
-
 
 
 userSchema

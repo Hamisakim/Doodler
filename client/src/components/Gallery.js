@@ -6,6 +6,8 @@ import axios from 'axios'
 import ArtCard from './ArtCard'
 //import LZString from 'lz-string'
 
+import gallery from  '../assets/Gallery.png'
+
 
 const Gallery = () => {
   const [doodles, setDoodles] = useState([])
@@ -26,12 +28,11 @@ const Gallery = () => {
     <div className='container'>
       <Loader className='loader-container' type="CIRCLES" color="#00BFFF" height={'20vh'} width={'20vh'} />
     </div>
-
   )
-
   
   return (
-    <div className='container'>
+    <div className='main'>
+      <img src={ gallery } alt="Gallery" className="title-img"></img>
 
       <div className='columns is-multiline'>
         {/* {doodles.map(artwork => {

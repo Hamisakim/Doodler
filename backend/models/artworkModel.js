@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 //! comment schema 
 const commentSchema = new mongoose.Schema({
-  commentText: { type: String, required: true },
+  commentText: { type: String, required: false }, //! Sami change to false for star rating 
   rating: { type: Number, required: false, min: 1, max: 5 },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false },
   username: { type: String , required: false }
@@ -16,7 +16,6 @@ const favouriteSchema = new mongoose.Schema({
 },
 { timestamps: true }
 )
-
 
 const artworkSchema = new mongoose.Schema({
   title: { type: String, required: true, maxlength: 60 },
@@ -41,6 +40,18 @@ artworkSchema
 
 artworkSchema.set('toJSON', { virtuals: true })
 
+//!* Total likes/favourites 
+artworkSchema
+  .virtual('avgRating')
+  .get(function() {
+    if (!this.comments.length) return 'Not yet rated'
+    const sum = this.comments.reduce((acc, curr) => {
+      return acc + curr.rating
+    }, 0)
+    return sum / this.comments.length
+  })
+
+artworkSchema.set('toJSON', { virtuals: true })
 
 
 export default mongoose.model('Artwork', artworkSchema)

@@ -2,42 +2,54 @@ import '../styles/componentStyles/artworkPage.scss'
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
-import ReactStars from 'react-rating-stars-component'
+// import ReactStars from 'react-rating-stars-component'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
+import ArtCard from './ArtCard'
+import StarsAndRating from './CommentParts/StarsAndRating'
+
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
 
   const params = useParams()
-  console.log('params ->', params.id)
+  // console.log('params ->', params.id)
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(`/api/artwork/${params.id}`)
+      console.log('🐝 ~ file: ArtworkShow.js ~ line 22 ~ response', response)
       setDoodle(response.data)
     }
     getData()
   }, [])
+ 
+  const [doodles, setDoodles] = useState([])
+  console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get('/api/artwork')
+      setDoodles(response.data)
+    }
+    getData()
+  }, [])
 
-  const handleRating = (newRating) => {
-    console.log(newRating)
-  }
 
   if (!doodle) return null
 
+  console.log('comments>>>', doodle.comments.commentText)
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
-  console.log('parsed bg', decompressedDoodleData.backgroundColor)
+  // console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
-  console.log(doodle)
-
+  const { id } = doodle
   return (
     <div className="page-wrapper">
       <div className="description-wrapper">
         <div className="desc-top-row">
           <h1 className="title">{doodle.title}</h1>
-          <p>{doodle.owner.username}</p>
+          <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
         </div>
         { doodle.description &&
         <p>{doodle.description}</p>
@@ -57,7 +69,8 @@ const ArtworkShow = () => {
       <div className="doodle-comments-wrapper">
         <div className="doodle-add-comment">
           <form>
-            <ReactStars
+            <StarsAndRating doodles={doodles} id={id} />
+            {/* <ReactStars
               count={5}
               onChange={handleRating}
               size={24}
@@ -66,7 +79,7 @@ const ArtworkShow = () => {
               halfIcon={<i className="fa fa-star-half-alt"></i>}
               fullIcon={<i className="fa fa-star"></i>}
               activeColor="#ffd700"
-            />
+            /> */}
             <input
               className="input"
               placeholder="leave comment"
@@ -74,7 +87,13 @@ const ArtworkShow = () => {
           </form>
         </div>
         <div className="doodle-show-comments">
-          <p>map through comments here</p>
+          <div className='gallery columns is-multiline'>
+            {doodles.map((doodle) => {
+              <div key={doodle.comments} className='column  is-one-third art-card-container'>
+                <ArtCard {...doodle.comments.commentText} />
+              </div>
+            })}
+          </div>
         </div>
         { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
@@ -86,4 +105,3 @@ const ArtworkShow = () => {
 
 export default ArtworkShow
 
-//scale canvas to make it larger in screen

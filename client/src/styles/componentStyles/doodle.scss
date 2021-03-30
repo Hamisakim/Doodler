@@ -5,6 +5,7 @@ body{
 
 
 .doodle-canvas {
+  position: relative;
   // border: 1px #000 solid;
   border-radius: 2px;
   box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.247);
@@ -80,6 +81,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
 .page-wrapper {
   min-height: 90vh;
+  width: 70vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
