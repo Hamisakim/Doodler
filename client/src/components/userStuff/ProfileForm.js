@@ -32,7 +32,7 @@ const ProfileForm = () => {
   return (
     <main> 
       <>
-        <h1>Tell us a little bit about yourself</h1>
+        <h1 className="form-title">Tell us a little bit about yourself</h1>
         <form
           onSubmit={handleSubmit}
         >
