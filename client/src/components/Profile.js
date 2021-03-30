@@ -1,11 +1,10 @@
 import '../styles/componentStyles/profile.scss'
 
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom' //, useHistory 
 import axios from 'axios'
 import ArtCard from './ArtCard'
-
-import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
+import { userIsAuthenticated } from '../helpers/authHelp' // getTokenFromLocalStorage,
 
 import profile from '../assets/Profile.png'
 // import ProfileForm from '../components/userStuff/ProfileForm'
@@ -14,12 +13,12 @@ const Profile = () => {   //{ username }
   const [user, setUser] = useState(null)
   const [allArtwork, setAllArtwork] = useState(null)
   const [userArtwork, setUserArtwork] = useState(null)
-  const [formData, setFormData] = useState({
-    bio: ''
-  })
+  // const [formData, setFormData] = useState({
+  //   bio: ''
+  // })
   
   const params = useParams()
-  const history = useHistory()
+  // const history = useHistory()
   
   console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
@@ -58,23 +57,23 @@ const Profile = () => {   //{ username }
 
   }, [allArtwork])
 
-  const handleChange = (event) => {
-    const newFormData = { ...formData, [event.target.name]: event.target.value }
-    setFormData(newFormData)
-  }
+  // const handleChange = (event) => {
+  //   const newFormData = { ...formData, [event.target.name]: event.target.value }
+  //   setFormData(newFormData)
+  // }
 
-  const handleSaveBio = () => {
-    const bioToSend = formData.bio
-    const newFormData = { ...formData, bio: bioToSend, formData }
-    setFormData(newFormData)
+  // const handleSaveBio = () => {
+  //   const bioToSend = formData.bio
+  //   const newFormData = { ...formData, bio: bioToSend, formData }
+  //   setFormData(newFormData)
 
-    const sendBio = async () => {
-      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
-      history.push('/profile')
-    }
-    sendBio()
+  //   const sendBio = async () => {
+  //     await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
+  //     history.push('/profile')
+  //   }
+  //   sendBio()
 
-  }
+  // }
 
  
   
@@ -98,7 +97,7 @@ const Profile = () => {   //{ username }
                 <p>{user.bio}</p>
               } */}
             </div>
-            <div>
+            {/* <div>
               <input
                 className="input"
                 placeholder="Tell us a little bit about yourself.."
@@ -109,7 +108,14 @@ const Profile = () => {   //{ username }
               {userIsAuthenticated() &&
                 <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
               }
-            </div>
+            </div> */}
+            <div>
+              {userIsAuthenticated() &&
+              <Link to="/profileForm" className="homepage page-gallery">
+                <button className="button is-primary"> Tell us more about yourself!</button>
+              </Link>
+              }
+            </div>  
           </div>
         </div>
         <div className="box">
@@ -126,7 +132,6 @@ const Profile = () => {   //{ username }
                 <p>no art yet, add a LINK to doodle page</p>
               }
             </div>
-            {/* <ProfileForm /> */}
           </div>
         </div>
       </div>
