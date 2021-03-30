@@ -97,25 +97,11 @@ const Profile = () => {   //{ username }
                 <p>{user.bio}</p>
               } */}
             </div>
-            {/* <div>
-              <input
-                className="input"
-                placeholder="Tell us a little bit about yourself.."
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-              />
-              {userIsAuthenticated() &&
-                <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
-              }
-            </div> */}
-            <div>
-              {userIsAuthenticated() &&
-              <Link to="/profile-form" className="homepage page-gallery">
-                <button className="button is-primary"> Tell us more about yourself!</button>
+            {userIsAuthenticated() &&
+              <Link to="/profile-form">
+                <button className="button is-dark"> Edit profile</button>
               </Link>
-              }
-            </div>  
+            }
           </div>
         </div>
         <div className="box">

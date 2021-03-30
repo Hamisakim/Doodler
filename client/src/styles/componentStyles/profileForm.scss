@@ -1,2 +1,28 @@
 @import "~bulma/bulma.sass";
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 70vh;
+}
+
+.form-title {
+  margin: 10px 0px;
+}
+
+// .image-upload {
+//   display: flex;
+//   justify-content: space-between;
+
+// }
+
+// .upload-field {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-end;
+
+// }

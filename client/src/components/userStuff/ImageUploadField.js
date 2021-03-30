@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import axios from 'axios'
+import '../../styles/componentStyles/profileForm.scss'
+
 const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
 
@@ -21,17 +23,20 @@ export const ImageUploadField = ({ handleImageUrl, value }) => {
   return (
     <>
       {value ?
-        <>
+        <div className="image-upload">
           <div>
             <img src={value} alt="profile" />
           </div>
-          <label>Change image</label>
-          <input
-            className="input"
-            type="file"
-            onChange={handleUpload}
-          />
-        </>
+          <div className="upload-field">
+            <label>Don&apos;t like it? Pick a new image.</label>
+            <input
+              className="input"
+              type="file"
+              onChange={handleUpload}
+            />
+          </div>
+          
+        </div>
         :
         <>
           <label>Profile Image</label>
