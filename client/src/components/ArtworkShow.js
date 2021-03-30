@@ -6,9 +6,10 @@ import axios from 'axios'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
 import { userIsOwner } from '../helpers/authHelp'
-import ArtCard from './ArtCard'
-import StarsAndRating from './CommentParts/StarsAndRating'
-
+//import ArtCard from './ArtCard'
+//import StarsAndRating from './CommentParts/StarsAndRating'
+import CommentForm from './CommentParts/CommentForm'
+import CommentFeed from './CommentParts/CommentFeed'
 
 const ArtworkShow = () => {
   const [doodle, setDoodle] = useState(null)
@@ -25,16 +26,18 @@ const ArtworkShow = () => {
     getData()
   }, [])
  
-  const [doodles, setDoodles] = useState([])
-  console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+  // const [doodles, setDoodles] = useState([])
+  // console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
+
   
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get('/api/artwork')
-      setDoodles(response.data)
-    }
-    getData()
-  }, [])
+  
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await axios.get('/api/artwork')
+  //     setDoodles(response.data)
+  //   }
+  //   getData()
+  // }, [])
 
 
   if (!doodle) return null
@@ -44,6 +47,7 @@ const ArtworkShow = () => {
   // console.log('parsed bg', decompressedDoodleData.backgroundColor)
 
   const { id } = doodle
+  console.log('id', id)
   return (
     <div className="page-wrapper">
       <div className="description-wrapper">
@@ -67,34 +71,20 @@ const ArtworkShow = () => {
         </div>
       </div>
       <div className="doodle-comments-wrapper">
-        <div className="doodle-add-comment">
-          <form>
-            <StarsAndRating doodles={doodles} id={id} />
-            {/* <ReactStars
-              count={5}
-              onChange={handleRating}
-              size={24}
-              isHalf={true}
-              emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#ffd700"
-            /> */}
-            <input
-              className="input"
-              placeholder="leave comment"
-            />
-          </form>
-        </div>
-        <div className="doodle-show-comments">
+        { !userIsOwner(doodle.owner._id) &&
+        <CommentForm { ...doodle } />
+        }
+        <CommentFeed _id={id}  />
+        {/* <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
+
             {doodles.map((doodle) => {
               <div key={doodle.comments} className='column  is-one-third art-card-container'>
                 <ArtCard {...doodle.comments.commentText} />
               </div>
             })}
           </div>
-        </div>
+        </div> */}
         { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
         }

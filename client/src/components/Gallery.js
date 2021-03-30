@@ -31,7 +31,7 @@ const Gallery = () => {
   )
   
   return (
-    <div className='main'>
+    <div className=''>
       <img src={ gallery } alt="Gallery" className="title-img"></img>
 
       <div className='columns is-multiline'>
@@ -56,7 +56,6 @@ const Gallery = () => {
       </div>
       <div className='gallery columns is-multiline'>
         {doodles.map((artwork) => {
-
           return (
             <div key={artwork._id} className='column  is-one-third art-card-container'>
               <ArtCard {...artwork} />

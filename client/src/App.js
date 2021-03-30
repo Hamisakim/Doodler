@@ -17,15 +17,22 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   return (
     <>
-    
       <BrowserRouter>
         <Navbar />
         <Switch>
+          
+          <Route path="/gallery/:id/edit">
+            <DoodleEdit />
+          </Route>
+
+          <Route path="/gallery/:id">
+            <ArtworkShow />
+          </Route> 
 
           <Route exact path="/">
             <Home />
           </Route>
-         
+
           <Route exact path='/gallery'>
             <Gallery />
           </Route>
@@ -42,19 +49,7 @@ const App = () => {
             <DoodleNew />
           </Route>
 
-          <Route path="/gallery/:id/edit">
-            <DoodleEdit />
-          </Route>
-
-          <Route path="/gallery/:id">
-            <ArtworkShow />
-          </Route> 
-         
-          <Route path="/:id"> {/*  could only make the route for starts work if we use this route */}
-            <ArtworkShow />
-          </Route> 
-
-          <Route path='/profile/:id'>
+          <Route exact path='/profile/:id'>
             <Profile />
           </Route>
 

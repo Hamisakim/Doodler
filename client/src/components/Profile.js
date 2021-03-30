@@ -17,26 +17,29 @@ const Profile = () => {   //{ username }
   const [formData, setFormData] = useState({
     bio: ''
   })
-
+  
   const params = useParams()
   const history = useHistory()
-
+  
+  console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
 
   useEffect(() => {
-    const getSingleUser = async () => {
-      const response = await axios.get(`/api/users/${params.id}`)
-      console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
-      setUser(response.data)
-    }
     getSingleUser()
-
-    const getAllArtwork = async () => {
-      const response = await axios.get('/api/artwork')
-      setAllArtwork(response.data)
-    }
+    console.log('user ->', user)
     getAllArtwork()
   }, [])
+
+  const getSingleUser =  async () => {
+    const response = await axios.get(`/api/users/${params.id}`)
+    console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
+    setUser(response.data)
+  }
+
+  const getAllArtwork = async () => {
+    const response = await axios.get('/api/artwork')
+    setAllArtwork(response.data)
+  }
 
   // useEffect(() => {
   //   console.log('fsds',params.id)
@@ -73,6 +76,8 @@ const Profile = () => {   //{ username }
 
   }
 
+ 
+  
   if (!user) return null
   if (!userArtwork) return null
   return (

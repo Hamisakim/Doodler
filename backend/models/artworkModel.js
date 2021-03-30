@@ -40,7 +40,7 @@ artworkSchema
 
 artworkSchema.set('toJSON', { virtuals: true })
 
-//!* Total likes/favourites 
+//!* Total
 artworkSchema
   .virtual('avgRating')
   .get(function() {
