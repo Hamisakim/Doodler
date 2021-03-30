@@ -32,7 +32,7 @@ const LikeButton = ({ id }) => {
 
 
   const refreshFavourites = async () => {
-    const response = await axios.get(`api/artwork/${id}`)
+    const response = await axios.get(`/api/artwork/${id}`)
     const data = response.data
     //console.log('🐝 ~ file: SemanticLikeButton.js ~ line 30 ~ data', data)
     const latestTotalFavourites = data.totalFavourites

@@ -38,7 +38,7 @@ const CommentForm = ({ _id }) => {
   // }, [getPayloadFromToken()])
 
   return (
-    <div className="doodle-add-comment">
+    <div className="box">
       <form>
         <StarsAndRating 
           //doodle={doodle} 

@@ -7,7 +7,8 @@ import ArtCard from './ArtCard'
 
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
 
-import profile from  '../assets/Profile.png'
+import profile from '../assets/Profile.png'
+// import ProfileForm from '../components/userStuff/ProfileForm'
 
 const Profile = () => {   //{ username } 
   const [user, setUser] = useState(null)
@@ -16,27 +17,29 @@ const Profile = () => {   //{ username }
   const [formData, setFormData] = useState({
     bio: ''
   })
-
+  
   const params = useParams()
   const history = useHistory()
-
+  
+  console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
 
   useEffect(() => {
-    const getSingleUser =  async () => {
-      const response = await axios.get(`/api/users/${params.id}`)
-      console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
-      setUser(response.data)
-    }
     getSingleUser()
     console.log('user ->', user)
-
-    const getAllArtwork = async () => {
-      const response = await axios.get('/api/artwork')
-      setAllArtwork(response.data)
-    }
     getAllArtwork()
   }, [])
+
+  const getSingleUser =  async () => {
+    const response = await axios.get(`/api/users/${params.id}`)
+    console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
+    setUser(response.data)
+  }
+
+  const getAllArtwork = async () => {
+    const response = await axios.get('/api/artwork')
+    setAllArtwork(response.data)
+  }
 
   // useEffect(() => {
   //   console.log('fsds',params.id)
@@ -52,7 +55,7 @@ const Profile = () => {   //{ username }
     })
     setUserArtwork(userArtworkArray)
     console.log(userArtwork)
-    
+
   }, [allArtwork])
 
   const handleChange = (event) => {
@@ -66,11 +69,11 @@ const Profile = () => {   //{ username }
     setFormData(newFormData)
 
     const sendBio = async () => {
-      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      await axios.post(`/api/users/${params.id}/bio`, newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
       history.push('/profile')
     }
     sendBio()
-        
+
   }
 
  
@@ -84,7 +87,7 @@ const Profile = () => {   //{ username }
         <div className="box">
           <div className="tile is-vertical">
             <div>
-              <img src={ profile } alt="Profile" className="title-img"></img>
+              <img src={profile} alt="Profile" className="title-img"></img>
             </div>
             <div>
               {/* <h1>{user.username}</h1> */}
@@ -103,7 +106,7 @@ const Profile = () => {   //{ username }
                 value={formData.description}
                 onChange={handleChange}
               />
-              { userIsAuthenticated() && 
+              {userIsAuthenticated() &&
                 <button className="button is-primary" onClick={() => handleSaveBio()}> Save </button>
               }
             </div>
@@ -113,9 +116,9 @@ const Profile = () => {   //{ username }
           <h2>Your Doodles</h2>
           <div>
             <div className="columns">
-              { userArtwork.length > 0 ?
+              {userArtwork.length > 0 ?
                 <>
-                  { userArtwork.map( art => (
+                  {userArtwork.map(art => (
                     <ArtCard key={art._id} {...art} />
                   ))}
                 </>
@@ -123,10 +126,11 @@ const Profile = () => {   //{ username }
                 <p>no art yet, add a LINK to doodle page</p>
               }
             </div>
+            {/* <ProfileForm /> */}
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   )
 }
 

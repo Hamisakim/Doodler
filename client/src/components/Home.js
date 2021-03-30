@@ -4,6 +4,7 @@ import '../styles/componentStyles/home.scss'
 import { Link } from 'react-router-dom'
 
 import DemoCarousel from '../components/userStuff/Carousel'
+import ProfileForm from './userStuff/ProfileForm'
 
 const Home = () => {
   return (
@@ -33,6 +34,9 @@ const Home = () => {
       </section>
       <section>
         <DemoCarousel />
+      </section>
+      <section>
+        <ProfileForm />
       </section>
     </div>
   )
