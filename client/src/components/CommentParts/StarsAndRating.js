@@ -16,8 +16,11 @@ const StarsAndRating = ( { id } ) => {
   // console.log('🐝 ~ file: StarsAndRating.js ~ line 13 ~ doodles', )
   const [freshRating, setFreshRating] = useState()
   const [currentUserRating, setCurrentUserRating] = useState()
+  const [avgRating, setAvgRating] = useState(2)
+  console.log('🐝 ~ file: StarsAndRating.js ~ line 20 ~ avgRating', avgRating)
   console.log('🐝 ~ file: StarsAndRating.js ~ line 13 ~ freshRating', freshRating)
-  const testId = '6062eddd48b7b2341a693f98'
+  
+  const testId = '6062eddd48b7b2341a693f98' //! change ID 
   
   useEffect(()=>{
     refreshRating()
@@ -25,9 +28,12 @@ const StarsAndRating = ( { id } ) => {
   
   const refreshRating = async () =>{
     console.log('🔵 ~ file: StarsAndRating.js ~ line 28 ~ refreshRatingFN' )
-    try {
-      const response = await axios.get(`api/artwork/${testId}/avgRating`) //! getting same error with the gallery/api/url
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 30 ~ response', response)
+    try { 
+      const avgRating = await axios.get(`/api/artwork/${testId}/avgRating`) //
+      console.log('🐝 ~ file: StarsAndRating.js ~ line 30 ~ avgRating', avgRating)
+      const avgRatingToSet = (avgRating.data)
+      console.log('🐝 ~ file: StarsAndRating.js ~ line 34 ~ avgRatingToSet', avgRatingToSet)
+      setAvgRating(avgRatingToSet)
     } catch (err) {
       console.log('🐝 ~ file: StarsAndRating.js ~ line 34 ~ err', err)
     }
@@ -41,9 +47,8 @@ const StarsAndRating = ( { id } ) => {
       //setFreshRating(newRating)
       console.log(newRating)
       const newRatingToSend = { rating: newRating}
-      const URL = `api/gallery/${testId}/rate`
       console.log('🐝 ~ file: StarsAndRating.js ~ line 29 ~ URL', URL)
-      const response = await axios.post(`${URL}`, newRatingToSend, { headers: { Authorization: `Bearer ${token}` } } )
+      const response = await axios.post(`/api/gallery/${testId}/rate`, newRatingToSend, { headers: { Authorization: `Bearer ${token}` } } )
       console.log('🐝 ~ file: StarsAndRating.js ~ line 28 ~ response', response)
     } catch (err) {
       console.log('🐝 ~ file: StarsAndRating.js ~ line 39 ~ err', err)
@@ -56,8 +61,8 @@ const StarsAndRating = ( { id } ) => {
         count={5}
         onChange={handleRating}
         size={24}
-        isHalf={false}
-        value={4}
+        isHalf={true}
+        value={0}
         emptyIcon={<i className="far fa-star"></i>}
         halfIcon={<i className="fa fa-star-half-alt"></i>}
         fullIcon={<i className="fa fa-star"></i>}

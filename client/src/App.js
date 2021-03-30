@@ -17,10 +17,10 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   return (
     <>
-    
       <BrowserRouter>
         <Navbar />
         <Switch>
+          
           <Route path="/gallery/:id">
             <ArtworkShow />
           </Route> 
@@ -28,7 +28,7 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-         
+
           <Route exact path='/gallery'>
             <Gallery />
           </Route>
