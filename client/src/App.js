@@ -50,9 +50,10 @@ const App = () => {
             <ArtworkShow />
           </Route> 
          
-          <Route path="/:id"> {/*  could only make the route for starts work if we use this route */}
+          {/* <Route path="/:id"> 
+           //could only make the route for starts work if we use this route
             <ArtworkShow />
-          </Route> 
+          </Route>  */}
 
           <Route path='/profile/:id'>
             <Profile />
