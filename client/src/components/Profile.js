@@ -111,7 +111,7 @@ const Profile = () => {   //{ username }
             </div> */}
             <div>
               {userIsAuthenticated() &&
-              <Link to="/profileForm" className="homepage page-gallery">
+              <Link to="/profile-form" className="homepage page-gallery">
                 <button className="button is-primary"> Tell us more about yourself!</button>
               </Link>
               }

@@ -21,9 +21,17 @@ export const ImageUploadField = ({ handleImageUrl, value }) => {
   return (
     <>
       {value ?
-        <div>
-          <img src={value} alt="profile" />
-        </div>
+        <>
+          <div>
+            <img src={value} alt="profile" />
+          </div>
+          <label>Change image</label>
+          <input
+            className="input"
+            type="file"
+            onChange={handleUpload}
+          />
+        </>
         :
         <>
           <label>Profile Image</label>

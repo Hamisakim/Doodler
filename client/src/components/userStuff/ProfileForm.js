@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
+import '../styles/componentStyles/profileForm.scss'
+
 import { ImageUploadField } from '../userStuff/ImageUploadField'
-// import Select from 'react-select'
 
 
 
