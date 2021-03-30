@@ -10,6 +10,8 @@ import JoinPage from './components/userStuff/JoinPage'
 import Login from './components/userStuff/Login'
 import ArtworkShow from './components/ArtworkShow'
 import DoodleEdit from './components/DoodleEdit'
+import ProfileForm from './components/userStuff/ProfileForm'
+
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -52,7 +54,10 @@ const App = () => {
           <Route exact path='/profile/:id'>
             <Profile />
           </Route>
-
+          
+          <Route path='/profile-form'>
+            <ProfileForm />
+          </Route>
 
         </Switch>
         <Footer />
