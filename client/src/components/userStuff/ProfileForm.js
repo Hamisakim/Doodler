@@ -39,7 +39,7 @@ const ProfileForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
     // ! put request for updated form data
     await axios.put(`/api/users/${params.id}`, formData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
     history.push(`/profile/${params.id}`)
