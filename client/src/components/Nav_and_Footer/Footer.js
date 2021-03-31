@@ -6,21 +6,19 @@ const NavBar = () => {
 
   return (
     <footer className="footer" id="footer">
-      <div className="level">
-        <div className="level-item has-text-centered">
+      <div className="">
+        <div className="">
           <Link to="/about">
             About
           </Link>
         </div>
-        <div className="level-item has-text-centered">
+        <div className="">
           <p>
             DOODLER 2021
           </p>
         </div>
       </div>
-
     </footer>
-
   )
 }
 

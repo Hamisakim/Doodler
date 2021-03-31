@@ -85,7 +85,6 @@ const DoodleEdit = () => {
 
   //if (!doodle) return null
   return (
-    
     <>
       <div className="section-header">
         <svg className="page-sub-title" viewBox="0 0 349 148" version="1.1">
