@@ -95,6 +95,8 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
                 <p>{description}</p>
               </fieldset>
               }
+
+              <Link to={`/gallery/${_id}`}>See More</Link>
     
             </div>
 

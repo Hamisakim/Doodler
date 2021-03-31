@@ -50,14 +50,17 @@ img {
   background-repeat: no-repeat;
 }
 .page-gallery {
-	background-image:
-		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-		// url('../images/st-kilda.jpg');
+	height: 250px;
+  width: 449.5px;
+  background-image: url('../../assets/gallery-gif-test.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .homepage-title {
 	margin:0 0 10px;
 	font-size: 50px;
 	line-height: 1.1;
+  color: #000;
 }
 #hero-body {
   background-color: #87CEEB;
@@ -167,5 +170,4 @@ img {
 
 .homepage-logo {
   width: 450px;
-
 }
