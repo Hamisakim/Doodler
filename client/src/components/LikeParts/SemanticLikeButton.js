@@ -21,7 +21,7 @@ const LikeButton = ({ id }) => {
 
   useEffect(() => {
     refreshFavourites()
-    const interval = setInterval(refreshFavourites(), 5000)
+    const interval = setInterval(refreshFavourites, 5000)
     return () => {
       clearInterval(interval)
     }

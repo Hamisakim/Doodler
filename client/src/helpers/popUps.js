@@ -10,7 +10,7 @@ export const loginPopUp = (wasLoginSuccess) => { //* boolean
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       pauseOnFocusLoss: false
@@ -21,7 +21,7 @@ export const loginPopUp = (wasLoginSuccess) => { //* boolean
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       pauseOnFocusLoss: false
@@ -29,31 +29,57 @@ export const loginPopUp = (wasLoginSuccess) => { //* boolean
   }
 }
 
-// export const loginPopUp = (wasLoginSuccess) => {
-//   //console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
-//   if (wasLoginSuccess === true){
-//     toast.success('Enjoy doodling!', {
-//       position: 'top-center',
-//       autoClose: 2500,
-//       hideProgressBar: false,
-//       closeOnClick: true,
-//       pauseOnHover: true,
-//       draggable: true,
-//       progress: undefined,
-//       pauseOnFocusLoss: false
-//     })
-//   } else if (wasLoginSuccess === false) {
-//     toast.error('🙀 something went wrong... Please try again!', {
-//       position: 'top-center',
-//       autoClose: 2500,
-//       hideProgressBar: false,
-//       closeOnClick: true,
-//       pauseOnHover: true,
-//       draggable: true,
-//       progress: undefined,
-//       pauseOnFocusLoss: false
-//     }) 
-//   }
-// }
+export const commentPopup = (wasCommentSuccessful) => {
+  if (wasCommentSuccessful === 0) {
+    toast('Please write a comment', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  }
+  //console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
+  if (wasCommentSuccessful === true){
+    toast.success('Thanks for commenting!', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  } else if (wasCommentSuccessful === false) {
+    toast.error('🙀 something went wrong... Please try again!', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    }) 
+  }
+}
 
-//export const  = () => {}
+export const ratingPopup = (isThereRating) => {
+  if (isThereRating === false) {
+    toast.error('Please leave a rating', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  }
+  //console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
+}
