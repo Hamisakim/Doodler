@@ -1,5 +1,3 @@
-
-
 import '../../styles/componentStyles/login.scss'
 
 import React, { useState } from 'react'
@@ -45,13 +43,13 @@ const Login = () => {
   }
 
   return (
-    <div className="main">
+    <div className="main has-text-centered">
       {/* <section className="section"> */}
       {/* <div className="container"> */}
       {/* <div className="columns"> */}
-
+      <p className="subtitle is-4">Login 🎨</p>
+      <br />
       <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
-        <legend className='has-text-centered'> <h1>Login </h1></legend>
         <div className="field">
           <label className="label">Username or Email</label>
           <div className="control">
@@ -77,8 +75,8 @@ const Login = () => {
             />
           </div>
         </div>
-        <div className="field">
-          <button className="button is-block is-info is-large is-fullwidth">Login</button><br />
+        <div className="field-button">
+          <button className="button box is-fullwidth hover-box">Login</button><br />
         </div>
       </form>
       {/* </div> */}

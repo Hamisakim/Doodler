@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
-import 'bulma/bulma.sass'
+import '../../styles/componentStyles/Join.scss'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { loginPopUp } from '../../helpers/popUps.js'
+
 
 
 //import { getTokenFromLocalStorage } from '../helpers/authHelp'
@@ -94,7 +95,7 @@ const JoinPage = () => {
   }
 
   return (
-    <>
+    <div className="main">
       { // check if user is logged in or not   
         isUserLoggedIn ? 
           <div className="box"> 
@@ -103,83 +104,80 @@ const JoinPage = () => {
           </div>
           : //? conditional render 
           <div className="container has-text-centered">
-            <div className="">
-              <div className="box">
-                <p className="subtitle is-4">Please signup or login to proceed.</p>
-                <br />
-                <form className='signup-form' onSubmit={handleSubmit}>
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <input className="input is-medium" 
-                        name="username" 
-                        placeholder="Username" 
-                        value={formData.username}
-                        onChange={handleChange}
-                      />
-                      <span className="icon is-medium is-left">
-                        <i className="fas fa-envelope"></i>
-                      </span>
-                      <span className="icon is-medium is-right">
-                        <i className="fas fa-check"></i>
-                      </span>
-                    </p>
-                  </div>
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <input className="input is-medium" 
-                        name="email" 
-                        placeholder="Email" 
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                      <span className="icon is-medium is-left">
-                        <i className="fas fa-envelope"></i>
-                      </span>
-                      <span className="icon is-medium is-right">
-                        <i className="fas fa-check"></i>
-                      </span>
-                    </p>
-                  </div>
-                  <div className="field">
-                    <p className="control has-icons-left">
-                      <input className="input is-medium" 
-                      //type="password" 
-                        name='password'
-                        placeholder="Password" 
-                        value={formData.password}
-                        onChange={handleChange}
-                        type='password'
-                      />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                      </span>
-                    </p>
-                  </div>
-                  <div className="field">
-                    <p className="control has-icons-left">
-                      <input className="input is-medium" 
-                        name="passwordConfirmation" 
-                        placeholder="Confirm Password" 
-                        value={formData.passwordConfirmation}
-                        onChange={handleChange}
-                        type='password'
-                      />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                      </span>
-                    </p>
-                  </div>
-              
-                  <button className="button is-block is-info is-large is-fullwidth">Sign Up</button><br />
-                
-                </form>
-              </div>
-            
-
+            <div>
+              <p className="subtitle is-4">Please sign up to proceed. 🎨</p>
+              <br />
+              <form className="signup-form box column is-half is-offset-one-quarter" onSubmit={handleSubmit}>
+                <div className="field">
+                  <p className="control has-icons-left has-icons-right">
+                    <input className="input is-medium" 
+                      name="username" 
+                      placeholder="Username" 
+                      value={formData.username}
+                      onChange={handleChange}
+                    />
+                    <span className="icon is-medium is-left">
+                      <i className="fas fa-envelope"></i>
+                    </span>
+                    <span className="icon is-medium is-right">
+                      <i className="fas fa-check"></i>
+                    </span>
+                  </p>
+                </div>
+                <div className="field">
+                  <p className="control has-icons-left has-icons-right">
+                    <input className="input is-medium" 
+                      name="email" 
+                      placeholder="Email" 
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                    <span className="icon is-medium is-left">
+                      <i className="fas fa-envelope"></i>
+                    </span>
+                    <span className="icon is-medium is-right">
+                      <i className="fas fa-check"></i>
+                    </span>
+                  </p>
+                </div>
+                <div className="field">
+                  <p className="control has-icons-left">
+                    <input className="input is-medium" 
+                    //type="password" 
+                      name='password'
+                      placeholder="Password" 
+                      value={formData.password}
+                      onChange={handleChange}
+                      type='password'
+                    />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-lock"></i>
+                    </span>
+                  </p>
+                </div>
+                <div className="field">
+                  <p className="control has-icons-left">
+                    <input className="input is-medium" 
+                      name="passwordConfirmation" 
+                      placeholder="Confirm Password" 
+                      value={formData.passwordConfirmation}
+                      onChange={handleChange}
+                      type='password'
+                    />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-lock"></i>
+                    </span>
+                  </p>
+                </div>
+                <div className="field-button">
+                  <button className="button box is-fullwidth hover-box">Sign Up</button><br />
+                </div>
+              </form>
+        
             </div>
           </div>
       }
-    </>
+    </div>
   )
 }
 

@@ -120,7 +120,7 @@ const Profile = () => {   //{ username }
               </g>
             </svg>
           </div>
-          <div className="section-header">
+          <div className="section-header bottom">
 
             <svg className="page-sub-title" viewBox="0 0 831 184" version="1.1">
   
