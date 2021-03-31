@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable object-curly-spacing */
+
 import React, { useState, useEffect } from 'react'
 import ReactStars from 'react-rating-stars-component'
 import axios from 'axios'
@@ -9,33 +8,27 @@ import { getTokenFromLocalStorage } from '../../helpers/authHelp'
 // get ID as props 
 //make route for stars 
 //pass in prop for being interactive 
-// 
+//  
 
 const StarsAndRating = ( { id } ) => {
-  console.log('🐝 ~ file: StarsAndRating.js ~ line 15 ~ id', id)
-  // console.log('🐝 ~ file: StarsAndRating.js ~ line 13 ~ doodles', )
-  const [freshRating, setFreshRating] = useState()
-  const [currentUserRating, setCurrentUserRating] = useState()
-  const [avgRating, setAvgRating] = useState(2)
-  console.log('🐝 ~ file: StarsAndRating.js ~ line 20 ~ avgRating', avgRating)
-  console.log('🐝 ~ file: StarsAndRating.js ~ line 13 ~ freshRating', freshRating)
-  
-  const testId = '6062eddd48b7b2341a693f98' //! change ID 
-  
+  const [avgRating, setAvgRating] = useState('No rating')
+  console.log('🐝 ~ file: StarsAndRating.js ~ line 15 ~ avgRating', avgRating)
+
   useEffect(()=>{
     refreshRating()
+    const interval = setInterval(refreshRating, 2000)
+    return () => {
+      clearInterval(interval)
+    }
   },[])
   
   const refreshRating = async () =>{
-    console.log('🔵 ~ file: StarsAndRating.js ~ line 28 ~ refreshRatingFN' )
     try { 
-      const avgRating = await axios.get(`/api/artwork/${testId}/avgRating`) //
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 30 ~ avgRating', avgRating)
-      const avgRatingToSet = (avgRating.data)
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 34 ~ avgRatingToSet', avgRatingToSet)
+      const response = await axios.get(`/api/artwork/${id}/avgRating`) //
+      const avgRatingToSet = response.data
       setAvgRating(avgRatingToSet)
     } catch (err) {
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 34 ~ err', err)
+      console.log('🔴 ~ file: StarsAndRating.js ~ line 37 ~ err', err)
     }
   }
 
@@ -43,31 +36,33 @@ const StarsAndRating = ( { id } ) => {
   const handleRating = async (newRating) => {
     try {
       const token = getTokenFromLocalStorage()
-      console.log('rating🔵')
-      //setFreshRating(newRating)
       console.log(newRating)
-      const newRatingToSend = { rating: newRating}
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 29 ~ URL', URL)
-      const response = await axios.post(`/api/gallery/${testId}/rate`, newRatingToSend, { headers: { Authorization: `Bearer ${token}` } } )
-      console.log('🐝 ~ file: StarsAndRating.js ~ line 28 ~ response', response)
+      const newRatingToSend = { rating: newRating }
+      await axios.post(`/api/gallery/${id}/rate`, newRatingToSend, { headers: { Authorization: `Bearer ${token}` } } )
     } catch (err) {
       console.log('🐝 ~ file: StarsAndRating.js ~ line 39 ~ err', err)
     }
   }
 
   return (
-    <div className='stars-container'>
-      <ReactStars
-        count={5}
-        onChange={handleRating}
-        size={24}
-        isHalf={true}
-        value={0}
-        emptyIcon={<i className="far fa-star"></i>}
-        halfIcon={<i className="fa fa-star-half-alt"></i>}
-        fullIcon={<i className="fa fa-star"></i>}
-        activeColor="#ffd700"
-      />
+    <div className="stars-and-rating-component">
+      <div className='stars-container'>
+        <ReactStars
+          count={5}
+          onChange={handleRating}
+          size={24}
+          isHalf={true}
+          value={0}
+          emptyIcon={<i className="far fa-star"></i>}
+          halfIcon={<i className="fa fa-star-half-alt"></i>}
+          fullIcon={<i className="fa fa-star"></i>}
+          activeColor="#ffd700"
+        />
+      </div>
+      <div className='rating-container' > 
+        {/* {numberOfVotes} */}
+        <h1 className='average-rating'>Average:{avgRating}  </h1>
+      </div>
     </div>
   )
 }

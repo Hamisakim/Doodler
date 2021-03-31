@@ -1,10 +1,10 @@
 import '../styles/componentStyles/profile.scss'
 
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom' //, useHistory 
+import { useParams, Link, useLocation } from 'react-router-dom' //, useHistory 
 import axios from 'axios'
 import ArtCard from './ArtCard'
-import { userIsAuthenticated } from '../helpers/authHelp' // getTokenFromLocalStorage,
+import { userIsOwner } from '../helpers/authHelp' // getTokenFromLocalStorage,
 
 import profile from '../assets/Profile.png'
 // import ProfileForm from '../components/userStuff/ProfileForm'
@@ -13,13 +13,16 @@ const Profile = () => {   //{ username }
   const [user, setUser] = useState(null)
   const [allArtwork, setAllArtwork] = useState(null)
   const [userArtwork, setUserArtwork] = useState(null)
+  const id = { userArtwork }
+  console.log('🐝 ~ file: Profile.js ~ line 17 ~ id', id)
   // const [formData, setFormData] = useState({
   //   bio: ''
   // })
   
   const params = useParams()
   // const history = useHistory()
-  
+  const location = useLocation()
+
   console.log('🐝 ~ file: Profile.js ~ line 23 ~ userArtwork', userArtwork)
 
 
@@ -27,7 +30,7 @@ const Profile = () => {   //{ username }
     getSingleUser()
     console.log('user ->', user)
     getAllArtwork()
-  }, [])
+  }, [location.pathname])
 
   const getSingleUser =  async () => {
     const response = await axios.get(`/api/users/${params.id}`)
@@ -74,8 +77,6 @@ const Profile = () => {   //{ username }
   //   sendBio()
 
   // }
-
- 
   
   if (!user) return null
   if (!userArtwork) return null
@@ -89,16 +90,26 @@ const Profile = () => {   //{ username }
               <img src={profile} alt="Profile" className="title-img"></img>
             </div>
             <div>
-              {/* <h1>{user.username}</h1> */}
+              <h1 className="title is-3">{user.username}</h1>
               <figure className="profile-pic image is-128x128">
-                <img src="https://bulma.io/images/placeholders/128x128.png"></img>
+                <img src={user.profilePicture}></img>
               </figure>
-              {/* { user.bio &&
-                <p>{user.bio}</p>
-              } */}
+              { user.bio &&
+              <>
+                <h4 className="title is-5">Bio:</h4>
+                <p className="subtitle is-5">{user.bio}</p>
+              </> 
+              }
+              { user.location &&
+              <>
+                <h4 className="title is-5">Location:</h4>
+                <p className="subtitle is-5">{user.location}</p>
+              </> 
+              }
+
             </div>
-            {userIsAuthenticated() &&
-              <Link to="/profile-form">
+            {userIsOwner(user._id) &&
+              <Link to={`/profile/${user._id}/profile-form`}>
                 <button className="button is-dark"> Edit profile</button>
               </Link>
             }
@@ -111,7 +122,7 @@ const Profile = () => {   //{ username }
               {userArtwork.length > 0 ?
                 <>
                   {userArtwork.map(art => (
-                    <ArtCard key={art._id} {...art} />
+                    <ArtCard key={art._id} id={id} {...art} cardFlip={false}/>
                   ))}
                 </>
                 :

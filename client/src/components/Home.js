@@ -20,7 +20,7 @@ const Home = () => {
       <section className="section">
         <ul className="grid">
           <li className="grid-item">
-            <Link to="/doodle" className="homepage page-doodle">
+            <Link to="/doodle-new" className="homepage page-doodle">
               <h3 className="homepage-title shadow">Doodle</h3>
             </Link>
           </li>

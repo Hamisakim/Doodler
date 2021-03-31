@@ -55,7 +55,7 @@ const App = () => {
             <Profile />
           </Route>
           
-          <Route path='/profile-form'>
+          <Route path='/profile/:id/profile-form'>
             <ProfileForm />
           </Route>
 

@@ -12,8 +12,10 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 
 //! WITH SEMANTIC 
-const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites  }) => {
+const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip  }) => {
+  console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ cardFlip', cardFlip)
   const [isFlipped, setIsFlipped] = useState(false)
+  const [wantCardFlip, setCardFlip] = useState(true)
 
 
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodleData)
@@ -22,11 +24,12 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites 
     setIsFlipped(!isFlipped)
   }
 
+  const randBool = Boolean(Math.round(Math.random()))
 
-  
+  //-----------------------------------------------------------------
   return (
     <> 
-      <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal' >
+      <ReactCardFlip infinite={randBool} isFlipped={isFlipped} flipDirection='horizontal' >
         <div className='card-front' onClick={handleClick}>
           <div className="ui card">
             <div className="image">
@@ -43,8 +46,12 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites 
             <div className='card-content'>
               <p>{description}</p>
               {/* <Link to={`/${_id}`} className='button'>See more</Link> */}
-              <Link to={`/gallery/${_id}`} className='button'>See more</Link>
-              <div className="content"></div>
+              <Link to={`/gallery/${_id}`} className='button'>
+                See more
+              </Link>
+              <Link to={`/profile/${owner._id}`} >
+                <div className="content">{owner.username}</div>
+              </Link>
               <div className="header">{title}</div>
               <div className="">
                 <SemanticLikeButton id={_id}/>
@@ -52,7 +59,6 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites 
             </div>
           </div>
         </div>
-
         <div className='card-back' >
           {/* <Card
             header={title}

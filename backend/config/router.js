@@ -1,7 +1,7 @@
 import express from 'express'
 //! import add like
 import { getAllArtwork, addArtwork, getOneArtwork, editArtwork, addComment, deleteComment, deleteArtwork, addLike, newRating, getAvgRating, getComments } from '../controllers/artworkController.js'
-import { getAllUsers, getSingleUser, addBio } from '../controllers/userController.js'
+import { getAllUsers, getSingleUser, editUser } from '../controllers/userController.js'
 import { registerUser, loginUser } from '../controllers/authController.js'
 import { secureRoute } from './secureRoute.js'
 
@@ -22,7 +22,6 @@ router.route('/artwork/:id/edit')
   
 router.route('/login')
   .post(loginUser)
-
 
 router.route('/join')
   .post(registerUser)
@@ -52,9 +51,10 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(getSingleUser)
+  .put(secureRoute, editUser)
 
-router.route('/users/:id/bio') //* front end make sure userId is being passed
-  .post(addBio)
+// router.route('/users/:id/bio') //* front end make sure userId is being passed
+//   .post(addBio)
 
 // router.route('/users/:id/bio/:bio-id') //* front end make sure userId is being passed
 //   .put(addBio)
