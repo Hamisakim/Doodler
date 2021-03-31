@@ -42,3 +42,13 @@ nav {
   position: fixed !important;
   width: 100vw;
 }
+
+.navbar-burger {
+  height: 85px !important;
+  width: 80px !important;
+  transform: scale(1.5);
+}
+
+.navbar-burger:hover {
+ background-color: transparent !important;
+}
