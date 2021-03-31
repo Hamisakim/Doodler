@@ -40,7 +40,7 @@ artworkSchema
 
 artworkSchema.set('toJSON', { virtuals: true })
 
-//!* Total
+//* need to find a way to make sure the rating is put in front end 
 artworkSchema
   .virtual('avgRating')
   .get(function() {

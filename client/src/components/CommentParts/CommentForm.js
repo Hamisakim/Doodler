@@ -4,23 +4,19 @@ import axios from 'axios'
 
 import { getTokenFromLocalStorage } from '../../helpers/authHelp'
 
-const CommentForm = ({ _id }) => {
-  //? get ID from doodles and pass into the startsAndRating
-  //? may be worth doing like u originally said and have this handle the whole rating and comment it's self 
+//* need to find way to prevent adding a comment from adding a rating too
 
+const CommentForm = ({ _id }) => {
   const [userComment, setUserComment] = useState({
     commentText: '' 
   })
 
-  console.log('artwork id ->', _id)
-
-  const handleCommentPost = async(event) => {
-    event.preventDefault()
-    // const payload = getPayloadFromToken()
-    // const userId = payload.sub
-    const commentToAdd = { ...userComment }
-    await axios.post(`/api/${_id}/comment`, commentToAdd, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-  }
+  
+  const [wasCommentSuccessful, setWasCommentSuccessful] = useState(null) //! use this to change classes...easy use template literal 
+  const [isThereComment, setIsThereComment] = useState(null)
+  
+  console.log('🐝 ~ file: CommentForm.js ~ line 12 ~ setWasCommentSuccessful', setWasCommentSuccessful)
+  console.log('🐝 ~ file: CommentForm.js ~ line 12 ~ wasCommentSuccessful', wasCommentSuccessful)
 
   const handleCommentChange = (event) => {
     //?get the value of what's being typed in the form and updating state
@@ -28,39 +24,41 @@ const CommentForm = ({ _id }) => {
     console.log('🐝 ~ file: Login.js ~ line 25 ~ event', event)
     setUserComment(newUserComment)
   }
+  
+  const handleCommentPost = async(event) => {
+    event.preventDefault()
+    const isThereComment = !!userComment.commentText
+    console.log('🐝 ~ file: CommentForm.js ~ line 28 ~ isThereComment', isThereComment)
+    if (!isThereComment) {
+      setIsThereComment(false)
+      console.log('NO COMMENT')
+    }
+    try {
+      const commentToAdd = { ...userComment }
+      await axios.post(`/api/${_id}/comment`, commentToAdd, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      console.log('🐝 ~ file: CommentForm.js ~ line 23 ~ commentToAdd', commentToAdd)
+    } catch (err) {
+      console.log('🐝 ~ file: CommentForm.js ~ line 24 ~ err', err)
+    }
 
-  // useEffect(() => {
-  //   const payload = getPayloadFromToken()
-  //   const userId = payload.sub
-  //   console.log('payload', payload)
-  //   console.log('userId', userId)
-  //   setUserId(userId)
-  // }, [getPayloadFromToken()])
+  }
+
 
   return (
     <div className="box">
       <form>
-        <StarsAndRating 
-          //doodle={doodle} 
-          id={_id} 
-        />
-        {/* <ReactStars
-          count={5}
-          onChange={handleRating}
-          size={24}
-          isHalf={true}
-          emptyIcon={<i className="far fa-star"></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
-          activeColor="#ffd700"
-        /> */}
+        <StarsAndRating id={_id}/>
+        
+        {!isThereComment && 
         <input
-          className="input"
+          className={'input is-danger'}
           placeholder="leave comment"
           onChange={handleCommentChange}
           name="commentText"
         />
-        <button className="button" onClick={handleCommentPost}>Submit Comment</button>
+        }
+
+        <button href='#comment-feed' className="button" onClick={handleCommentPost}>Comment</button>
       </form>
     </div>
   )

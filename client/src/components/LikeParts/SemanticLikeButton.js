@@ -21,37 +21,33 @@ const LikeButton = ({ id }) => {
 
   useEffect(() => {
     refreshFavourites()
+    const interval = setInterval(refreshFavourites(), 5000)
+    return () => {
+      clearInterval(interval)
+    }
   }, [])
 
 
-  //! when we go live set this timer off ---------
-  // setInterval(() => { //? refreshes number of likes every x seconds //! don't delete 
-  //   refreshFavourites()  
-  // }, 5 * 1000) //? x * 1000ms 
-  //! -----------------------------------
-
-
   const refreshFavourites = async () => {
+    console.log('🔵 Refreshing Fav')
     const response = await axios.get(`/api/artwork/${id}`)
     const data = response.data
     //console.log('🐝 ~ file: SemanticLikeButton.js ~ line 30 ~ data', data)
     const latestTotalFavourites = data.totalFavourites
     setTotalFavourites(latestTotalFavourites)
-
     const payload = getPayloadFromToken()
     const currentUserId = JSON.stringify(payload.sub)
     console.log('🐝 ~ file: SemanticLikeButton.js ~ line 42 ~ currentUserId', currentUserId)
     userIsOwner(currentUserId)
-
     const favouritesArray = data.favourites
     console.log('🐝 ~ file: SemanticLikeButton.js ~ line 34 ~ favouritesArray', favouritesArray)
     const hasUserLikedBefore = favouritesArray.find(item => JSON.stringify(item.owner) === currentUserId)
-    
     console.log('🐝 ~ file: SemanticLikeButton.js ~ line 49 ~ hasUserLikedBefore', hasUserLikedBefore)
     if (hasUserLikedBefore){
       setUserLikedAlready(true)
     }
   }
+  
   const notifyPopup = (wasLikeSuccess) => { //! put this outside 
     if (wasLikeSuccess === true){ //!for testing = false 
       toast.success('Liked!', {
