@@ -26,8 +26,8 @@ const NavBar = () => {
   useEffect(() => {
     const payload = getPayloadFromToken()
     const userId = payload.sub
-    console.log('payload', payload)
-    console.log('userId', userId)
+    // console.log('payload', payload)
+    // console.log('userId', userId)
     setUserId(userId)
   }, [getPayloadFromToken()])
 

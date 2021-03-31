@@ -13,6 +13,8 @@ const Profile = () => {   //{ username }
   const [user, setUser] = useState(null)
   const [allArtwork, setAllArtwork] = useState(null)
   const [userArtwork, setUserArtwork] = useState(null)
+  const id = { userArtwork }
+  console.log('🐝 ~ file: Profile.js ~ line 17 ~ id', id)
   // const [formData, setFormData] = useState({
   //   bio: ''
   // })
@@ -111,7 +113,7 @@ const Profile = () => {   //{ username }
               {userArtwork.length > 0 ?
                 <>
                   {userArtwork.map(art => (
-                    <ArtCard key={art._id} {...art} />
+                    <ArtCard key={art._id} id={id} {...art} cardFlip={false}/>
                   ))}
                 </>
                 :

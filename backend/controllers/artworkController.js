@@ -109,7 +109,7 @@ export const getComments = async (req, res) => {
     if (!artwork) throw new Error('No artwork found')
     const commentsArray = artwork.comments 
     // if(!commentsArray.lenght === 0 )
-    console.log('🐝 ~ file: artworkController.js ~ line 108 ~ commentsArray', commentsArray)
+    // console.log('🐝 ~ file: artworkController.js ~ line 108 ~ commentsArray', commentsArray)
     res.status(200).json(commentsArray)
   
   } catch (err) {
@@ -187,14 +187,11 @@ export const newRating = async (req, res) => {
 
 
 export const getAvgRating = async (req, res) => {
-
   try {
     const { id } = req.params 
     const artwork = await Artwork.findById(id)
     if (!artwork) throw new Error('No artwork found to rate')
-    console.log('🐝 ~ file: artworkController.js ~ line 165 ~ artwork', artwork.avgRating)
     return res.status(200).json(artwork.avgRating)
-    
   } catch (err) {
     return res.status(500).json({ message: err.message })
   }
