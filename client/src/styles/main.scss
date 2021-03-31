@@ -1,5 +1,7 @@
 //! Re-enable BULMA for each style sheet!!! 
 
+$brand-color: #42c298;
+
 @import "~bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
@@ -13,7 +15,7 @@
 //   width: 70vw;
 // }
 
-$brand-color: #42c298;
+
 
 #hero-body {
   background-image:
