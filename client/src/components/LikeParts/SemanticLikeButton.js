@@ -23,9 +23,10 @@ const LikeButton = ({ id }) => {
       clearInterval(interval)
     }
   }, [])
-  useEffect(() => {
-    refreshFavourites()
-  },[userLikedAlready])
+
+  // useEffect(() => {
+  //   refreshFavourites()
+  // },[userLikedAlready])
 
   const refreshFavourites = async () => {
     const response = await axios.get(`/api/artwork/${id}`)
@@ -37,9 +38,10 @@ const LikeButton = ({ id }) => {
     userIsOwner(currentUserId)
     const favouritesArray = data.favourites
     const hasUserLikedBefore = favouritesArray.find(item => JSON.stringify(item.owner) === currentUserId)
-    
     if (hasUserLikedBefore){
       setUserLikedAlready(true)
+    } else if (!hasUserLikedBefore){
+      setUserLikedAlready(false)
     }
   }
   
