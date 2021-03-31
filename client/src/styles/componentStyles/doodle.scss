@@ -85,7 +85,7 @@ input[type="range"]::-moz-range-thumb:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 60px auto;
+  //margin: 0 0;
 }
 
 .split-col-wraper {
@@ -115,6 +115,10 @@ input[type="range"]::-moz-range-thumb:hover {
 
   .col {
     margin: 0 0px;
+  }
+
+  svg.page-sub-title {
+    width: 18vmax;
   }
   
 }

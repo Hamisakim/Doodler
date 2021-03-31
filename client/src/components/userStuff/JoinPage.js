@@ -97,13 +97,13 @@ const JoinPage = () => {
     <>
       { // check if user is logged in or not   
         isUserLoggedIn ? 
-          <div className="box has-text-centered"> 
+          <div className="box"> 
             <h1>you are logged in in already </h1>
             <button className='button is-danger' onClick={handleLogout} >Logout</button>
           </div>
           : //? conditional render 
           <div className="container has-text-centered">
-            <div className="column is-4 is-offset-4">
+            <div className="">
               <div className="box">
                 <p className="subtitle is-4">Please signup or login to proceed.</p>
                 <br />

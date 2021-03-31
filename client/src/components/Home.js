@@ -38,12 +38,12 @@ const Home = () => {
         <ul className="grid">
           <li className="grid-item box hover-box">
             <Link to="/doodle-new" className="homepage page-doodle">
-              <h3 className="homepage-title shadow">Doodle</h3>
+              <p className="homepage-title shadow">Doodle</p>
             </Link>
           </li>
           <li className="grid-item box hover-box">
             <Link to="/gallery" className="homepage page-gallery">
-              <h3 className="homepage-title shadow">Gallery</h3>
+              <p className="homepage-title shadow">Gallery</p>
             </Link>
           </li>
         </ul>
