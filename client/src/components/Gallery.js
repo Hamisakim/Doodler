@@ -31,11 +31,13 @@ const Gallery = () => {
   )
   
   return (
-    <div className=''>
-      <img src={ gallery } alt="Gallery" className="title-img"></img>
-
-      <div className='columns is-multiline'>
-        {/* {doodles.map(artwork => {
+    <>
+      <div className="section-header">
+        <img src={ gallery } alt="Gallery" className="title-img"></img>
+      </div>
+      <div className=''>
+        <div className='columns is-multiline'>
+          {/* {doodles.map(artwork => {
           console.log('parsed', JSON.parse(artwork.doodleData).backgroundColor)
           return <div className="gallery-canvas" key={artwork._id}>
             <CanvasDraw
@@ -53,19 +55,19 @@ const Gallery = () => {
 
         })} */}
 
-      </div>
-      <div className='gallery columns is-multiline'>
-        {doodles.map((artwork) => {
-          return (
-            <div key={artwork._id} className='column  is-one-third art-card-container'>
-              <ArtCard {...artwork} />
-            </div>
-          )
+        </div>
+        <div className='gallery columns is-multiline'>
+          {doodles.map((artwork) => {
+            return (
+              <div key={artwork._id} className='column  is-one-third art-card-container'>
+                <ArtCard {...artwork} />
+              </div>
+            )
 
-        })}
+          })}
+        </div>
       </div>
-    </div>
-
+    </>
   )
 }
 export default Gallery

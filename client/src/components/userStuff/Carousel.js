@@ -2,6 +2,12 @@ import React from 'react'
 // import ReactDOM from 'react-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
+import demoDoodleOne from '../../assets/demo-doodle.png'
+import demoDoodleTwo from '../../assets/demo-doodle-2.png'
+import demoDoodleThree from '../../assets/demo-doodle-3.png'
+import demoDoodleFour from '../../assets/demo-doodle-4.png'
+import demoDoodleFive from '../../assets/demo-doodle-5.png'
+import '../../styles/componentStyles/home.scss'
 
 const DemoCarousel = () => {
 
@@ -11,13 +17,19 @@ const DemoCarousel = () => {
       autoPlay={true}
       showThumbs={false}>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/Huco3rp.jpg" />
+        <img className="carousel-images" src={demoDoodleOne} />
       </div>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/g77ip9x.jpg" />
+        <img className="carousel-images" src={demoDoodleFive}  />
       </div>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/H7iBOQY.jpg" />
+        <img className="carousel-images" src={demoDoodleTwo}  />
+      </div>
+      <div>
+        <img className="carousel-images" src={demoDoodleThree}  />
+      </div>
+      <div>
+        <img className="carousel-images" src={demoDoodleFour}  />
       </div>
     </Carousel>
   )
