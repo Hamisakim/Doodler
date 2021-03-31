@@ -12,7 +12,6 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import ReactStars from 'react-rating-stars-component'
 
 
-
 //! WITH SEMANTIC 
 const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip, avgRating  }) => {
   console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ avgRating', avgRating)
