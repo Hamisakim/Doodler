@@ -58,7 +58,7 @@ const Profile = () => {   //{ username }
   return (
     <>
       <div className="main">
-        <div className="section-header">
+        <div className="section-header section-header-profile">
           <img src={profile} alt="Profile" className="title-img"></img>
         </div>
         <div className="content-section">

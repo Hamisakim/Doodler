@@ -34,6 +34,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
         <div className='card-front ' onClick={handleClick}>
           
           <div className="ui card">
+            <div className="header"> <h1>{title}</h1></div>
             <div className="image">
               <CanvasDraw
                 className="canvas"     
@@ -47,7 +48,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
             </div>
 
             <div className='front-card-content'>
-              <div className="header"> <h1>{title}</h1></div>
+         
               <Link to={`/profile/${owner._id}`} >
                 <div className="user-items">Doodled by <span className='username'>{owner.username}</span></div>
               </Link>
