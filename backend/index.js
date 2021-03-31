@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import { port, dbURI } from './config/environment.js'
 import router from './config/router.js'
+import bodyParser from 'body-parser'
 
 const app = express()
 
@@ -13,7 +14,7 @@ const startServer = async() => {
     console.log('🚀 Database has connected successfully')
 
     // * body parser
-    app.use(express.json())
+    app.use(bodyParser.json({ limit: '10mb', extended: true }))
 
     // * Logger middleware
     app.use((req, _res, next) => {
