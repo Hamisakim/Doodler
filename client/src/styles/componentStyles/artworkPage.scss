@@ -12,6 +12,8 @@
 
 .canvas-container {
   transform: scale(1.5);
+  display: flex;
+  justify-content:center;
 }
 
 .doodle-comments-wrapper {
