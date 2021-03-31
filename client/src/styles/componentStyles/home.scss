@@ -1,3 +1,5 @@
+$brand-color: #42c298;
+
 @import "~bulma/bulma.sass";
 .section {
 	padding:5px 0;
@@ -21,6 +23,7 @@ img {
 	list-style: none;
   object-fit: fill;
 }
+
 .grid-item {
 	flex:1;
 	display: flex;
@@ -68,7 +71,7 @@ img {
 }
 /* Hero Slider*/
 .carousel-wrapper {
-  height: 60vh;
+  // height: 60vh;
   // width: 100px;
 }
 .doodle-gif {
@@ -147,10 +150,22 @@ img {
 // 	margin-top:20px;
 
 .carousel-images{
-  max-height: 50rem;
-  max-width: 50rem;
+  max-height: 420px;
+  max-width: 420px;;
 }
 
 .carousel-slider {
-  height: 70%;
+  height: 420px;
+}
+
+.hover-box:hover {
+  border: 1px solid $brand-color !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0px $brand-color !important;
+  color: $brand-color;
+}
+
+.homepage-logo {
+  width: 450px;
+
 }
