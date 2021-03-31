@@ -102,6 +102,12 @@ input[type="range"]::-moz-range-thumb:hover {
   margin: 0 auto;
 }
 
+.section-header-create{
+  padding-bottom: 0rem;
+
+}
+
+
 @media screen and (max-width: 375px) {
   .split-col-wraper {
     flex-direction: column-reverse;
