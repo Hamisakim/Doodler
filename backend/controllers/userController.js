@@ -69,6 +69,7 @@ export const editUser = async (req, res) => {
     if (!userToEdit._id.equals(req.currentUser._id)) throw new Error('Unauthorised')
     Object.assign(userToEdit, req.body)
     await userToEdit.save()
+    console.log('userToEdit', userToEdit)
     return res.status(200).json(userToEdit)
   } catch (err) {
     console.log('🆘 Cannot edit user')
