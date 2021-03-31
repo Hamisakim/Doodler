@@ -5,9 +5,6 @@ import { Carousel } from 'react-responsive-carousel'
 
 const DemoCarousel = () => {
 
-
-
-
   return (
     <Carousel
       // className="hero"

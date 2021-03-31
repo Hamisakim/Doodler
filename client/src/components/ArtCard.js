@@ -9,10 +9,13 @@ import axios from 'axios'
 import LikeButton from './LikeParts/LikeButton'
 import SemanticLikeButton from './LikeParts/SemanticLikeButton'
 import { Card, Icon, Image } from 'semantic-ui-react'
+import ReactStars from 'react-rating-stars-component'
+
 
 
 //! WITH SEMANTIC 
-const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip  }) => {
+const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip, avgRating  }) => {
+  console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ avgRating', avgRating)
   console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ cardFlip', cardFlip)
   const [isFlipped, setIsFlipped] = useState(false)
   const [wantCardFlip, setCardFlip] = useState(true)
@@ -28,10 +31,12 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
   return (
     <> 
       <ReactCardFlip infinite={randBool} isFlipped={isFlipped} flipDirection='horizontal' >
-        <div className='card-front' onClick={handleClick}>
+        <div className='card-front ' onClick={handleClick}>
+          
           <div className="ui card">
             <div className="image">
-              <CanvasDraw       
+              <CanvasDraw
+                className="canvas"     
                 disabled
                 hideGrid
                 immediateLoading={true}
@@ -40,41 +45,77 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
                 backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
               />
             </div>
-            <hr/> 
-            <div className='card-content'>
-              <p>{description}</p>
-              {/* <Link to={`/${_id}`} className='button'>See more</Link> */}
-              <Link to={`/gallery/${_id}`} className='button'>
-                See more
-              </Link>
+
+            <div className='front-card-content'>
+              <div className="header"> <h1>{title}</h1></div>
               <Link to={`/profile/${owner._id}`} >
-                <div className="content">{owner.username}</div>
+                <div className="user-items">Doodled by <span className='username'>{owner.username}</span></div>
               </Link>
-              <div className="header">{title}</div>
-              <div className="">
+              
+              <div className="like-button">
                 <SemanticLikeButton id={_id}/>
               </div>
+              
             </div>
           </div>
+
+
         </div>
         <div className='card-back' >
-          {/* <Card
-            header={title}
-            meta=''
-            description={description}
-            extra={likeButton}
-          /> */}
+          <Card onClick={handleClick}>
+           
+            <div className='back-card-content'>
+
+        
+              <div className='back-card-top-container'>
+                <div className="header"> 
+                  <h1>{title}</h1>
+                </div>
+                <Link to={`/profile/${owner._id}`} >
+                  <div className="user-items">Doodled by <span className='username'>{owner.username}</span></div>
+                </Link>
+                <div className='stars'>{ <ReactStars
+                  edit={false}
+                  // count={5}
+                  // onChange={0}
+                  size={16}
+                  isHalf={true}
+                  value={avgRating}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+                }</div>
+              </div>
+
+              { description &&
+              <fieldset>
+                <legend>Description</legend>
+                <p>{description}</p>
+              </fieldset>
+              }
+    
+            </div>
+
+          </Card>
+
+
+
+
+
+          {/* 
+
           <Card>
             <Card.Content onClick={handleClick}>
               <Card.Header>{title}</Card.Header>
               <Card.Description>
-                {description}
+                <p>{description}</p>
               </Card.Description>
+              <Link to={`/gallery/${_id}`} className='button'>See more </Link>
+
             </Card.Content>
-            {/* <div className="content">
-              <SemanticLikeButton id={id} />
-            </div> */}
-          </Card>
+          </Card> */}
         </div>
       </ReactCardFlip>
     </>
