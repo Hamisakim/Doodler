@@ -47,7 +47,7 @@ const NavBar = () => {
               </g>
             </svg>
           </Link>
-          <a role="button" className="navbar-burger is-active" aria-label="menu" aria-expanded="false">
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
