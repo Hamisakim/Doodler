@@ -16,8 +16,6 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
   console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ cardFlip', cardFlip)
   const [isFlipped, setIsFlipped] = useState(false)
   const [wantCardFlip, setCardFlip] = useState(true)
-
-
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodleData)
 
   const handleClick = () => {

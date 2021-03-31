@@ -1,4 +1,5 @@
 //! Re-enable BULMA for each style sheet!!! 
+
 @import "~bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
@@ -12,6 +13,8 @@
 //   width: 70vw;
 // }
 
+$brand-color: #42c298;
+
 #hero-body {
   background-image:
 		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -24,4 +27,37 @@
 }
 body{
   display: block !important;
+}
+
+
+.input {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+  transition: 0.2s all;
+}
+
+.input:focus {
+  border: 1px solid #42c298 !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0px #42c298 !important;
+  color: #42c298;
+}
+
+.textarea {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+}
+
+.textarea:focus {
+  border: 1px solid $brand-color !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0px $brand-color !important;
+  color: $brand-color;
+}
+
+label {
+  letter-spacing: 1px;
+  font-size: 15.5px;
 }
