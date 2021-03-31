@@ -11,6 +11,7 @@ import Login from './components/userStuff/Login'
 import ArtworkShow from './components/ArtworkShow'
 import DoodleEdit from './components/DoodleEdit'
 import ProfileForm from './components/userStuff/ProfileForm'
+import About from './components/About'
 
 
 import { ToastContainer } from 'react-toastify'
@@ -57,6 +58,10 @@ const App = () => {
           
           <Route path='/profile/:id/profile-form'>
             <ProfileForm />
+          </Route>
+
+          <Route path='/about'>
+            <About />
           </Route>
 
         </Switch>
