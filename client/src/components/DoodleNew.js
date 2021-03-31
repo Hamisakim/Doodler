@@ -74,7 +74,9 @@ const DoodleNew = () => {
   return (
     <>
       <div className="page-wrapper">
-        <img src={ create } alt="Create" className="title-img"></img>
+        <div className="section-header">
+          <img src={ create } alt="Create" className="title-img"></img>
+        </div>
         <div className="split-col-wraper">
           <div className="col">
             <CanvasDraw

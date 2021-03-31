@@ -1,3 +1,5 @@
+$brand-color: #42c298;
+
 @import "~bulma/bulma.sass";
 
 body {
@@ -16,9 +18,93 @@ h1 {
 h2 {
   margin-bottom: 20px;
 }
+
+.title {
+  text-align: center;
+
+}
+
+.profile-name-text {
+  font-size: 46px;
+  letter-spacing: 1px;
+}
+
+.profile-title-text {
+  font-size: 24px;
+}
+
+.profile-sub-text {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.profile-details-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.arrow-down-wrapper {
+  width: 100%;
+  margin: 22px 0;
+}
+
+.arrow-down-icon {
+  width: 32px;
+  margin: 0 auto;
+  display: block;
+}
+
 .profile-pic {
   margin: 10px 0px;
 }
-.title {
-  text-align: center
+
+.profile-pic-img {
+  display: block;
+  margin: 12px auto;
+  border-radius: 50%;
+  width: 128px;
+  height: auto;
+  border: 2px solid #000;
+}
+
+.edit-icon {
+  width: 26px;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  margin: 7px 7px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button-fill {
+  fill: #000;
+  transition: 0.2s all;
+}
+
+
+.edit-button-fill:hover {
+  fill: $brand-color;
+
+}
+
+.page-sub-title {
+  width: 22vmax;
+}
+
+div.profile-doodle-wrapper {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+  padding: 42px 42px;
+}
+
+.no-doodles-text {
+  margin: 0 auto;
 }

@@ -30,6 +30,21 @@ body{
 }
 
 
+.section-header {
+  padding: 5vmax 0;
+}
+
+.section-header,
+.section-footer {
+	text-align: center;
+}
+
+.box {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+}
+
 .input {
   border: 1px solid #000 !important;
   border-radius: 2px !important;
@@ -60,4 +75,9 @@ body{
 label {
   letter-spacing: 1px;
   font-size: 15.5px;
+}
+
+
+.content-section {
+  padding: 0 0;
 }
