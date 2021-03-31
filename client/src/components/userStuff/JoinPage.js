@@ -109,39 +109,29 @@ const JoinPage = () => {
               <br />
               <form className="signup-form box column is-half is-offset-one-quarter" onSubmit={handleSubmit}>
                 <div className="field">
-                  <p className="control has-icons-left has-icons-right">
+                  <p className="control ">
                     <input className="input is-medium" 
                       name="username" 
                       placeholder="Username" 
                       value={formData.username}
                       onChange={handleChange}
                     />
-                    <span className="icon is-medium is-left">
-                      <i className="fas fa-envelope"></i>
-                    </span>
-                    <span className="icon is-medium is-right">
-                      <i className="fas fa-check"></i>
-                    </span>
+
                   </p>
                 </div>
                 <div className="field">
-                  <p className="control has-icons-left has-icons-right">
+                  <p className="control ">
                     <input className="input is-medium" 
                       name="email" 
                       placeholder="Email" 
                       value={formData.email}
                       onChange={handleChange}
                     />
-                    <span className="icon is-medium is-left">
-                      <i className="fas fa-envelope"></i>
-                    </span>
-                    <span className="icon is-medium is-right">
-                      <i className="fas fa-check"></i>
-                    </span>
+
                   </p>
                 </div>
                 <div className="field">
-                  <p className="control has-icons-left">
+                  <p className="control ">
                     <input className="input is-medium" 
                     //type="password" 
                       name='password'
@@ -156,7 +146,7 @@ const JoinPage = () => {
                   </p>
                 </div>
                 <div className="field">
-                  <p className="control has-icons-left">
+                  <p className="control ">
                     <input className="input is-medium" 
                       name="passwordConfirmation" 
                       placeholder="Confirm Password" 
@@ -164,9 +154,7 @@ const JoinPage = () => {
                       onChange={handleChange}
                       type='password'
                     />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-lock"></i>
-                    </span>
+
                   </p>
                 </div>
                 <div className="field-button">

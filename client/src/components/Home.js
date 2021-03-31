@@ -8,7 +8,7 @@ import DemoCarousel from '../components/userStuff/Carousel'
 const Home = () => {
   return (
     <div className="main">
-      <div className="section-header">
+      <div className="section-header section-header-home ">
         <h2 className="section-title">
           {/* <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo"></img> */}
           <svg className="homepage-logo" viewBox="0 0 574 192">

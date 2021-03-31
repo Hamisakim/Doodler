@@ -12,7 +12,6 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import ReactStars from 'react-rating-stars-component'
 
 
-
 //! WITH SEMANTIC 
 const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip, avgRating  }) => {
   console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ avgRating', avgRating)
@@ -34,6 +33,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
         <div className='card-front ' onClick={handleClick}>
           
           <div className="ui card">
+            <div className="header"> <h1>{title}</h1></div>
             <div className="image">
               <CanvasDraw
                 className="canvas"     
@@ -47,7 +47,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
             </div>
 
             <div className='front-card-content'>
-              <div className="header"> <h1>{title}</h1></div>
+         
               <Link to={`/profile/${owner._id}`} >
                 <div className="user-items">Doodled by <span className='username'>{owner.username}</span></div>
               </Link>

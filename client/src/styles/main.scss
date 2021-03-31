@@ -36,6 +36,7 @@ body{
   padding: 10vmax 0 4vmax 0;
 }
 
+
 .section-header,
 .section-footer {
 	text-align: center;
@@ -84,7 +85,19 @@ label {
   padding: 0 0;
 }
 
+<<<<<<< HEAD
 // .user-items {
 //   text-decoration: none !important;
 //   // color: black;
 // }
+=======
+.footer {
+  text-align: center;
+  background-color: transparent !important;
+}
+
+.section-header-profile{
+  padding:0;
+  padding-bottom: 2rem;
+}
+>>>>>>> development

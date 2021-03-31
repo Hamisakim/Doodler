@@ -20,6 +20,14 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .back-card-top-container {
+    padding-top: 0.5rem;
+  }
+
+  fieldset {
+    padding: 0 0.6rem;
+  }
 }
 
 .ui.card {
@@ -52,7 +60,7 @@ h1 {
 
 .card-front {
   h1 {
-    font-size: 1.7rem;
+    font-size: 2.8rem;
   }
 }
 
@@ -83,6 +91,7 @@ canvas {
   .user-items {
     margin-bottom: 2rem;
     color: black;
+    font-size: 1.6rem;
   }
 }
 
@@ -111,13 +120,20 @@ canvas {
     font-size: 2rem;
   }
 
-  .user-items{
-    font-size: 2rem;
+  .user-items {
+    font-size: 1.6rem;
+    .username {
+      font-size: 2rem;
+    }
   }
 }
 
 a {
   text-decoration: none;
+}
+
+input {
+  padding-left: 0;
 }
 /*
 .card-image{

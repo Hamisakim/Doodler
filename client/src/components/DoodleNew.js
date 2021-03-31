@@ -73,7 +73,7 @@ const DoodleNew = () => {
 
   return (
     <>
-      <div className="section-header">
+      <div className="section-header section-header-create">
         <img src={ create } alt="Create" className="title-img"></img>
       </div>
       <div className="page-wrapper">
