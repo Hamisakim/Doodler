@@ -28,13 +28,18 @@ h1 {
   max-height: 550px;
   align-items: center !important;
   justify-content: space-evenly;
-  border: 1px solid $brand-color !important;
-  border-radius: 10px !important;
-  box-shadow: 2px 2px 0px !important;
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px #000 !important;
   transition: 0.2s all;
   .username {
     color: $brand-color;
   }
+}
+
+.ui.card:hover {
+  border: 1px solid $brand-color !important;
+  box-shadow: 4px 4px 0px $brand-color !important;
 }
 
 .Toastify__toast--success {
