@@ -21,7 +21,7 @@ img {
 	display: flex;
 	flex-direction: column;
 	margin:20px;
-  object-fit: fill;
+  // object-fit: contain;
 }
 /* Grid */
 .homepage {
@@ -32,12 +32,14 @@ img {
 	height:250px;
 	padding:20px;
 	color:#fff;
-	background-size:cover;
+	// background-size:cover;
 }
 .page-doodle {
 	height: 250px;
   width: 449.5px;
-  background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+  background-image: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .page-gallery {
 	background-image:
@@ -93,11 +95,11 @@ img {
 .hero-button {
 	margin-top:20px;
 }
+// .carousel-wrapper {
+//   height: 60vh;
+//   // width: 100px;
+// }
 
-.carousel-wrapper {
-  height: 60vh;
-  // width: 100px;
-}
 
 .doodle-gif {
   height: 250px;
@@ -142,4 +144,8 @@ img {
 .carousel-images{
   max-height: 50rem;
   max-width: 50rem;
+}
+
+.carousel-slider {
+  height: 70%;
 }

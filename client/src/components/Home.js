@@ -13,10 +13,13 @@ const Home = () => {
           <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo"></img>
         </h2>
       </div>
-      <section className="hero is-medium is-link">
+      <section className="carousel-slider">
+        <DemoCarousel />
+      </section>
+      {/* <section className="hero is-medium is-link">
         <div className="hero-body" id="hero-body">
         </div>
-      </section>
+      </section> */}
       <section className="section">
         <ul className="grid">
           <li className="grid-item">
@@ -30,9 +33,6 @@ const Home = () => {
             </Link>
           </li>
         </ul>
-      </section>
-      <section>
-        <DemoCarousel />
       </section>
     </div>
   )
