@@ -16,8 +16,6 @@ import { toast } from 'react-toastify'
 const LikeButton = ({ id }) => {
   const [totalFavourites, setTotalFavourites] = useState(0)
   const [userLikedAlready, setUserLikedAlready] = useState(null)
-  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 19 ~ userLikedAlready', userLikedAlready)
-
   useEffect(() => {
     refreshFavourites()
     const interval = setInterval(refreshFavourites, 5000)
@@ -39,6 +37,7 @@ const LikeButton = ({ id }) => {
     userIsOwner(currentUserId)
     const favouritesArray = data.favourites
     const hasUserLikedBefore = favouritesArray.find(item => JSON.stringify(item.owner) === currentUserId)
+    
     if (hasUserLikedBefore){
       setUserLikedAlready(true)
     }
@@ -68,16 +67,15 @@ const LikeButton = ({ id }) => {
     })
   } 
 
-
+  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 19 ~ userLikedAlready', userLikedAlready)
   const handleLike = async () => {
-    
     try {   
       const token = getTokenFromLocalStorage()
       const likeResponse = await axios.post(`/api/${id}/like`, null, { headers: { Authorization: `Bearer ${token}` } } ) 
       refreshFavourites()
       if (likeResponse.data.message === 'liked!') {
         notifyPopup(true)
-        setUserLikedAlready(true)
+        // setUserLikedAlready(true)
       } else {
         notifyPopup(false)
       }
@@ -96,6 +94,7 @@ const LikeButton = ({ id }) => {
         Like
         </Button>
         }
+       
         { userLikedAlready &&  
         <Button onClick={handleLike}  color='blue' >
           <Icon name='heart' />
