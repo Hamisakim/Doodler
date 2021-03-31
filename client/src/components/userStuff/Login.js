@@ -1,4 +1,6 @@
-// import '../styles/componentStyles/login.scss'
+
+
+import '../../styles/componentStyles/login.scss'
 
 import React, { useState } from 'react'
 import axios from 'axios'
