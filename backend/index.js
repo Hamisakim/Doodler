@@ -21,7 +21,7 @@ const startServer = async() => {
       console.log(`🚨 Incoming request: ${req.method} - ${req.url}🚨`)
       next()
     })
-
+    
     // * Run the router
     app.use('/api', router)
 
