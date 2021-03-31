@@ -2,70 +2,34 @@ import React from 'react'
 // import ReactDOM from 'react-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
+import demoDoodleOne from '../../assets/demo-doodle.png'
+import demoDoodleTwo from '../../assets/demo-doodle-2.png'
+import demoDoodleThree from '../../assets/demo-doodle-3.png'
+import demoDoodleFour from '../../assets/demo-doodle-4.png'
+import demoDoodleFive from '../../assets/demo-doodle-5.png'
+import '../../styles/componentStyles/home.scss'
 
 const DemoCarousel = () => {
 
-  // function Slider() {
-  //   let sliderArr = [
-  //     <ImgComp src={pro1} />,
-  //     <ImgComp src={pro2} />,
-  //     <ImgComp src={pro3} />,
-  //     <ImgComp src={pro1} />,
-  //     <ImgComp src={pro2} />,
-  //     <ImgComp src={pro3} />
-  //   ];
-
-  //   const [x, setX] = useState(0);
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {setX(x => x + 100)}, 1000); // for automatic slider
-  //     //return() =>{}
-  //   }, []);
-
-  //   const goLeft = () => {
-  //     clearInterval(interval) // to stop slider 
-  //     x === 0 ? setX(-100 * (sliderArr.length - 1)) : setX(x + 100);
-  //   };
-  //   const goRight = () => {
-  //     x === -100 * (sliderArr.length - 1) ? setX(0) : setX(x - 100);
-  //   };
-
-
-  //   return (
-  //     <div className="slider">
-  //       {sliderArr.map((item, index) => {
-  //         return (
-  //           <div
-  //             key={index}
-  //             className="slide"
-  //             style={{ transform: translateX(${x}%) }} >
-  //             {item}
-  //           </div>
-  //         );
-  //       })}
-  //       <button id="goLeft" onClick={goLeft}  >
-  //         <i>
-  //           <IoIosArrowBack />
-  //         </i>
-  //       </button>
-  //       <button id="goRight" onClick={goRight}>
-  //         <i>
-  //           <IoIosArrowForward />
-  //         </i>
-  //       </button>
-  //     </div>
-  //   );
-
-
   return (
-    <Carousel className="hero">
+    <Carousel
+      // className="hero"
+      autoPlay={true}
+      showThumbs={false}>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/Huco3rp.jpg" />
+        <img className="carousel-images" src={demoDoodleOne} />
       </div>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/g77ip9x.jpg" />
+        <img className="carousel-images" src={demoDoodleFive}  />
       </div>
       <div>
-        <img className="carousel-images" src="https://i.imgur.com/H7iBOQY.jpg" />
+        <img className="carousel-images" src={demoDoodleTwo}  />
+      </div>
+      <div>
+        <img className="carousel-images" src={demoDoodleThree}  />
+      </div>
+      <div>
+        <img className="carousel-images" src={demoDoodleFour}  />
       </div>
     </Carousel>
   )

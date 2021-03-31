@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: false },
   location: { type: String, required: false },
   age: { type: Number, required: false },
-  profilePicture: { type: String, required: false }
+  profilePicture: { type: String, required: false, default: 'https://res.cloudinary.com/dasisztwk/image/upload/v1617122951/Doodler/tukuwidulfvebmbxg1he.png' }
 })
 
 

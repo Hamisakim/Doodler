@@ -10,7 +10,7 @@ import { getPayloadFromToken, getTokenFromLocalStorage, userIsAuthenticated } fr
  
 const DoodleNew = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
-  const [brushColor, setBrushColor] = useState('#B3B3B3')
+  const [brushColor, setBrushColor] = useState('#42c298')
   const [brushRadius, setBrushRadius] = useState(10)
   const [lazyRadius, setLazyRadius] = useState(12)
   const [userId, setUserId] = useState(null)
@@ -73,8 +73,10 @@ const DoodleNew = () => {
 
   return (
     <>
-      <div className="page-wrapper">
+      <div className="section-header">
         <img src={ create } alt="Create" className="title-img"></img>
+      </div>
+      <div className="page-wrapper">
         <div className="split-col-wraper">
           <div className="col">
             <CanvasDraw

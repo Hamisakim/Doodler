@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import ReactStars from 'react-rating-stars-component'
+
 //* Todo -change time stamps, show profile pic
 //? bonus get user position and set it 
 
@@ -26,6 +28,18 @@ const CommentFeed = ({ _id }) => {
     return `${dateSlice} at ${timeSlice}`
   }
  
+  // const ratingShow = <ReactStars
+  //   edit={false}
+  //   // count={5}
+  //   // onChange={0}
+  //   size={16}
+  //   isHalf={true}
+  //   value={comment.rating}
+  //   emptyIcon={<i className="far fa-star"></i>}
+  //   halfIcon={<i className="fa fa-star-half-alt"></i>}
+  //   fullIcon={<i className="fa fa-star"></i>}
+  //   activeColor="#ffd700"
+  // />
 
   return (
     <div className="box comment-feed" id='comment-feed'>
@@ -34,7 +48,20 @@ const CommentFeed = ({ _id }) => {
         const  timestamp  = comment.createdAt
         return (
           <div key={comment._id}>
-            <p>{comment.commentText}</p>
+            {/* <p>{comment.commentText} - {comment.rating}</p> */}
+            <p>{comment.commentText} - { <ReactStars
+              edit={false}
+              // count={5}
+              // onChange={0}
+              size={16}
+              isHalf={true}
+              value={comment.rating}
+              emptyIcon={<i className="far fa-star"></i>}
+              halfIcon={<i className="fa fa-star-half-alt"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+            />
+            } </p>
             <p>{comment.username} - {formattedTimestamp(timestamp)}</p>
             <hr/>
           </div>
