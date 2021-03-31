@@ -14,10 +14,9 @@ import { toast } from 'react-toastify'
 //* Will keep current likes = to those on database 
 
 const LikeButton = ({ id }) => {
-  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 18 ~ id', id)
   const [totalFavourites, setTotalFavourites] = useState(0)
   const [userLikedAlready, setUserLikedAlready] = useState(null)
-  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 20 ~ userLikedAlready', userLikedAlready)
+  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 19 ~ userLikedAlready', userLikedAlready)
 
   useEffect(() => {
     refreshFavourites()
@@ -26,23 +25,20 @@ const LikeButton = ({ id }) => {
       clearInterval(interval)
     }
   }, [])
-
+  useEffect(() => {
+    refreshFavourites()
+  },[userLikedAlready])
 
   const refreshFavourites = async () => {
-    console.log('🔵 Refreshing Fav')
     const response = await axios.get(`/api/artwork/${id}`)
     const data = response.data
-    //console.log('🐝 ~ file: SemanticLikeButton.js ~ line 30 ~ data', data)
     const latestTotalFavourites = data.totalFavourites
     setTotalFavourites(latestTotalFavourites)
     const payload = getPayloadFromToken()
     const currentUserId = JSON.stringify(payload.sub)
-    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 42 ~ currentUserId', currentUserId)
     userIsOwner(currentUserId)
     const favouritesArray = data.favourites
-    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 34 ~ favouritesArray', favouritesArray)
     const hasUserLikedBefore = favouritesArray.find(item => JSON.stringify(item.owner) === currentUserId)
-    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 49 ~ hasUserLikedBefore', hasUserLikedBefore)
     if (hasUserLikedBefore){
       setUserLikedAlready(true)
     }
@@ -74,21 +70,18 @@ const LikeButton = ({ id }) => {
 
 
   const handleLike = async () => {
-    setUserLikedAlready(!userLikedAlready)
-    console.log('🐝 ~ file: SemanticLikeButton.js ~ line 59 ~ handleLike' )
+    
     try {   
-      console.log('✅')
       const token = getTokenFromLocalStorage()
-      const likeResponse = await axios.post(`api/${id}/like`, null, { headers: { Authorization: `Bearer ${token}` } } ) 
-      console.log('🐝 ~ file: SemanticLikeButton.js ~ line 57 ~ likeResponse', likeResponse.data.message)
+      const likeResponse = await axios.post(`/api/${id}/like`, null, { headers: { Authorization: `Bearer ${token}` } } ) 
       refreshFavourites()
       if (likeResponse.data.message === 'liked!') {
         notifyPopup(true)
+        setUserLikedAlready(true)
       } else {
         notifyPopup(false)
       }
     } catch (err) {
-      console.log('🔴 ~ file: ArtCard.js ~ line 31~ err', err.message)
       notifyPopup(false)
     }
   }
