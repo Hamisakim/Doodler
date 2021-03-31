@@ -52,14 +52,10 @@ const NavBar = () => {
               </g>
             </svg>
           </Link>
-<<<<<<< HEAD
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-=======
           
           <a onClick={() => {
             setIsActive(!isActive)
           }}role="button" className={`navbar-burger burger ${isActive ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false">
->>>>>>> 93b95e73dbfff8265749f5ecac997674280001b1
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
