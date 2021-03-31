@@ -15,7 +15,7 @@ const ProfileForm = () => {
     location: '',
     age: '',
     bio: '',
-    profileImage: ''
+    profilePicture: ''
   })
   const [user, setUser] = useState(null)
 
@@ -34,12 +34,18 @@ const ProfileForm = () => {
   }, [])
 
   const handleChange = event => {
-    setFormData({ ...formData, [event.target.name]: event.target.value })
+    const newFormData = { ...formData, [event.target.name]: event.target.value }
+    //setFormData({ ...formData, [event.target.name]: event.target.value })
+    setFormData(newFormData)
+  }
+
+  const handleImageUrl = url => {
+    setFormData({ ...formData, profilePicture: url })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    //window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
     // ! put request for updated form data
     await axios.put(`/api/users/${params.id}`, formData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
     history.push(`/profile/${params.id}`)
@@ -47,9 +53,6 @@ const ProfileForm = () => {
     // console.log('handleSubmit', handleSubmit)// this line needs to change so that we submit to our db
   }
 
-  const handleImageUrl = url => {
-    setFormData({ ...formData, profileImage: url })
-  }
   //console.log('formdata', formData)
   if (!user) return null
   return (
@@ -86,8 +89,8 @@ const ProfileForm = () => {
 
           <div className="field">
             <ImageUploadField
-              name="profileImage"
-              value={formData.profileImage}
+              name="profilePicture"
+              value={formData.profilePicture}
               handleImageUrl={handleImageUrl}
             />
           </div>
