@@ -3,11 +3,14 @@ import '../styles/componentStyles/profile.scss'
 import React, { useState, useEffect } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom' //, useHistory 
 import axios from 'axios'
-import ArtCard from './ArtCard'
+// import ArtCard from './ArtCard'
 import { userIsOwner } from '../helpers/authHelp' // getTokenFromLocalStorage,
-
+import LZString from 'lz-string'
 import profile from '../assets/Profile.png'
 // import ProfileForm from '../components/userStuff/ProfileForm'
+import CanvasDraw from '../drawing/index'
+
+//______________________________________________________________________________________
 
 const Profile = () => {   //{ username } 
   const [user, setUser] = useState(null)
@@ -34,7 +37,6 @@ const Profile = () => {   //{ username }
 
   const getSingleUser =  async () => {
     const response = await axios.get(`/api/users/${params.id}`)
-    console.log('🐝 ~ file: Profile.js ~ line 23 ~ response', response)
     setUser(response.data)
   }
 
@@ -49,7 +51,7 @@ const Profile = () => {   //{ username }
       return doodle.owner._id === params.id
     })
     setUserArtwork(userArtworkArray)
-    console.log(userArtwork)
+    console.log('🐝 ~ file: Profile.js ~ line 53 ~ userArtwork', userArtwork)
 
   }, [allArtwork])
   
@@ -57,7 +59,7 @@ const Profile = () => {   //{ username }
   if (!userArtwork) return null
   return (
     <>
-      <div className="main">
+      <div className="main profile-main">
         <div className="section-header section-header-profile">
           <img src={profile} alt="Profile" className="title-img"></img>
         </div>
@@ -139,20 +141,38 @@ const Profile = () => {   //{ username }
               </g>
             </svg>
           </div>
-          <div className="box profile-doodle-wrapper">
-            <div>
-              <div className="columns">
-                {userArtwork.length > 0 ?
-                  <>
-                    {userArtwork.map(art => (
+
+          <div className="box profile-doodle-wrapper columns is-multiline">
+     
+            {userArtwork.length > 0 ?
+              <>
+                {/* {userArtwork.map(art => (
                       <ArtCard key={art._id} id={id} {...art} cardFlip={false}/>
-                    ))}
-                  </>
-                  :
-                  <p>No doodles yet... <Link to="/doodle-new" className="no-doodles-text">create new</Link></p>
-                }
-              </div>
-            </div>
+                    ))} */}
+                {userArtwork.map((artwork) => {
+                  const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(artwork.doodleData)
+                  return (
+                    <Link key={artwork.id} to={`/gallery/${artwork.id}`}>
+                      <div  className='my-box box hover-box'>
+                        <p style={{ fontSize: 30 }}>{artwork.title}</p>
+                        <CanvasDraw
+                          className="canvas  column"     
+                          disabled
+                          hideGrid
+                          immediateLoading={true}
+                          //saveData={doodleData}
+                          saveData={decompressedDoodleData}
+                          backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
+                        />
+                      </div>
+                    </Link>
+                  )
+                })}
+                    
+              </>
+              :
+              <p>No doodles yet... <Link to="/doodle-new" className="no-doodles-text">create new</Link></p>
+            }
           </div>
         </div>
       </div>

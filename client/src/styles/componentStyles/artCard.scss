@@ -93,17 +93,23 @@ canvas {
     color: black;
     font-size: 1.6rem;
   }
+  .user-items:hover{
+    color: $brand-color;
+  }
 }
 
 .card-back {
+  text-align: center;
   .ui.card {
     justify-content: space-between;
   }
-  justify-content: center !important;
+  justify-content: center ;
   h1 {
     font-size: 4rem;
+    padding-bottom: 1rem;
   }
   fieldset {
+    text-align: left;
     margin: 0;
     color: $brand-color;
     width: 300px;
@@ -122,65 +128,96 @@ canvas {
 
   .user-items {
     font-size: 1.6rem;
+    color: black;
     .username {
       font-size: 2rem;
     }
   }
+  .user-items:hover{
+    color: $brand-color;
+  }
 }
+
+
+.gallery-filter{
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content:center;
+
+  .rating-filter-select{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    h1{width: 100%}
+  }
+
+
+
+
+}
+
+
+
+
+
+
 
 a {
   text-decoration: none;
 }
 
-input {
-  padding-left: 0;
-}
-/*
-.card-image{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-  .canvas-container{
-    margin:0;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+// input {
+//   padding-left: 0;
+// }
+// /*
+// .card-image{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   }
+//   .canvas-container{
+//     margin:0;
+//     padding: 0px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
   
-.card{ 
-  min-height:420px ;
-}
+// .card{ 
+//   min-height:420px ;
+// }
 
 
-  .card-footer{
-    height: 20%;
-    display: flex;
-    align-self: flex-end;
-    margin-top: 50px
-  }
+//   .card-footer{
+//     height: 20%;
+//     display: flex;
+//     align-self: flex-end;
+//     margin-top: 50px
+//   }
 
 
 
-.card-header-title {
-  align-items: center;
-  color: #363636;
-  display: flex;
+// .card-header-title {
+//   align-items: center;
+//   color: #363636;
+//   display: flex;
 
-  font-weight: 700;
-  padding: 0px;
-}
+//   font-weight: 700;
+//   padding: 0px;
+// }
 
-footer{
-  margin-block-end: auto;
+// footer{
+//   margin-block-end: auto;
 
-}
+// }
 
-.card-like-btn-things{
-  display: flex;
-  align-items: center;
-  h2{
-    font-size: 2rem;
-  }
-} */
+// .card-like-btn-things{
+//   display: flex;
+//   align-items: center;
+//   h2{
+//     font-size: 2rem;
+//   }
+// } */
