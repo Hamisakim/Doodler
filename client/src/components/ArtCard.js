@@ -13,11 +13,11 @@ import ReactStars from 'react-rating-stars-component'
 
 
 //! WITH SEMANTIC 
-const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites, cardFlip, avgRating  }) => {
+const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,  avgRating  }) => {
   console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ avgRating', avgRating)
-  console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ cardFlip', cardFlip)
+  //console.log('🐝 ~ file: ArtCard.js ~ line 16 ~ cardFlip', cardFlip)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [wantCardFlip, setCardFlip] = useState(true)
+  //const [wantCardFlip, setCardFlip] = useState(true)
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodleData)
 
   const handleClick = () => {
@@ -78,7 +78,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
                   edit={false}
                   // count={5}
                   // onChange={0}
-                  size={16}
+                  size={30}
                   isHalf={true}
                   value={avgRating}
                   emptyIcon={<i className="far fa-star"></i>}
@@ -96,7 +96,7 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
               </fieldset>
               }
 
-              <Link to={`/gallery/${_id}`}>See More</Link>
+              <Link style={{ fontSize: 30 }} to={`/gallery/${_id}`}>See More</Link>
     
             </div>
 

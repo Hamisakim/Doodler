@@ -64,7 +64,7 @@ const CommentForm = ({ _id }) => {
 
   return (
     <div className="box">
-      <form>
+      <form className='comment-form'>
         <ReactStars
           count={5}
           onChange={handleRatingChange}

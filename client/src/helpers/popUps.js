@@ -83,3 +83,44 @@ export const ratingPopup = (isThereRating) => {
   }
   //console.log('🐝 ~ file: Login.js ~ line 46 ~ wasLoginSuccess', wasLoginSuccess)
 }
+
+export const doodlePopup = (isThereTitle) => {
+  if (isThereTitle === false) {
+    toast.error('Please leave a title', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  } else if (isThereTitle === true)  {
+    toast.success('🥳 Doodle saved 🥳', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false
+    })
+  }
+}
+
+
+export const userNeedsToLogin = (message) => {
+  toast.error(`${message}`, {
+    position: 'top-right',
+    autoClose: 2500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    pauseOnFocusLoss: false
+  })
+
+}

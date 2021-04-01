@@ -1,4 +1,4 @@
-@import "bulma/sass/utilities/_all.sass";
+// @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
 @import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 // $buttonColor: red;
@@ -18,13 +18,17 @@
   height: 80vh;
   }
   
-
-.gallery {
-  // background-color: rgba(72, 255, 0, 0.15);
-  padding: 1em;
-  }
-
 .title-img {
   height: 8vh;
   text-align: center
+}
+
+.art-card-container{
+margin: 0 0.6rem;
+}
+
+.gallery-filter{
+width: 60%;
+margin: 0 auto;
+
 }

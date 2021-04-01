@@ -25,12 +25,10 @@ const ArtworkShow = () => {
     }
     getData()
   }, [])
- 
+
+  //! What is this? can we lose it?
   // const [doodles, setDoodles] = useState([])
   // console.log('🤖 ~ file: Gallery.js ~ line 9 ~ doodles', doodles)
-
-  
-  
   // useEffect(() => {
   //   const getData = async () => {
   //     const response = await axios.get('/api/artwork')
@@ -39,43 +37,42 @@ const ArtworkShow = () => {
   //   getData()
   // }, [])
 
-
   if (!doodle) return null
 
   console.log('comments>>>', doodle.comments.commentText)
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
   // console.log('parsed bg', decompressedDoodleData.backgroundColor)
-
   const { id } = doodle
   console.log('id', id)
   return (
-    <div className="page-wrapper">
-      <div className="description-wrapper">
-        <div className="desc-top-row">
-          <h1 className="title">{doodle.title}</h1>
-          <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
-        </div>
-        { doodle.description &&
+    <div className="main-show">
+      <div className="page-wrapper">
+        <div className="description-wrapper">
+          <div className="desc-top-row">
+            <h1 className="title">{doodle.title}</h1>
+            <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
+          </div>
+          { doodle.description &&
         <p>{doodle.description}</p>
-        }
-      </div>
-      <div className="doodle-display-wrapper">
-        <div className='canvas-container'>
-          <CanvasDraw       
-            disabled
-            hideGrid
-            loadTimeOffset={2.2}
-            saveData={decompressedDoodleData}
-            backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
-          />
+          }
         </div>
-      </div>
-      <div className="doodle-comments-wrapper">
-        { !userIsOwner(doodle.owner._id) &&
+        <div className="doodle-display-wrapper">
+          <div className='canvas-container'>
+            <CanvasDraw       
+              disabled
+              hideGrid
+              loadTimeOffset={2.2}
+              saveData={decompressedDoodleData}
+              backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
+            />
+          </div>
+        </div>
+        <div className="doodle-comments-wrapper">
+          { !userIsOwner(doodle.owner._id) &&
         <CommentForm { ...doodle } />
-        }
-        <CommentFeed _id={id}  />
-        {/* <div className="doodle-show-comments">
+          }
+          <CommentFeed _id={id}  />
+          {/* <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
 
             {doodles.map((doodle) => {
@@ -85,9 +82,10 @@ const ArtworkShow = () => {
             })}
           </div>
         </div> */}
-        { userIsOwner(doodle.owner._id) && 
+          { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
-        }
+          }
+        </div>
       </div>
     </div>
   )
