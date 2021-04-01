@@ -27,19 +27,6 @@ const CommentFeed = ({ _id }) => {
     const timeSlice = toString.slice(15,21)
     return `${dateSlice} at ${timeSlice}`
   }
- 
-  // const ratingShow = <ReactStars
-  //   edit={false}
-  //   // count={5}
-  //   // onChange={0}
-  //   size={16}
-  //   isHalf={true}
-  //   value={comment.rating}
-  //   emptyIcon={<i className="far fa-star"></i>}
-  //   halfIcon={<i className="fa fa-star-half-alt"></i>}
-  //   fullIcon={<i className="fa fa-star"></i>}
-  //   activeColor="#ffd700"
-  // />
 
   return (
     <div className="box comment-feed" id='comment-feed'>
@@ -49,22 +36,22 @@ const CommentFeed = ({ _id }) => {
         {commentsArray.reverse().map(comment => { 
           const  timestamp  = comment.createdAt
           return (
-            <div key={comment._id}>
+            <div key={comment._id} className='user-comment-container'>
               {/* <p>{comment.commentText} - {comment.rating}</p> */}
-              <p>{comment.commentText} - { <ReactStars
+              <p><span style={{ fontSize: 25 }}>{`"${comment.commentText}"`}</span>{ <ReactStars
                 edit={false}
                 // count={5}
                 // onChange={0}
-                size={16}
+                size={20}
                 isHalf={true}
                 value={comment.rating}
                 emptyIcon={<i className="far fa-star"></i>}
                 halfIcon={<i className="fa fa-star-half-alt"></i>}
                 fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
+                activeColor="#ffd700" //#42c298 brand color
               />
               } </p>
-              <p>{comment.username} - {formattedTimestamp(timestamp)}</p>
+              <p><span style={{ fontSize: 30, color: '#42c298'  }}>{comment.username}</span>  at  {formattedTimestamp(timestamp)}</p>
               <hr/>
             </div>
           )
