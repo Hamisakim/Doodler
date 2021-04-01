@@ -5,12 +5,6 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { loginPopUp } from '../../helpers/popUps.js'
 
-
-
-//import { getTokenFromLocalStorage } from '../helpers/authHelp'
-
-
-
 const JoinPage = () => {
   // pass in props wether user clicked on the login or the register 
   // use conditional return to check each form. 
@@ -140,13 +134,10 @@ const JoinPage = () => {
                       onChange={handleChange}
                       type='password'
                     />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-lock"></i>
-                    </span>
                   </p>
                 </div>
                 <div className="field">
-                  <p className="control ">
+                  <p className="control password-confirmation-control ">
                     <input className="input is-medium" 
                       name="passwordConfirmation" 
                       placeholder="Confirm Password" 
