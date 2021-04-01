@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactStars from 'react-rating-stars-component'
-
+import { userIsAuthenticated } from '../../helpers/authHelp'
 //* Todo -change time stamps, show profile pic
 //? bonus get user position and set it 
 
@@ -32,6 +32,11 @@ const CommentFeed = ({ _id }) => {
     <div className="box comment-feed" id='comment-feed'>
       <>
         <h1 style={{ fontSize: 40 }}> Whats the chat? </h1>
+        { !userIsAuthenticated() &&
+        <h1>login to rate or comment</h1>
+        }
+
+
         <hr />
         {commentsArray.reverse().map(comment => { 
           const  timestamp  = comment.createdAt

@@ -24,6 +24,12 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  h1{ margin: 0 !important; }
+  a, h1{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
 }
 
 
@@ -40,8 +46,6 @@
     display: flex;
     justify-content:flex-start;
   }
-
-
 }
 .main-show{
   padding-top: 5rem;
