@@ -1,115 +1,122 @@
 $brand-color: #42c298;
 
 @import "~bulma/bulma.sass";
+.profile-main {
+  body {
+    display: flex;
+    justify-content: center;
+  }
 
-body {
-  display: flex;
-  justify-content: center;
-}
+  // div.main {
+  //   width: 70vw;
+  // }
 
-// div.main {
-//   width: 70vw;
-// }
+  h1 {
+    margin-bottom: 40px;
+    font-size: 20px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
 
-h1 {
-  margin-bottom: 40px;
-  font-size: 20px;
-}
-h2 {
-  margin-bottom: 20px;
-}
+  .title {
+    text-align: center;
+  }
 
-.title {
-  text-align: center;
+  .bottom {
+    padding: 4vmax 0;
+  }
 
-}
+  .profile-name-text {
+    font-size: 46px;
+    letter-spacing: 1px;
+  }
 
-.bottom {
-  padding: 4vmax 0;
-}
+  .profile-title-text {
+    font-size: 24px;
+  }
 
-.profile-name-text {
-  font-size: 46px;
-  letter-spacing: 1px;
-}
+  .profile-sub-text {
+    font-size: 22px;
+    font-weight: 500;
+  }
 
-.profile-title-text {
-  font-size: 24px;
-}
+  .profile-details-wrapper {
+    width: 50%;
+    max-width: 340px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
 
-.profile-sub-text {
-  font-size: 22px;
-  font-weight: 500;
-}
+  .arrow-down-wrapper {
+    width: 100%;
+    margin: 22px 0;
+  }
 
-.profile-details-wrapper {
-  width: 50%;
-  max-width: 340px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-}
+  .arrow-down-icon {
+    width: 32px;
+    margin: 0 auto;
+    display: block;
+  }
 
-.arrow-down-wrapper {
-  width: 100%;
-  margin: 22px 0;
-}
+  .profile-pic {
+    margin: 10px 0px;
+  }
 
-.arrow-down-icon {
-  width: 32px;
-  margin: 0 auto;
-  display: block;
-}
+  .profile-pic-img {
+    display: block;
+    margin: 12px auto;
+    border-radius: 50%;
+    width: 128px;
+    height: auto;
+    border: 2px solid #000;
+  }
 
-.profile-pic {
-  margin: 10px 0px;
-}
+  .edit-icon {
+    width: 26px;
+  }
 
-.profile-pic-img {
-  display: block;
-  margin: 12px auto;
-  border-radius: 50%;
-  width: 128px;
-  height: auto;
-  border: 2px solid #000;
-}
+  .edit-button {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    margin: 7px 7px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 
-.edit-icon {
-  width: 26px;
-}
+  .edit-button-fill {
+    fill: #000;
+    transition: 0.2s all;
+  }
 
-.edit-button {
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  margin: 7px 7px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
+  .edit-button-fill:hover {
+    fill: $brand-color;
+  }
 
-.edit-button-fill {
-  fill: #000;
-  transition: 0.2s all;
-}
+  .page-sub-title {
+    width: 200px;
+  }
 
+  div.profile-doodle-wrapper {
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+    padding: 42px 42px;
 
-.edit-button-fill:hover {
-  fill: $brand-color;
+    display: flex;
+    justify-content: space-around;
+  }
 
-}
+  .no-doodles-text {
+    margin: 0 auto;
+  }
 
-.page-sub-title {
-  width: 200px;
-}
+  .canvas {
+    transform: scale(1);
+    margin: 0.5rem;
+  }
 
-div.profile-doodle-wrapper {
-  width: 80vw;
-  margin: 0 auto;
-  text-align: center;
-  padding: 42px 42px;
-}
-
-.no-doodles-text {
-  margin: 0 auto;
 }
