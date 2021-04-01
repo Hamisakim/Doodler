@@ -1,0 +1,25 @@
+$brand-color: #42c298;
+
+@import "~bulma/bulma.sass";
+
+.footer {
+  padding: 32px 0 !important;
+  text-align: center;
+  background-color: transparent !important;
+
+}
+
+.footer-link {
+  color: #000;
+  
+  transition: 0.2s all;
+}
+
+.footer-link:hover {
+  color: $brand-color;
+  padding-bottom: 12px !important;
+}
+
+.copyright-text {
+  margin-top: 12px !important;
+}
