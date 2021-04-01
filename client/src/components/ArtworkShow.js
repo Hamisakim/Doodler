@@ -5,7 +5,7 @@ import axios from 'axios'
 // import ReactStars from 'react-rating-stars-component'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
-import { userIsOwner } from '../helpers/authHelp'
+import { userIsOwner, userIsAuthenticated } from '../helpers/authHelp'
 //import ArtCard from './ArtCard'
 //import StarsAndRating from './CommentParts/StarsAndRating'
 import CommentForm from './CommentParts/CommentForm'
@@ -68,9 +68,14 @@ const ArtworkShow = () => {
           </div>
         </div>
         <div className="doodle-comments-wrapper">
-          { !userIsOwner(doodle.owner._id) &&
-        <CommentForm { ...doodle } />
+          {/* { userIsAuthenticated() && 
+          <CommentForm { ...doodle } />
+          } */}
+
+          { !userIsOwner(doodle.owner._id) && userIsAuthenticated() && 
+          <CommentForm { ...doodle } />
           }
+
           <CommentFeed _id={id}  />
           {/* <div className="doodle-show-comments">
           <div className='gallery columns is-multiline'>
