@@ -1,7 +1,7 @@
 @import "~bulma/bulma.sass";
 
 .page-wrapper {
-  margin: 60px auto;
+  margin: 50px auto;
   width: 520px;
   min-height: 90vh;
   display: block;
@@ -33,6 +33,15 @@
 
 .comment-form{
   width: 100%;
+  input{
+    margin: 0.5rem 0;
+  }
+  .btn-container{
+    display: flex;
+    justify-content:flex-start;
+  }
+
+
 }
 .main-show{
   padding-top: 5rem;
