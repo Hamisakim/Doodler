@@ -52,7 +52,7 @@ img {
 	max-height: 340px;
   //width: 449.5px;
   background-image: url('../../assets/gallery-gif-test.gif');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -63,9 +63,12 @@ img {
 // }
 
 
+li.grid-item.box.hover-box {
+  padding: 0 0 !important;
+}
 
 
-@media screen and (max-width: 1181px) {
+@media screen and (max-width: 1180px) {
   .grid {
     display: flex;
     flex-direction: column;

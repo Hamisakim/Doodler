@@ -27,7 +27,7 @@ const seedDataBase = async () => {
 
     //* Add artworks 
     const artworks = await Artwork.create(artworkWithUsers)
-    console.log(`🌱 DB seeded with ${artworks.length}🌱 `)
+    console.log(`🌱 DB seeded with ${artworks.length} doodles🌱 `)
     await mongoose.connection.close()
     console.log('BYE FELICIA ✌️')
     
