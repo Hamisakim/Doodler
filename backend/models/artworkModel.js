@@ -44,7 +44,7 @@ artworkSchema.set('toJSON', { virtuals: true })
 artworkSchema
   .virtual('avgRating')
   .get(function() {
-    if (!this.comments.length) return 'Not yet rated'
+    if (!this.comments.length) return 1
     const sum = this.comments.reduce((acc, curr) => {
       return acc + curr.rating
     }, 0)

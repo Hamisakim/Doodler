@@ -3,10 +3,11 @@ import 'semantic-ui-css/semantic.min.css'
 //import '../../styles/componentStyles/artCard.scss'
 import React, { useState, useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
-import { getTokenFromLocalStorage, userIsOwner, getPayloadFromToken } from '../../helpers/authHelp'
+import { getTokenFromLocalStorage, userIsOwner, getPayloadFromToken, userIsAuthenticated } from '../../helpers/authHelp'
 import axios from 'axios'
 import { Button, Icon, Label } from 'semantic-ui-react'
 import { toast } from 'react-toastify'
+import { userNeedsToLogin } from '../../helpers/popUps'
 
 //* Pass in the ID as props from parent component. 
 //* will send authentication header to DB
@@ -69,8 +70,12 @@ const LikeButton = ({ id }) => {
     })
   } 
 
-  console.log('🐝 ~ file: SemanticLikeButton.js ~ line 19 ~ userLikedAlready', userLikedAlready)
   const handleLike = async () => {
+      
+    if (!userIsAuthenticated()){
+      userNeedsToLogin('Please login to like!')
+      return null
+    }
     try {   
       const token = getTokenFromLocalStorage()
       const likeResponse = await axios.post(`/api/${id}/like`, null, { headers: { Authorization: `Bearer ${token}` } } ) 
