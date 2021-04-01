@@ -15,7 +15,12 @@ const DemoCarousel = () => {
     <Carousel
       // className="hero"
       autoPlay={true}
-      showThumbs={false}>
+      showThumbs={false}
+      interval={3000} 
+      infiniteLoop={true}
+      showArrows={true}
+      stopOnHover={false}
+      transitionTime={2000}>
       <div>
         <img className="carousel-images" src={demoDoodleOne} />
       </div>

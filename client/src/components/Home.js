@@ -26,6 +26,7 @@ const Home = () => {
             </g>
           </svg>
         </h2>
+        <p className="home">Welcome to the ultimate doodling experience. Sign up to create, save and share your doodles with the world. Not sure you want to commit? Create a quick doodle and see how you feel. Still not sure?? Browse the Gallery for some doodlespiration.</p>
       </div>
       <section className="carousel-slider">
         <DemoCarousel />

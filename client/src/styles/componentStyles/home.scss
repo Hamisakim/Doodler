@@ -10,9 +10,13 @@ section.section {
 }
 
 .section-header {
-  padding: 0 0 10vmax 0;
+  padding: 0 0 3vmax 0 !important;
 }
-
+p.home {
+  margin: 3% 14% 1%;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+}
 // .section-header,
 // .section-footer {
 // 	text-align: center;
