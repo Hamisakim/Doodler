@@ -47,7 +47,6 @@ const ArtCard = ( { title, _id, doodleData, owner, description, totalFavourites,
             </div>
 
             <div className='front-card-content'>
-         
               <Link to={`/profile/${owner._id}`} >
                 <div className="user-items">Doodled by <span className='username'>{owner.username}</span></div>
               </Link>
