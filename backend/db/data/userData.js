@@ -58,6 +58,18 @@ export default [
     age: 61,
     profilePicture: 'https://res.cloudinary.com/dasisztwk/image/upload/v1617270697/Doodler/qdistr7z43xcrxgx2cwr.png',
     bio: 'I like to cook and eat!'
+  }, 
+  { 
+    username: 'Terry',
+    email: 'terry@email',
+    password: 'pass',
+    passwordConfirmation: 'pass',
+    firstName: 'Terry',
+    lastName: 'Edwards',
+    location: 'Essex',
+    age: 38,
+    profilePicture: 'https://res.cloudinary.com/dasisztwk/image/upload/v1617185141/Doodler/b4lklh9qx7fufgkew8ab.png',
+    bio: 'love pints with the boys and some footy in the park on weekends'
   }
 ]
 
