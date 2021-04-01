@@ -58,7 +58,8 @@ const ArtworkShow = () => {
         </div>
         <div className="doodle-display-wrapper">
           <div className='canvas-container'>
-            <CanvasDraw       
+            <CanvasDraw
+              className="doodle-canvas"     
               disabled
               hideGrid
               loadTimeOffset={2.2}

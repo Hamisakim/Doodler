@@ -113,6 +113,7 @@ class Canvas extends Component {
           }}
         />
         <CanvasDraw
+          className="doodle-canvas"     
           ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           brushColor={this.state.drawData.color}
           brushRadius={this.state.drawData.brushRadius}
