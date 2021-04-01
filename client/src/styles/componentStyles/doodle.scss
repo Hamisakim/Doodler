@@ -128,3 +128,27 @@ input[type="range"]::-moz-range-thumb:hover {
   }
   
 }
+.doodle-buttons{
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  padding-left: 5rem;
+  .button{
+    margin: 0.3rem;
+  }
+
+  .doodle-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem;
+  }
+
+}
+
+
+.doodle-details-wrapper{
+  hr{
+    margin: 1rem;
+  }
+}

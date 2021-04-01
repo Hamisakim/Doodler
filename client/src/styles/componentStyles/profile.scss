@@ -122,6 +122,9 @@ $brand-color: #42c298;
 .my-box{
   min-height: max-content;
   margin-bottom: 1.5rem !important;
+  .column{
+    padding:0;
+  }
 }
 
 }

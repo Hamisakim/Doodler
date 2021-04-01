@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactStars from 'react-rating-stars-component'
-
+import { userIsAuthenticated } from '../../helpers/authHelp'
 //* Todo -change time stamps, show profile pic
 //? bonus get user position and set it 
 
@@ -27,44 +27,36 @@ const CommentFeed = ({ _id }) => {
     const timeSlice = toString.slice(15,21)
     return `${dateSlice} at ${timeSlice}`
   }
- 
-  // const ratingShow = <ReactStars
-  //   edit={false}
-  //   // count={5}
-  //   // onChange={0}
-  //   size={16}
-  //   isHalf={true}
-  //   value={comment.rating}
-  //   emptyIcon={<i className="far fa-star"></i>}
-  //   halfIcon={<i className="fa fa-star-half-alt"></i>}
-  //   fullIcon={<i className="fa fa-star"></i>}
-  //   activeColor="#ffd700"
-  // />
 
   return (
     <div className="box comment-feed" id='comment-feed'>
       <>
         <h1 style={{ fontSize: 40 }}> Whats the chat? </h1>
+        { !userIsAuthenticated() &&
+        <h1>login to rate or comment</h1>
+        }
+
+
         <hr />
         {commentsArray.reverse().map(comment => { 
           const  timestamp  = comment.createdAt
           return (
-            <div key={comment._id}>
+            <div key={comment._id} className='user-comment-container'>
               {/* <p>{comment.commentText} - {comment.rating}</p> */}
-              <p>{comment.commentText} - { <ReactStars
+              <p><span style={{ fontSize: 25 }}>{`"${comment.commentText}"`}</span>{ <ReactStars
                 edit={false}
                 // count={5}
                 // onChange={0}
-                size={16}
+                size={20}
                 isHalf={true}
                 value={comment.rating}
                 emptyIcon={<i className="far fa-star"></i>}
                 halfIcon={<i className="fa fa-star-half-alt"></i>}
                 fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
+                activeColor="#ffd700" //#42c298 brand color
               />
               } </p>
-              <p>{comment.username} - {formattedTimestamp(timestamp)}</p>
+              <p><span style={{ fontSize: 30, color: '#42c298'  }}>{comment.username}</span>  at  {formattedTimestamp(timestamp)}</p>
               <hr/>
             </div>
           )

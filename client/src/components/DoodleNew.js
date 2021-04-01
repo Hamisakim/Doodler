@@ -1,6 +1,6 @@
 import '../styles/componentStyles/doodle.scss'
 import React, { useState, useEffect, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { CompactPicker } from 'react-color'
 import CanvasDraw from '../drawing/index'
 import axios from 'axios'
@@ -8,9 +8,6 @@ import LZString from 'lz-string'
 import create from  '../assets/Create.png'
 import { getPayloadFromToken, getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
 import { doodlePopup, userNeedsToLogin } from '../helpers/popUps'
-
-
-
  
 const DoodleNew = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
@@ -147,7 +144,28 @@ const DoodleNew = () => {
             </div>
           </div>
         </div>
-        
+        <div className='doodle-buttons' > 
+          { userIsAuthenticated() && 
+            <button className="button is-primary" onClick={() => handleSave()}> Save </button>
+          }
+          <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
+          {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
+          <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
+          { !userIsAuthenticated() &&
+            <>
+              {/* <button className="button"> Save </button> */}
+              <div className='doodle-message' style={{ fontSize: 16 }}>
+                <p>
+                  <Link to='/join'>Sign up  </Link>
+                or
+                  <Link to='/login'> Login       </Link>to save 
+                
+                
+                </p>
+              </div>
+            </> 
+          }
+        </div>
         <div className="doodle-details-wrapper">
           <div>
             { userIsAuthenticated() &&
@@ -176,20 +194,6 @@ const DoodleNew = () => {
             }
           </div> 
           <hr />
-          <div> 
-            { userIsAuthenticated() && 
-            <button className="button is-primary" onClick={() => handleSave()}> Save </button>
-            }
-            <button className="button is-warning" onClick={() => doodle.undo()}> Undo </button>
-            {/* <button className="button is-danger" onClick={() => doodle.clear()}> Clear </button> */}
-            <button className="button is-danger" onClick={() => handleClear()}> Clear </button>
-            { !userIsAuthenticated() &&
-            <>
-              {/* <button className="button"> Save </button> */}
-              <p>*sign up to save(insert link to login page here)</p>
-            </> 
-            }
-          </div>
 
         </div>
       </div>

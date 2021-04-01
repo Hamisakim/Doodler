@@ -13,7 +13,23 @@ $brand-color: #42c298;
   margin-left: 20px;
 
 }
+.navbar{
+a:link {
+  text-decoration: none;
+}
 
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+}
 
 .second-logo-color {
   fill: $brand-color;

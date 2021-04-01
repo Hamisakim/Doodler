@@ -5,7 +5,7 @@ import axios from 'axios'
 // import ReactStars from 'react-rating-stars-component'
 import CanvasDraw from '../drawing/index'
 import LZString from 'lz-string'
-import { userIsOwner } from '../helpers/authHelp'
+import { userIsOwner, userIsAuthenticated } from '../helpers/authHelp'
 //import ArtCard from './ArtCard'
 //import StarsAndRating from './CommentParts/StarsAndRating'
 import CommentForm from './CommentParts/CommentForm'
@@ -37,7 +37,7 @@ const ArtworkShow = () => {
   //   getData()
   // }, [])
 
-  if (!doodle) return null
+  if (!doodle) return <h1>😭 doodle not found</h1>
 
   console.log('comments>>>', doodle.comments.commentText)
   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(doodle.doodleData)
@@ -48,9 +48,9 @@ const ArtworkShow = () => {
     <div className="main-show">
       <div className="page-wrapper">
         <div className="description-wrapper">
-          <div className="desc-top-row">
-            <h1 className="title">{doodle.title}</h1>
-            <Link to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
+          <div className="desc-top-row" >
+            <h1 className="title" style={{ fontSize: 40 }}>{doodle.title}</h1>
+            <Link style={{ fontSize: 40, color: '#42c298' }} to={`/profile/${doodle.owner._id}`}>{doodle.owner.username}</Link>
           </div>
           { doodle.description &&
         <p>{doodle.description}</p>
@@ -58,7 +58,8 @@ const ArtworkShow = () => {
         </div>
         <div className="doodle-display-wrapper">
           <div className='canvas-container'>
-            <CanvasDraw       
+            <CanvasDraw
+              className="doodle-canvas"     
               disabled
               hideGrid
               loadTimeOffset={2.2}
@@ -68,20 +69,16 @@ const ArtworkShow = () => {
           </div>
         </div>
         <div className="doodle-comments-wrapper">
-          { !userIsOwner(doodle.owner._id) &&
-        <CommentForm { ...doodle } />
-          }
-          <CommentFeed _id={id}  />
-          {/* <div className="doodle-show-comments">
-          <div className='gallery columns is-multiline'>
+          {/* { userIsAuthenticated() && 
+          <CommentForm { ...doodle } />
+          } */}
 
-            {doodles.map((doodle) => {
-              <div key={doodle.comments} className='column  is-one-third art-card-container'>
-                <ArtCard {...doodle.comments.commentText} />
-              </div>
-            })}
-          </div>
-        </div> */}
+          { !userIsOwner(doodle.owner._id) && userIsAuthenticated() && 
+          <CommentForm { ...doodle } />
+          }
+
+          <CommentFeed _id={id}  />
+
           { userIsOwner(doodle.owner._id) && 
         <Link className="button is-warning" to={`/gallery/${params.id}/edit`}>Edit</Link>
           }

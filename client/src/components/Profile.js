@@ -156,7 +156,7 @@ const Profile = () => {   //{ username }
                       <div  className='my-box box hover-box'>
                         <p style={{ fontSize: 30 }}>{artwork.title}</p>
                         <CanvasDraw
-                          className="canvas  column"     
+                          className="canvas doodle-canvas column"     
                           disabled
                           hideGrid
                           immediateLoading={true}

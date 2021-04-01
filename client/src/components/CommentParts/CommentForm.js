@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import ReactStars from 'react-rating-stars-component'
-import { getTokenFromLocalStorage } from '../../helpers/authHelp'
-import { commentPopup, ratingPopup } from '../../helpers/popUps'
-
+import { getTokenFromLocalStorage,userIsAuthenticated } from '../../helpers/authHelp'
+import { commentPopup, ratingPopup, userNeedsToLogin } from '../../helpers/popUps'
+import SemanticLikeButton from '../LikeParts/SemanticLikeButton'
 //* need to find way to prevent adding a comment from adding a rating too
 // ? comment clears field on submit
 
@@ -40,6 +40,9 @@ const CommentForm = ({ _id }) => {
   const handleCommentPost = async(event) => {
     event.preventDefault()
     const isThereComment = !!userComment.commentText
+    if (!userIsAuthenticated()) {
+      userNeedsToLogin('Please login to review and comment!☺️')
+    }
     if (!isThereComment) {
       setIsThereComment(false)
       console.log('NO COMMENT')
@@ -86,9 +89,13 @@ const CommentForm = ({ _id }) => {
           value={userComment.commentText}
         />
         }
-
-        <button href='#comment-feed' className="button" onClick={handleCommentPost}>Comment</button>
+        <div className='btn-container'>
+          <button href='#comment-feed' className="button comment-btn box hover-box" onClick={handleCommentPost}>Comment</button>
+        </div>
       </form>
+      <SemanticLikeButton id={_id} />
+
+
     </div>
   )
 }

@@ -49,7 +49,7 @@ const LikeButton = ({ id }) => {
   const notifyPopup = (wasLikeSuccess) => { //! put this outside 
     if (wasLikeSuccess === true){ //!for testing = false 
       toast.success('Liked!', {
-        position: 'top-center',
+        position: 'top-right',
         autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
@@ -59,7 +59,7 @@ const LikeButton = ({ id }) => {
         pauseOnFocusLoss: false
       })
     } else toast.error('Unliked!', {
-      position: 'top-center', 
+      position: 'top-right', 
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -71,7 +71,7 @@ const LikeButton = ({ id }) => {
   } 
 
   const handleLike = async () => {
-      
+
     if (!userIsAuthenticated()){
       userNeedsToLogin('Please login to like!')
       return null
@@ -96,19 +96,20 @@ const LikeButton = ({ id }) => {
     <div className='like-btn-and-counter '>
       <Button as='div' labelPosition='right'>
         { !userLikedAlready && 
-        <Button  color='red' onClick={handleLike}>
+        <Button  color='#42c298' onClick={handleLike}>
           <Icon name='heart' />
         Like
         </Button>
         }
        
         { userLikedAlready &&  
-        <Button onClick={handleLike}  color='blue' >
+        <Button onClick={handleLike}  color='red' >
           <Icon name='heart' />
         Unlike
         </Button>
         }
-        <Label as='a' basic color='red' pointing='left'>
+        
+        <Label as='a' basic color='black' pointing='left'>
           {totalFavourites}
         </Label>
          
