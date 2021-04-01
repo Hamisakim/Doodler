@@ -141,6 +141,8 @@ canvas {
 
 .gallery-filter{
   margin-bottom: 2rem;
+  display: flex;
+  justify-content:center;
 
   .rating-filter-select{
     display: flex;

@@ -4,6 +4,23 @@ $brand-color: #42c298;
 .section {
 	padding:5px 0;
 }
+
+section.section {
+  display: flex-wrap;
+}
+
+.section-header {
+  padding: 0 0 3vmax 0 !important;
+}
+p.home {
+  margin: 3% 14% 1%;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+}
+// .section-header,
+// .section-footer {
+// 	text-align: center;
+// }
 img {
   height: 60px;
 }
@@ -59,18 +76,40 @@ img {
   }
 }
 
+	// margin: 20px 20px 24px;
+  // object-fit: contain;
+
+li.grid-item {
+  margin: 20px 20px 24px;
+}
+
 /* Grid */
 .homepage {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-content: stretch;
-	height:250px;
-	padding:20px;
+	height: 250px;
+	padding: 20px;
 	color:#fff;
 	// background-size:cover;
 }
 
+.page-doodle {
+	height: 250px;
+  width: 449.5px;
+  background-image: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.page-gallery {
+	height: 250px;
+  width: 449.5px;
+  background-image: url('../../assets/gallery-gif-test.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0px;
+}
 .homepage-title {
 	margin:0 0 10px;
 	font-size: 50px;
@@ -121,9 +160,47 @@ img {
   background: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
 }
 
+<<<<<<< HEAD
 .section-header-home{
   padding-top: 0rem;
 }
+=======
+// .section-header-home{
+//   padding-top: 0rem;
+// }
+/* Hero */
+
+// .carousel-images {
+//   height: 30rem;
+//   width:30rem
+// }
+
+// .hero {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-height:700px;
+
+// 	color:#fff;
+// 	text-align:center;
+
+//   height: 60vh;
+// 	// background-image:
+// 	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+// 	// 	url('../images/melbourne.jpg');
+// 	// background-size:cover;
+// }
+
+// .hero-content {
+// 	max-width:600px;
+// 	font-weight: 700;
+// }
+// .hero-content p {
+// 	font-size:24px;
+// }
+// .hero-button {
+// 	margin-top:20px;
+>>>>>>> development
 
 .carousel-images{
   max-height: 420px;
