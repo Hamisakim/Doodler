@@ -32,6 +32,13 @@ $brand-color: #42c298;
   cursor: pointer;
 }
 
+.navbar-item:focus { 
+  color: $brand-color !important;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent !important;
+}
+
 .navbar-item:hover { 
   color: $brand-color !important;
   background-color: transparent !important;

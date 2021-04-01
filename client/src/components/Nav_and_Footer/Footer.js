@@ -9,15 +9,19 @@ const Footer = () => {
 
   return (
     <footer className="footer" id="footer">
-      <div className="">
-        <Link className="footer-link" to="/about">
+      <div className="inner-footer-wrapper">
+        <div>
+          <hr />
+          <Link className="footer-link" to="/about">
             About
-        </Link>
-      </div>
-      <div className="copyright-text">
-        <p>
-            DOODLER © 2021 
-        </p>
+          </Link>
+        </div>
+        <div className="copyright-text">
+          <p>
+            {`DOODLER © ${new Date().getFullYear()}`}
+          </p>
+        </div>
+        <hr />
       </div>
     </footer>
   )

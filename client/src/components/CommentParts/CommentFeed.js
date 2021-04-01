@@ -45,6 +45,7 @@ const CommentFeed = ({ _id }) => {
     <div className="box comment-feed" id='comment-feed'>
       <>
         <h1 style={{ fontSize: 40 }}> Whats the chat? </h1>
+        <hr />
         {commentsArray.reverse().map(comment => { 
           const  timestamp  = comment.createdAt
           return (
