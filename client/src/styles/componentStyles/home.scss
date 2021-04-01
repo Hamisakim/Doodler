@@ -4,21 +4,12 @@ $brand-color: #42c298;
 .section {
 	padding:5px 0;
 }
-
-// .section-header {
-//   padding: 5vmax 0;
-// }
-
-// .section-header,
-// .section-footer {
-// 	text-align: center;
-// }
 img {
   height: 60px;
 }
 .grid {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	text-align:center;
 	list-style: none;
   object-fit: fill;
@@ -29,8 +20,45 @@ img {
 	display: flex;
 	flex-direction: column;
 	margin:20px;
-  // object-fit: contain;
+  max-width: 600px;
 }
+
+.page-doodle {
+	height: 340px;
+  //width: 449.5px;
+  background-image: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.page-gallery {
+	max-height: 340px;
+  //width: 449.5px;
+  background-image: url('../../assets/gallery-gif-test.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1181px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align:center;
+    list-style: none;
+    object-fit: fill;
+  }
+  
+  .grid-item {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+    width: 60%;
+    min-width: 300px;
+    margin: 0 auto;
+  }
+}
+
 /* Grid */
 .homepage {
 	display: flex;
@@ -42,20 +70,7 @@ img {
 	color:#fff;
 	// background-size:cover;
 }
-.page-doodle {
-	height: 250px;
-  width: 449.5px;
-  background-image: url(https://media.giphy.com/media/l4FGtoprq7U3UAgtW/giphy.gif);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.page-gallery {
-	height: 250px;
-  width: 449.5px;
-  background-image: url('../../assets/gallery-gif-test.gif');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
 .homepage-title {
 	margin:0 0 10px;
 	font-size: 50px;
@@ -73,10 +88,7 @@ img {
   min-height: 80vh;
 }
 /* Hero Slider*/
-.carousel-wrapper {
-  // height: 60vh;
-  // width: 100px;
-}
+
 .doodle-gif {
   height: 250px;
   width: 449.5px;
@@ -91,10 +103,6 @@ img {
 	color:#fff;
 	text-align:center;
   height: 60vh;
-	// background-image:
-	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-	// 	url('../images/melbourne.jpg');
-	// background-size:cover;
 }
 .hero-content {
 	max-width:600px;
@@ -106,11 +114,6 @@ img {
 .hero-button {
 	margin-top:20px;
 }
-// .carousel-wrapper {
-//   height: 60vh;
-//   // width: 100px;
-// }
-
 
 .doodle-gif {
   height: 250px;
@@ -121,38 +124,6 @@ img {
 .section-header-home{
   padding-top: 0rem;
 }
-/* Hero */
-
-// .carousel-images {
-//   height: 30rem;
-//   width:30rem
-// }
-
-// .hero {
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	min-height:700px;
-
-// 	color:#fff;
-// 	text-align:center;
-
-//   height: 60vh;
-// 	// background-image:
-// 	// 	linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-// 	// 	url('../images/melbourne.jpg');
-// 	// background-size:cover;
-// }
-
-// .hero-content {
-// 	max-width:600px;
-// 	font-weight: 700;
-// }
-// .hero-content p {
-// 	font-size:24px;
-// }
-// .hero-button {
-// 	margin-top:20px;
 
 .carousel-images{
   max-height: 420px;

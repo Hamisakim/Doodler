@@ -10,7 +10,6 @@ const Home = () => {
     <div className="main">
       <div className="section-header section-header-home ">
         <h2 className="section-title">
-          {/* <img src="https://i.imgur.com/wNw1Uug.jpg" alt="Airbnb Logo"></img> */}
           <svg className="homepage-logo" viewBox="0 0 574 192">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g id="Artboard" transform="translate(-801.000000, -895.000000)" fill="#000000" fillRule="nonzero">

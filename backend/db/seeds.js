@@ -19,7 +19,9 @@ const seedDataBase = async () => {
     console.log(`🌱 DB seeded with ${users.length} users`)
 
     const artworkWithUsers = artworkData.map(artwork => {
-      artwork.owner = users[0]._id
+      //leave math random to seed random user to seed doodle
+      // artwork.owner = users[0]._id
+      artwork.owner = users[Math.floor(Math.random() * users.length )]._id
       return artwork
     })
 
