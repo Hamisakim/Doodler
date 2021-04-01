@@ -5,6 +5,7 @@ $brand-color: #42c298;
 @import "~bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
 
 // body {
 //   display: flex;
@@ -85,6 +86,14 @@ label {
   padding: 0 0;
 }
 
+<<<<<<< HEAD
+// .user-items {
+//   text-decoration: none !important;
+//   // color: black;
+// }
+
+=======
+>>>>>>> 3015eff958a9eb52c9dae2c0976ed45defa63f34
 .footer {
   text-align: center;
   background-color: transparent !important;

@@ -15,21 +15,30 @@ const DemoCarousel = () => {
     <Carousel
       // className="hero"
       autoPlay={true}
-      showThumbs={false}>
+      showThumbs={false}
+<<<<<<< HEAD
+      interval={3000} 
+      infiniteLoop={true}
+      showArrows={true}
+      stopOnHover={false}
+      transitionTime={2000}>
+=======
+      infiniteLoop={true}>
+>>>>>>> 3015eff958a9eb52c9dae2c0976ed45defa63f34
       <div>
         <img className="carousel-images" src={demoDoodleOne} />
       </div>
       <div>
-        <img className="carousel-images" src={demoDoodleFive}  />
+        <img className="carousel-images" src={demoDoodleFive} />
       </div>
       <div>
-        <img className="carousel-images" src={demoDoodleTwo}  />
+        <img className="carousel-images" src={demoDoodleTwo} />
       </div>
       <div>
-        <img className="carousel-images" src={demoDoodleThree}  />
+        <img className="carousel-images" src={demoDoodleThree} />
       </div>
       <div>
-        <img className="carousel-images" src={demoDoodleFour}  />
+        <img className="carousel-images" src={demoDoodleFour} />
       </div>
     </Carousel>
   )

@@ -1,5 +1,37 @@
 @import "~bulma/bulma.sass";
 
+<<<<<<< HEAD
+main {
+  min-height: 92vh;
+}
+.section-header-about {
+  padding: 10vmax 0 4vmax 0;
+  text-align: center;
+}
+
+h1.about-title {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.page-wrapper-about {
+  min-height: 54vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //margin: 0 0;
+}
+
+.about {
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p.name {
+  font-size: 22px;
+}
+=======
 // body {
 //   background-color: blue;
   
@@ -11,3 +43,4 @@
 // h1 {
 //   margin-top: 500px;
 // }
+>>>>>>> 3015eff958a9eb52c9dae2c0976ed45defa63f34
