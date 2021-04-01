@@ -7,6 +7,10 @@ import axios from 'axios'
 import LZString from 'lz-string'
 import create from  '../assets/Create.png'
 import { getPayloadFromToken, getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/authHelp'
+import { doodlePopup, userNeedsToLogin } from '../helpers/popUps'
+
+
+
  
 const DoodleNew = () => {
   const [backgroundColor, setBackgroundColor] = useState('#fff')
@@ -45,20 +49,30 @@ const DoodleNew = () => {
   }
 
   const handleSave = () => {
-    const artworkToSend = LZString.compressToEncodedURIComponent(doodle.getSaveData())
-    const newFormData = { ...formData, doodleData: artworkToSend, formData }
-    setFormData(newFormData)
-
-    // const compressed = LZString.compress(doodle.getSaveData())
-    // console.log('original', doodle.getSaveData())
-    // console.log('compressed', compressed)
-    // console.log('decompressed', LZString.decompress(compressed))
-
-    const sendArtwork = async () => {
-      await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
-      history.push(`/profile/${userId}`)
+    if (!userIsAuthenticated()) {
+      userNeedsToLogin('Please login to save!')
     }
-    sendArtwork()
+    if (!formData.title) {
+      doodlePopup(false)
+      return null
+    } else { 
+      const artworkToSend = LZString.compressToEncodedURIComponent(doodle.getSaveData())
+      const newFormData = { ...formData, doodleData: artworkToSend, formData }
+      setFormData(newFormData)
+
+      // const compressed = LZString.compress(doodle.getSaveData())
+      // console.log('original', doodle.getSaveData())
+      // console.log('compressed', compressed)
+      // console.log('decompressed', LZString.decompress(compressed))
+
+      const sendArtwork = async () => {
+        await axios.post('/api/artwork', newFormData, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+        doodlePopup(true)
+        history.push(`/profile/${userId}`)
+      }
+      sendArtwork()
+    }
+    
   }
 
   const handleClear = () => {

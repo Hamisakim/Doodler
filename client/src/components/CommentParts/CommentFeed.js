@@ -43,31 +43,32 @@ const CommentFeed = ({ _id }) => {
 
   return (
     <div className="box comment-feed" id='comment-feed'>
-      <h1> Whats the chat? </h1>
-      {commentsArray.reverse().map(comment => { 
-        const  timestamp  = comment.createdAt
-        return (
-          <div key={comment._id}>
-            {/* <p>{comment.commentText} - {comment.rating}</p> */}
-            <p>{comment.commentText} - { <ReactStars
-              edit={false}
-              // count={5}
-              // onChange={0}
-              size={16}
-              isHalf={true}
-              value={comment.rating}
-              emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#ffd700"
-            />
-            } </p>
-            <p>{comment.username} - {formattedTimestamp(timestamp)}</p>
-            <hr/>
-          </div>
-        )
-      })}
-      
+      <>
+        <h1 style={{ fontSize: 40 }}> Whats the chat? </h1>
+        {commentsArray.reverse().map(comment => { 
+          const  timestamp  = comment.createdAt
+          return (
+            <div key={comment._id}>
+              {/* <p>{comment.commentText} - {comment.rating}</p> */}
+              <p>{comment.commentText} - { <ReactStars
+                edit={false}
+                // count={5}
+                // onChange={0}
+                size={16}
+                isHalf={true}
+                value={comment.rating}
+                emptyIcon={<i className="far fa-star"></i>}
+                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                fullIcon={<i className="fa fa-star"></i>}
+                activeColor="#ffd700"
+              />
+              } </p>
+              <p>{comment.username} - {formattedTimestamp(timestamp)}</p>
+              <hr/>
+            </div>
+          )
+        })}
+      </>
       
     </div>
   )

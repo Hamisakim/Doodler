@@ -58,85 +58,90 @@ const ProfileForm = () => {
   return (
     <main> 
       <>
-        <h1 className="form-title">Tell us a little bit about yourself</h1>
-        <form
-          onSubmit={handleSubmit}
-        >
-          <div className="field">
-            <label className="label">First Name:</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Last Name:</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
+        <div className="main-profile-form">
 
-          <div className="field">
-            <ImageUploadField
-              name="profilePicture"
-              value={formData.profilePicture}
-              handleImageUrl={handleImageUrl}
-            />
-          </div>
+     
+          <h1 className="form-title">Tell us a little bit about yourself</h1>
+          <form
+            onSubmit={handleSubmit}
+          >
+            <div className="field">
+              <label className="label">First Name:</label>
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Last Name:</label>
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
-          <div className="field">
-            <label className="label">Location:</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
+            <div className="field">
+              <ImageUploadField
+                name="profilePicture"
+                value={formData.profilePicture}
+                handleImageUrl={handleImageUrl}
               />
             </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Age:</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-              />
+            <div className="field">
+              <label className="label">Location:</label>
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Bio:</label>
-            <div className="control">
-              <textarea
-                className="textarea"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-              />
+            <div className="field">
+              <label className="label">Age:</label>
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="field">
-            <button className="button is-fullwidth is-dark" type="submit">Submit</button>
-          </div>
-        </form>
+
+            <div className="field">
+              <label className="label">Bio:</label>
+              <div className="control">
+                <textarea
+                  className="textarea"
+                  name="bio"
+                  value={formData.bio}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="field">
+              <button className="button is-fullwidth is-dark" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
       </>
+      
     </main>  
   )
 }
