@@ -152,18 +152,20 @@ const Profile = () => {   //{ username }
                 {userArtwork.map((artwork) => {
                   const decompressedDoodleData = LZString.decompressFromEncodedURIComponent(artwork.doodleData)
                   return (
-                    <div key={artwork._id} className='my-box box hover-box'>
-                      <p style={{ fontSize: 30 }}>{artwork.title}</p>
-                      <CanvasDraw
-                        className="canvas  column"     
-                        disabled
-                        hideGrid
-                        immediateLoading={true}
-                        //saveData={doodleData}
-                        saveData={decompressedDoodleData}
-                        backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
-                      />
-                    </div>
+                    <Link key={artwork.id} to={`/gallery/${artwork.id}`}>
+                      <div  className='my-box box hover-box'>
+                        <p style={{ fontSize: 30 }}>{artwork.title}</p>
+                        <CanvasDraw
+                          className="canvas  column"     
+                          disabled
+                          hideGrid
+                          immediateLoading={true}
+                          //saveData={doodleData}
+                          saveData={decompressedDoodleData}
+                          backgroundColor={JSON.parse(decompressedDoodleData).backgroundColor} 
+                        />
+                      </div>
+                    </Link>
                   )
                 })}
                     
