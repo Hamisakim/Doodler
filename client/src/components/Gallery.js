@@ -30,12 +30,12 @@ const Gallery = () => {
   )
 
   const [filterRating, setFilterRating] = useState(1)
-  const [filterCriteriaRating, setFilterCriteriaRating] = useState(true)
-  const [filterCriteriaLikes, setFilterCriteriaLikes] = useState(false)
+  // const [filterCriteriaRating, setFilterCriteriaRating] = useState(true)
+  // const [filterCriteriaLikes, setFilterCriteriaLikes] = useState(false)
   console.log('🐝 ~ file: Gallery.js ~ line 33 ~ filterRating', filterRating)
  
   const handleRatingFilter = (event) => {
-    setFilterCriteria('rating')
+    // setFilterCriteria('rating')
     console.log('🐝 ~ file: Gallery.js ~ line 34 ~ event', event)
     setFilterRating(event)
   }
@@ -78,15 +78,15 @@ const Gallery = () => {
 
         }
 
-        { !        
+        {     
 
-        doodles.filter(artwork => artwork.avgRating >=  filterRating)
-          .map(filteredArtwork => (
-            console.log('🐝 ~ file: Gallery.js ~ line 64 ~ filteredArtwork', filteredArtwork),
-            <div key={filteredArtwork._id} className='column'>
-              <ArtCard {...filteredArtwork} />
-            </div>
-          ))
+          doodles.filter(artwork => artwork.avgRating >=  filterRating)
+            .map(filteredArtwork => (
+              console.log('🐝 ~ file: Gallery.js ~ line 64 ~ filteredArtwork', filteredArtwork),
+              <div key={filteredArtwork._id} className='column'>
+                <ArtCard {...filteredArtwork} />
+              </div>
+            ))
             
         }
 
