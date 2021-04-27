@@ -26,7 +26,7 @@ const startServer = async() => {
     app.use('/api', router)
 
     // * Server
-    app.listen(port, () => console.log(`🚀 Express is up and running on port ${port}🚀`))
+    app.listen(process.env.PORT || 4000, () => console.log(`🚀 Express is up and running on port ${port}🚀`))
   } catch (err) {
     console.log('🆘 Something went wrong starting the app')
     console.log(err)
