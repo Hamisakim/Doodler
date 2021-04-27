@@ -4,6 +4,8 @@ import { port, dbURI } from './config/environment.js'
 import router from './config/router.js'
 import bodyParser from 'body-parser'
 
+
+
 const app = express()
 
 // * Function to start server and connect to db
@@ -17,7 +19,8 @@ const startServer = async() => {
     app.use(bodyParser.json({ limit: '10mb', extended: true }))
 
     // * Logger middleware
-    app.use((req, _res, next) => {
+    app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*')
       console.log(`🚨 Incoming request: ${req.method} - ${req.url}🚨`)
       next()
     })
