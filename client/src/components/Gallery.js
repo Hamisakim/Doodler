@@ -1,5 +1,5 @@
 import '../styles/componentStyles/gallery.scss'
-import Loader from 'react-loader-spinner'
+// import Loader from 'react-loader-spinner'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ArtCard from './ArtCard'
@@ -14,7 +14,7 @@ const Gallery = () => {
   
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get('/api/artwork')
+      const response = await axios.get('https://sei-doodle-server.herokuapp.com/api/artowrk')
       console.log('🐝 ~ file: Gallery.js ~ line 17 ~ response', response)
       //setDoodles(null)
       setDoodles(response.data)
@@ -23,9 +23,9 @@ const Gallery = () => {
   }, [])
 
 
-  if (!doodles) return ( //!  loader from package if no pull from api
+  if (doodles === []) return ( //!  loader from package if no pull from api
     <div className='container'>
-      <Loader className='loader-container' type="CIRCLES" color="#00BFFF" height={'20vh'} width={'20vh'} />
+      <h1>Something is wrong!! </h1> 
     </div>
   )
 
