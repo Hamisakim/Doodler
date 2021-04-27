@@ -14,7 +14,8 @@ const Gallery = () => {
   
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get('https://sei-doodle-server.herokuapp.com/api/artowrk')
+      console.log('Getting data 🔵')
+      const response = await axios.get('api/artwork')
       console.log('🐝 ~ file: Gallery.js ~ line 17 ~ response', response)
       //setDoodles(null)
       setDoodles(response.data)
