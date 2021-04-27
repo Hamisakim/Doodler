@@ -1,0 +1,223 @@
+//@import '~bulma/bulma.sass';
+$brand-color: #42c298;
+h1 {
+  font-family: "Patrick Hand", cursive;
+  font-weight: bolder;
+  line-height: 80%;
+}
+
+.header {
+  text-align: center;
+}
+
+.card-front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .back-card-top-container {
+    padding-top: 0.5rem;
+  }
+
+  fieldset {
+    padding: 0 0.6rem;
+  }
+}
+
+.ui.card {
+  min-width: 350px;
+  min-height: 550px;
+  max-height: 550px;
+  align-items: center !important;
+  justify-content: space-evenly;
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px #000 !important;
+  transition: 0.2s all;
+  .username {
+    color: $brand-color;
+  }
+}
+
+.ui.card:hover {
+  border: 1px solid $brand-color !important;
+  box-shadow: 4px 4px 0px $brand-color !important;
+}
+
+.Toastify__toast--success {
+  background-color: orange;
+}
+
+.like-btn-and-counter {
+  text-align: center;
+}
+
+.card-front {
+  h1 {
+    font-size: 2.8rem;
+  }
+}
+
+.image {
+  display: flex !important;
+  justify-content: center !important;
+}
+canvas {
+  // border: 5px solid $brand-color!important;
+  // border-radius: 1px !important;
+  // border: 2px solid red;
+  padding: 0px;
+  margin: 0 auto;
+  // width: 100%;
+  //box-shadow: 2px 2px 0px !important;
+}
+
+.front-card-content {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+
+  h1 {
+    margin: 1rem;
+    margin-bottom: 0;
+  }
+
+  .user-items {
+    margin-bottom: 2rem;
+    color: black;
+    font-size: 1.6rem;
+  }
+  .user-items:hover{
+    color: $brand-color;
+  }
+}
+
+.card-back {
+  text-align: center;
+  .ui.card {
+    justify-content: space-between;
+  }
+  justify-content: center ;
+  h1 {
+    font-size: 4rem;
+    padding-bottom: 1rem;
+  }
+  fieldset {
+    text-align: left;
+    margin: 0;
+    color: $brand-color;
+    width: 300px;
+    min-height: 1rem;
+    border: 0.1px solid $brand-color;
+    border-radius: 0.2rem;
+  }
+  legend {
+    margin: 1rem;
+    margin-bottom: 0;
+  }
+  p {
+    color: black;
+    font-size: 2rem;
+  }
+
+  .user-items {
+    font-size: 1.6rem;
+    color: black;
+    .username {
+      font-size: 2rem;
+    }
+  }
+  .user-items:hover{
+    color: $brand-color;
+  }
+}
+
+
+.gallery-filter{
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content:center;
+
+  .rating-filter-select{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    h1{width: 100%}
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+// input {
+//   padding-left: 0;
+// }
+// /*
+// .card-image{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   }
+//   .canvas-container{
+//     margin:0;
+//     padding: 0px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+  
+// .card{ 
+//   min-height:420px ;
+// }
+
+
+//   .card-footer{
+//     height: 20%;
+//     display: flex;
+//     align-self: flex-end;
+//     margin-top: 50px
+//   }
+
+
+
+// .card-header-title {
+//   align-items: center;
+//   color: #363636;
+//   display: flex;
+
+//   font-weight: 700;
+//   padding: 0px;
+// }
+
+// footer{
+//   margin-block-end: auto;
+
+// }
+
+// .card-like-btn-things{
+//   display: flex;
+//   align-items: center;
+//   h2{
+//     font-size: 2rem;
+//   }
+// } */

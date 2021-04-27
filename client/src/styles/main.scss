@@ -1,0 +1,105 @@
+//! Re-enable BULMA for each style sheet!!! 
+
+$brand-color: #42c298;
+
+@import "~bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+
+// body {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// div.main {
+//   width: 70vw;
+// }
+
+
+
+
+#hero-body {
+  background-image:
+		linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		url('https://i.imgur.com/Of47BNO.jpg');
+}
+#root{
+  // font-family: 'Architects Daughter', cursive;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
+body{
+  display: block !important;
+  background: rgb(2,0,36);
+  background: linear-gradient(151deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(66,194,152,0.18531162464985995) 100%);
+}
+
+
+.section-header {
+  padding: 10vmax 0 4vmax 0;
+}
+
+
+.section-header,
+.section-footer {
+	text-align: center;
+}
+
+.box {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+}
+
+.input {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+  transition: 0.2s all;
+}
+
+.input:focus {
+  border: 1px solid #42c298 !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0px #42c298 !important;
+  color: #42c298;
+}
+
+.textarea {
+  border: 1px solid #000 !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0px !important;
+}
+
+.textarea:focus {
+  border: 1px solid $brand-color !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0px $brand-color !important;
+  color: $brand-color;
+}
+
+label {
+  letter-spacing: 1px;
+  font-size: 15.5px;
+}
+
+
+.content-section {
+  padding: 0 0;
+}
+
+.footer {
+  text-align: center;
+  background-color: transparent !important;
+}
+
+.section-header-profile{
+  padding:0;
+  padding-bottom: 2rem;
+}
+
+.doodle-canvas{
+  cursor: none;
+
+}     

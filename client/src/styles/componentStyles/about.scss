@@ -1,0 +1,32 @@
+@import "~bulma/bulma.sass";
+
+main {
+  min-height: 92vh;
+}
+.section-header-about {
+  padding: 10vmax 0 4vmax 0;
+  text-align: center;
+}
+
+h1.about-title {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.page-wrapper-about {
+  min-height: 54vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //margin: 0 0;
+}
+
+.about {
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p.name {
+  font-size: 22px;
+}

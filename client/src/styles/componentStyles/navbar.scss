@@ -1,0 +1,77 @@
+$brand-color: #42c298;
+
+@import "~bulma/bulma.sass";
+
+.container {
+  width: 100%;
+  height: 85px;
+}
+
+.second-logo {
+  width: 70px;
+  margin-top: 10px;
+  margin-left: 20px;
+
+}
+.navbar{
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+}
+
+.second-logo-color {
+  fill: $brand-color;
+}
+
+.custom-nav {
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+  box-shadow: 0px 0px 15px #cecece69;
+}
+
+.navbar-item { 
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.navbar-item:focus { 
+  color: $brand-color !important;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent !important;
+}
+
+.navbar-item:hover { 
+  color: $brand-color !important;
+  background-color: transparent !important;
+
+}
+
+nav {
+  position: fixed !important;
+  width: 100vw;
+}
+
+.navbar-burger {
+  height: 85px !important;
+  width: 80px !important;
+  transform: scale(1.5);
+}
+
+.navbar-burger:hover {
+ background-color: transparent !important;
+}

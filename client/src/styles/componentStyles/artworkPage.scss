@@ -1,0 +1,59 @@
+@import "~bulma/bulma.sass";
+
+.page-wrapper {
+  margin: 50px auto;
+  width: 520px;
+  min-height: 90vh;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-container {
+  transform: scale(1.5);
+  display: flex;
+  justify-content:center;
+}
+
+.doodle-comments-wrapper {
+  margin: 100px 0 0 0;
+}
+
+.desc-top-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  h1{ margin: 0 !important; }
+  a, h1{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+}
+
+
+.description-wrapper {
+  margin: 0 0 100px 0;
+}
+
+.comment-form{
+  width: 100%;
+  input{
+    margin: 0.5rem 0;
+  }
+  .btn-container{
+    display: flex;
+    justify-content:flex-start;
+  }
+}
+.main-show{
+  padding-top: 5rem;
+}
+// .comment-btn-red{
+// background-color:red;
+// }
+// .comment-btn-blue{
+//   background-color:royalblue !important;
+//   color: royalblue;
+//   }

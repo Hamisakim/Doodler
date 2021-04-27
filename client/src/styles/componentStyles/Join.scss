@@ -1,0 +1,19 @@
+@import "~bulma/bulma.sass";
+
+.main {
+  padding-top: 150px;
+  min-height: 95vh;
+}
+
+.field-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  margin-bottom: 0px;
+}
+
+.input{
+  padding-left: 0;
+}
