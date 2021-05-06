@@ -8,8 +8,8 @@ Create an account and login to see the full features!
 *Note - no extra work has been done to this apart from deployment. This is to give an accurate representation of what can be accomplished in a set time frame.
 
 Doodler is a social site for users to create and share their doodles. 
-(https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png)
-(https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png)
+https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png
+https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png
 
 
 # Initialisation
@@ -48,15 +48,15 @@ Doodler is a social site for users to create and share their doodles.
 While discussing ideas we found a canvas component that allows users to make a doddle. We knew we wanted this as the focus of our app and got to work. 
 
 We met and had some wireframes drawn up of how we want the app to look like
-(![Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347413-feeedf00-aea0-11eb-9e10-3bae4086906a.png)
+Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347413-feeedf00-aea0-11eb-9e10-3bae4086906a.png
 
-(![Screenshot 2021-05-04 at 15 02 36](https://user-images.githubusercontent.com/76621344/117347353-e8e11e80-aea0-11eb-83aa-149b94732de5.png)
-)
-(![Screenshot 2021-05-04 at 15 02 51](https://user-images.githubusercontent.com/76621344/117347367-f0a0c300-aea0-11eb-999d-5bbf5e927476.png)
+https://user-images.githubusercontent.com/76621344/117347353-e8e11e80-aea0-11eb-83aa-149b94732de5.png
+
+Screenshot 2021-05-04 at 15 02 51](https://user-images.githubusercontent.com/76621344/117347367-f0a0c300-aea0-11eb-999d-5bbf5e927476.png
 )
 We used Trello to track our progress and raise issues.
-(![Screenshot 2021-05-04 at 15 05 33](https://user-images.githubusercontent.com/76621344/117347379-f4344a00-aea0-11eb-8636-85a235de9940.png)
-)
+https://user-images.githubusercontent.com/76621344/117347379-f4344a00-aea0-11eb-8636-85a235de9940.png
+
 
 
 # Backend development
@@ -124,14 +124,13 @@ export const addLike = async (req, res) => {
 }
 ```
 * We ran into a problem often with the payload size but managed to overcome this! By using [lz-string](https://pieroxy.net/blog/pages/lz-string/guide.html)
-![](![Screenshot_2021-03-25_at_23 28 40](https://user-images.githubusercontent.com/76621344/117347467-0f9f5500-aea1-11eb-8b34-39a4f0aeff95.png)
-)
-* this changed the data from an object with line coordinates to a single string 
-![](![Screenshot 2021-05-06 at 19 22 27](https://user-images.githubusercontent.com/76621344/117347475-11691880-aea1-11eb-8ce1-8cea4686376a.png)
-)
+https://user-images.githubusercontent.com/76621344/117347467-0f9f5500-aea1-11eb-8b34-39a4f0aeff95.png
 
-![](![Screenshot 2021-05-06 at 19 22 59](https://user-images.githubusercontent.com/76621344/117347484-14fc9f80-aea1-11eb-8bcf-7e78a246ca04.png)
-)
+* this changed the data from an object with line coordinates to a single string 
+https://user-images.githubusercontent.com/76621344/117347475-11691880-aea1-11eb-8ce1-8cea4686376a.png
+
+https://user-images.githubusercontent.com/76621344/117347484-14fc9f80-aea1-11eb-8bcf-7e78a246ca04.png
+
 
 
 # Front end
@@ -139,16 +138,15 @@ My focus was on the gallery page, user authentication and the like and comment f
 
 # My Highlights
 I really Like how the gallery page turned out with the cards and getting the filter feature to work.
-![](![Screenshot 2021-05-04 at 15 48 33](https://user-images.githubusercontent.com/76621344/117347501-18902680-aea1-11eb-94ed-28aa5cf69990.png)
-)
-Making the nabber responsive was also one of my highlights 
-![](![Screenshot 2021-05-06 at 19 23 37](https://user-images.githubusercontent.com/76621344/117347537-22b22500-aea1-11eb-8299-977623cbb4e0.png)
-)
+https://user-images.githubusercontent.com/76621344/117347501-18902680-aea1-11eb-94ed-28aa5cf69990.png
 
-![](![Screenshot 2021-05-06 at 19 24 22](https://user-images.githubusercontent.com/76621344/117347557-29d93300-aea1-11eb-88f4-6188f85064f6.png)
-)
-![](![Screenshot 2021-05-06 at 19 24 40](https://user-images.githubusercontent.com/76621344/117347568-2cd42380-aea1-11eb-8392-c1c25fda8a07.png)
-)
+Making the nabber responsive was also one of my highlights 
+https://user-images.githubusercontent.com/76621344/117347537-22b22500-aea1-11eb-8299-977623cbb4e0.png
+
+https://user-images.githubusercontent.com/76621344/117347557-29d93300-aea1-11eb-88f4-6188f85064f6.png
+
+https://user-images.githubusercontent.com/76621344/117347568-2cd42380-aea1-11eb-8392-c1c25fda8a07.png
+
 
 # Wins 
 * Working as a team to create a really cool interactive app!
