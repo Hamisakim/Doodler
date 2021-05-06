@@ -8,9 +8,8 @@ Create an account and login to see the full features!
 *Note - no extra work has been done to this apart from deployment. This is to give an accurate representation of what can be accomplished in a set time frame.
 
 Doodler is a social site for users to create and share their doodles. 
-(![Screenshot 2021-05-04 at 15 51 55](https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png)
-)
-[Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png)
+(https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png)
+(https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png)
 
 
 # Initialisation
@@ -49,15 +48,14 @@ Doodler is a social site for users to create and share their doodles.
 While discussing ideas we found a canvas component that allows users to make a doddle. We knew we wanted this as the focus of our app and got to work. 
 
 We met and had some wireframes drawn up of how we want the app to look like
-![](![Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347413-feeedf00-aea0-11eb-9e10-3bae4086906a.png)
+(![Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347413-feeedf00-aea0-11eb-9e10-3bae4086906a.png)
+
+(![Screenshot 2021-05-04 at 15 02 36](https://user-images.githubusercontent.com/76621344/117347353-e8e11e80-aea0-11eb-83aa-149b94732de5.png)
 )
-)
-![](![Screenshot 2021-05-04 at 15 02 36](https://user-images.githubusercontent.com/76621344/117347353-e8e11e80-aea0-11eb-83aa-149b94732de5.png)
-)
-![](![Screenshot 2021-05-04 at 15 02 51](https://user-images.githubusercontent.com/76621344/117347367-f0a0c300-aea0-11eb-999d-5bbf5e927476.png)
+(![Screenshot 2021-05-04 at 15 02 51](https://user-images.githubusercontent.com/76621344/117347367-f0a0c300-aea0-11eb-999d-5bbf5e927476.png)
 )
 We used Trello to track our progress and raise issues.
-![](![Screenshot 2021-05-04 at 15 05 33](https://user-images.githubusercontent.com/76621344/117347379-f4344a00-aea0-11eb-8636-85a235de9940.png)
+(![Screenshot 2021-05-04 at 15 05 33](https://user-images.githubusercontent.com/76621344/117347379-f4344a00-aea0-11eb-8636-85a235de9940.png)
 )
 
 
