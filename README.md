@@ -1,7 +1,10 @@
 # Doodler ReadMe 
 ## Team members
-Sami Hakim 
-Eric Petso
+* [Sami Hakim](https://github.com/hamisakim)
+* [Eric Petsopoulos](https://github.com/ericpesto)
+* [Aida Bourdis](https://github.com/lesroissamusent)
+* [Ayo Olawoye](https://github.com/ayoolawoye)
+
 ## **Deployed app here [Doodler](https://doodler.netlify.app/)
 Create an account and login to see the full features! 
 # Project Overview - 7 days
