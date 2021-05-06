@@ -8,9 +8,9 @@ Create an account and login to see the full features!
 *Note - no extra work has been done to this apart from deployment. This is to give an accurate representation of what can be accomplished in a set time frame.
 
 Doodler is a social site for users to create and share their doodles. 
-![](![Screenshot 2021-05-04 at 15 51 55](https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png)
+(![Screenshot 2021-05-04 at 15 51 55](https://user-images.githubusercontent.com/76621344/117347278-cfd86d80-aea0-11eb-94fe-6664fea3c4bd.png)
 )
-![Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png)
+[Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117347330-df57b680-aea0-11eb-9bd9-b775a9393255.png)
 
 
 # Initialisation
