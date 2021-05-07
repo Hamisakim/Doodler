@@ -159,7 +159,8 @@ Making the navbar responsive was also one of my highlights
 # Wins 
 * Working as a team to create a really cool interactive app!
 # Challenges 
-* Managing and splitting work proved challenging initially 
+* Managing and splitting work proved challenging initially!
+* Merging and solving conflicts was something we had to learn on the fly and practice.  
 
 
 
