@@ -5,7 +5,7 @@
 * [Aida Bourdis](https://github.com/lesroissamusent)
 * [Ayo Olawoye](https://github.com/ayoolawoye)
 
-## **Deployed app here [Doodler](https://doodler.netlify.app/)
+## Deployed app here [Doodler](https://doodler.netlify.app/)
 Create an account and login to see the full features! 
 # Project Overview - 7 days
 *Note - no extra work has been done to this apart from deployment. This is to give an accurate representation of what can be accomplished in a set time frame.
