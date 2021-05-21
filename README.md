@@ -142,6 +142,41 @@ export const addLike = async (req, res) => {
 !![Screenshot 2021-05-06 at 19 22 59](https://user-images.githubusercontent.com/76621344/117348618-52adf800-aea2-11eb-8717-aa638f19ef7f.png)
 
 
+## Like feauture 
+The like button was something I focused on, front and back-end. 
+This will check if the user has liked previously and dislike if so, or add a like if not.
+```
+export const addLike = async (req, res) => {
+// const currentUser = req.currentUser._id
+  try {
+    const { id } = req.params
+    const artworkToLike = await Artwork.findById(id)
+    if (!artworkToLike) {
+      throw new Error('🟥 no artwork found to like 🟥 ')
+    }
+    const newLike = { owner: req.currentUser }
+    const favouritesArray = artworkToLike.favourites 
+    const currentUserLoggedInId = JSON.stringify(req.currentUser._id)
+    const hasUserLikedBefore = await favouritesArray.find(item => JSON.stringify(item.owner._id) === currentUserLoggedInId) 
+    
+    console.log('🐝 ~ file: artworkController.js ~ line 107 ~ hasUserLikedBefore', hasUserLikedBefore)
+    if (hasUserLikedBefore) {
+      const likeToRemove = await artworkToLike.favourites.id(hasUserLikedBefore._id)
+      await likeToRemove.remove()
+      await	artworkToLike.save()
+      res.status(200).json( { message: 'Dis-liked!' })
+    } else if (!hasUserLikedBefore) {
+      artworkToLike.favourites.push(newLike)
+      await	artworkToLike.save()
+      res.status(200).json( { message: 'liked!' })
+    }
+  } catch (err) {
+    console.log('🐝 ~ file: artworkController.js ~ line 128 ~ error', err)
+    res.status(500).json( { message: err.message })
+  }
+}
+```
+
 
 # Front end
 My focus was on the gallery page, user authentication and the like and comment features.
