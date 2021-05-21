@@ -49,7 +49,7 @@ Doodler is a social site for users to create and share their doodles.
 * Git/GitHub
 
 ## Approach Taken 
-While discussing ideas we found a canvas component that allows users to make a doddle. We knew we wanted this as the focus of our app and got to work. 
+While discussing ideas we found a [ canvas component](https://www.npmjs.com/package/react-canvas-draw) that allows users to make a doddle. We knew we wanted this as the focus of our app and got to work. 
 
 We met and had some wireframes drawn up of how we want the app to look like
 
@@ -68,7 +68,7 @@ We used Trello to track our progress and raise issues.
 
 
 # Backend development
-The doodles are referred as artwork in our schematics. They contain both  embedded and reference relationships
+The doodles are referred as artwork in our schematics. They contain both embedded and reference relationships
 ## Schemas
 ``` javascript
 const commentSchema = new mongoose.Schema({
