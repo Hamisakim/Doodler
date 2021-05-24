@@ -49,7 +49,7 @@ Doodler is a social site for users to create and share their doodles.
 * Git/GitHub
 
 ## Approach Taken 
-While discussing ideas we found a [ canvas component](https://www.npmjs.com/package/react-canvas-draw) that allows users to make a doddle. We knew we wanted this as the focus of our app and got to work. 
+While discussing ideas we found a [ canvas component](https://www.npmjs.com/package/react-canvas-draw) that allows users to make a doodle. We knew we wanted this as the focus of our app and got to work. 
 
 We met and had some wireframes drawn up of how we want the app to look like
 
@@ -182,6 +182,36 @@ export const addLike = async (req, res) => {
 My focus was on the gallery page, user authentication and the like and comment features.
 
 # My Highlights
+## Comments
+
+The comment feed component uses the doodle ID to get all its comments and formats the timestamp to display a comment feed. Using an interval this refreshes every five seconds. 
+
+```javascript
+const CommentFeed = ({ _id }) => {
+  const [commentsArray, setCommentsArray] = useState([])
+  useEffect(() => {
+    getComments()
+    const interval = setInterval(getComments, 5000)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
+  const getComments = async () =>{ 
+    const response = await axios.get(`/api/artwork/${_id}/getComments`) 
+    const newCommentsArray = response.data
+    setCommentsArray(newCommentsArray)
+  }
+  const formattedTimestamp = (timestamp) =>{
+    const date = new Date(timestamp)
+    const toString = date.toString()
+    const dateSlice = toString.slice(4,10)
+    const timeSlice = toString.slice(15,21)
+    return `${dateSlice} at ${timeSlice}`
+  }
+```
+![Screenshot 2021-05-24 at 16 18 13](https://user-images.githubusercontent.com/76621344/119369063-a6df1780-bcab-11eb-8cf8-5ff51af01970.png)
+
 I really Like how the gallery page turned out with the cards and getting the filter feature to work.
 ![Screenshot 2021-05-04 at 15 48 33](https://user-images.githubusercontent.com/76621344/117348638-5a6d9c80-aea2-11eb-9ceb-ce6f0a46ac69.png)
 
