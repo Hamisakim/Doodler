@@ -210,15 +210,69 @@ const CommentFeed = ({ _id }) => {
     return `${dateSlice} at ${timeSlice}`
   }
 ```
+To add comments - this will also take a user rating, between 1-5 and add this to the doodle
+```javascript
+const CommentForm = ({ _id }) => {
+  const [userComment, setUserComment] = useState({
+    commentText: '',
+    rating: 1
+  })
+  const [userRating, setUserRating] = useState(null)
+  
+  const [isThereComment, setIsThereComment] = useState(null)
+  const [isThereRating, setIsThereRating] = useState(null)
+  console.log('🐝 ~ file: CommentForm.js ~ line 25 ~ isThereRating', isThereRating)
+
+
+
+  const handleCommentChange = (event) => {
+    //?get the value of what's being typed in the form and updating state
+    const newUserComment = { ...userComment, [event.target.name]: event.target.value }
+    // console.log('🐝 ~ file: Login.js ~ line 25 ~ event', event)
+    setUserComment(newUserComment)
+  }
+
+  const handleRatingChange = (event) => {
+    console.log('🐝 ~ file: CommentForm.js ~ line 65 ~ event', event)
+    setIsThereRating(true)
+    setUserRating(event)
+  }
+
+
+  const handleCommentPost = async(event) => {
+    event.preventDefault()
+    const isThereComment = !!userComment.commentText
+    if (!userIsAuthenticated()) {
+      userNeedsToLogin('Please login to review and comment!☺️')
+    }
+    if (!isThereComment) {
+      setIsThereComment(false)
+      console.log('NO COMMENT')
+      commentPopup(0)
+      return 0
+    } if (!isThereRating) {
+      ratingPopup(false)
+      return 0
+    }
+    try {
+      const commentToAdd = { ...userComment, rating: userRating }
+      await axios.post(`/api/${_id}/comment`, commentToAdd, { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } } )
+      console.log('🐝 ~ file: CommentForm.js ~ line 23 ~ commentToAdd', commentToAdd)
+      commentPopup(true)
+      setUserComment({ commentText: '' })
+    } catch (err) {
+      console.log('🔴 ~ file: CommentForm.js ~ line 24 ~ err', err)
+    }
+  }
+  ```
+
+
+
 ![Screenshot 2021-05-24 at 16 18 13](https://user-images.githubusercontent.com/76621344/119369063-a6df1780-bcab-11eb-8cf8-5ff51af01970.png)
 
 I really Like how the gallery page turned out with the cards and getting the filter feature to work.
 ![Screenshot 2021-05-04 at 15 48 33](https://user-images.githubusercontent.com/76621344/117348638-5a6d9c80-aea2-11eb-9ceb-ce6f0a46ac69.png)
 
-Making the navbar responsive was also one of my highlights 
-![Screenshot 2021-05-06 at 19 23 37](https://user-images.githubusercontent.com/76621344/117348678-65283180-aea2-11eb-8511-3e542736a985.png)
-![Screenshot 2021-05-06 at 19 24 22](https://user-images.githubusercontent.com/76621344/117348685-66595e80-aea2-11eb-9e23-9c2729092abe.png)
-![Screenshot 2021-05-06 at 19 24 40](https://user-images.githubusercontent.com/76621344/117348691-678a8b80-aea2-11eb-982f-40753a489065.png)
 
 
 # Wins 
@@ -228,6 +282,9 @@ Making the navbar responsive was also one of my highlights
 * Managing and splitting work proved challenging initially!
 * Merging and solving conflicts was something we had to learn on the fly and practice.  
 
-
+# Key Learnings
+* Using GitHub with others on a project.
+* Splitting workload with team
+* Using SVGs
 
 
