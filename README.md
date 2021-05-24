@@ -287,4 +287,12 @@ I really Like how the gallery page turned out with the cards and getting the fil
 * Splitting workload with team
 * Using SVGs
 
+# Final product walkthrough
+![Screenshot 2021-05-24 at 16 49 13](https://user-images.githubusercontent.com/76621344/119373117-fa536480-bcaf-11eb-83c7-6f0c4f3edf0c.png)
+![Screenshot 2021-05-24 at 16 50 28](https://user-images.githubusercontent.com/76621344/119373282-25d64f00-bcb0-11eb-99b9-9f3bb4d056ef.png)
+![Screenshot 2021-05-24 at 16 50 51](https://user-images.githubusercontent.com/76621344/119373336-34bd0180-bcb0-11eb-89c8-259976ab4e84.png)
+![Screenshot 2021-05-24 at 16 51 15](https://user-images.githubusercontent.com/76621344/119373375-42728700-bcb0-11eb-8aa5-a267222450ee.png)
+![Screenshot 2021-05-24 at 16 51 45](https://user-images.githubusercontent.com/76621344/119373447-55855700-bcb0-11eb-9a14-10a73ac52116.png)
+
+
 
