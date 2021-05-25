@@ -274,13 +274,14 @@ I really Like how the gallery page turned out with the cards and getting the fil
 ![Screenshot 2021-05-04 at 15 48 33](https://user-images.githubusercontent.com/76621344/117348638-5a6d9c80-aea2-11eb-9ceb-ce6f0a46ac69.png)
 
 
-
-# Wins 
-* Working as a team to create a really cool interactive app!
-* happy to get a working like button which updates correctly
-# Challenges 
+# Wins and Challenges
+## Challenges 😧
 * Managing and splitting work proved challenging initially!
 * Merging and solving conflicts was something we had to learn on the fly and practice.  
+
+## Wins 🏆
+* Working as a team to create a really cool interactive app!
+* happy to get a working like button which updates correctly
 
 # Key Learnings
 * Using GitHub with others on a project.
