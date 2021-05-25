@@ -145,7 +145,7 @@ export const addLike = async (req, res) => {
 ## Like feauture 
 The like button was something I focused on, front and back-end. 
 This will check if the user has liked previously and dislike if so, or add a like if not.
-```
+```javascript
 export const addLike = async (req, res) => {
 // const currentUser = req.currentUser._id
   try {
