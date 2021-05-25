@@ -51,7 +51,7 @@ Doodler is a social site for users to create and share their doodles.
 ## Approach Taken 
 While discussing ideas we found a [ canvas component](https://www.npmjs.com/package/react-canvas-draw) that allows users to make a doodle. We knew we wanted this as the focus of our app and got to work. 
 
-We met and had some wireframes drawn up of how we want the app to look like
+We met and had some wireframes drawn up of how we want the app to look like.
 
 ![Screenshot 2021-05-04 at 15 02 14](https://user-images.githubusercontent.com/76621344/117348437-1a0e1e80-aea2-11eb-8287-a1e3156a1921.png)
 
@@ -68,7 +68,7 @@ We used Trello to track our progress and raise issues.
 
 
 # Backend development
-The doodles are referred as artwork in our schematics. They contain both embedded and reference relationships
+The doodles are referred as artwork in our schematics. They contain both embedded and reference relationships.
 ## Schemas
 ``` javascript
 const commentSchema = new mongoose.Schema({
@@ -99,7 +99,7 @@ const artworkSchema = new mongoose.Schema({
 ```
 
 ## Controllers
-Example of controller for liking / adding to favourites
+Example of controller for liking / adding to favourites.
 ``` javascript
 export const addLike = async (req, res) => {
 // const currentUser = req.currentUser._id
@@ -133,7 +133,7 @@ export const addLike = async (req, res) => {
 ```
 * We ran into a problem often with the payload size but managed to overcome this! By using [lz-string: everything to make it work for you - pieroxy.net](https://pieroxy.net/blog/pages/lz-string/guide.html)
 ![Screenshot_2021-03-25_at_23 28 40](https://user-images.githubusercontent.com/76621344/117348576-42961880-aea2-11eb-9be7-66f7e35d2cb9.png)
-* this changed the data from an object with line coordinates to a single string 
+* this changed the data from an object with line coordinates to a single string .
 ![Screenshot 2021-05-06 at 19 22 27](https://user-images.githubusercontent.com/76621344/117348601-4de94400-aea2-11eb-9113-afcd3f2a803a.png)
 
 
@@ -210,7 +210,7 @@ const CommentFeed = ({ _id }) => {
     return `${dateSlice} at ${timeSlice}`
   }
 ```
-To add comments - this will also take a user rating, between 1-5 and add this to the doodle
+To add comments - this will also take a user rating, between 1-5 and add this to the doodle.
 ```javascript
 const CommentForm = ({ _id }) => {
   const [userComment, setUserComment] = useState({
@@ -284,8 +284,8 @@ I really Like how the gallery page turned out with the cards and getting the fil
 
 # Key Learnings
 * Using GitHub with others on a project.
-* Splitting workload with team
-* Using SVGs
+* Splitting workload with team.
+* Using SVGs.
 
 # Final product walkthrough
 ![Screenshot 2021-05-24 at 16 49 13](https://user-images.githubusercontent.com/76621344/119373117-fa536480-bcaf-11eb-83c7-6f0c4f3edf0c.png)
